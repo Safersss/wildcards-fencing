@@ -32,10 +32,28 @@
             align-items: center;
             flex-wrap: wrap;
         }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
         .logo img {
             height: 50px;
             width: auto;
             display: block;
+        }
+        .logo-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        .logo-text span {
+            color: #d32f2f;
         }
         nav a {
             font-family: 'Oswald', sans-serif;
@@ -197,6 +215,9 @@
                 margin: 0 12px;
                 font-size: 14px;
             }
+            nav a:first-child {
+                margin-left: 12px;
+            }
             .hero h1 {
                 font-size: 48px;
             }
@@ -205,6 +226,9 @@
             }
             .logo img {
                 height: 40px;
+            }
+            .logo-text {
+                font-size: 18px;
             }
         }
     </style>
@@ -215,6 +239,7 @@
             <div class="header-inner">
                 <a href="index.html" class="logo">
                     <img src="logo.jpg" alt="Wild Cards Fencing">
+                    <div class="logo-text">WILD <span>CARDS</span><br>FENCING</div>
                 </a>
                 <nav>
                     <a href="index.html">Главная</a>
