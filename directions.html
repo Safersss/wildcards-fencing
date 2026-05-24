@@ -3,13 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wild Cards Fencing</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Wild Cards Fencing — Направления</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f2f5;
+            line-height: 1.6;
+        }
+        header {
+            background: #0a192f;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 32px;
+            letter-spacing: 2px;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav a {
+            color: white;
+            margin: 0 12px;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 12px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background: #e94560;
+            border-radius: 25px;
+        }
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            min-height: 55vh;
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 260px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            color: #0a192f;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        .card p {
+            color: #555;
+            font-size: 16px;
+        }
+        .card .emoji {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        footer {
+            background: #0a192f;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <img src="https://via.placeholder.com/80" alt="Логотип">
-        <h1>Wild Cards Fencing</h1>
+        <h1>⚔️ Wild Cards Fencing</h1>
         <nav>
             <a href="index.html">Главная</a>
             <a href="about.html">О школе</a>
@@ -21,13 +102,32 @@
         </nav>
     </header>
     <main>
-        <h2>Направления фехтования</h2><p>Рапира, шпага, сабля, историческое фехтование...</p>
-        <p>Школа фехтования для детей и взрослых. Начните свой путь в благородном спорте!</p>
-        <button id="openFormBtn">Записаться на пробное занятие</button>
+        <h2 style="text-align:center; color:#0a192f;">Направления фехтования</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="emoji">⚔️</div>
+                <h3>Рапира</h3>
+                <p>Колющее оружие. Уколы только в туловище. Самое техничное и элегантное направление.</p>
+            </div>
+            <div class="card">
+                <div class="emoji">🗡️</div>
+                <h3>Шпага</h3>
+                <p>Колющее оружие. Уколы во все части тела. Требует выдержки и тактического мышления.</p>
+            </div>
+            <div class="card">
+                <div class="emoji">🏹</div>
+                <h3>Сабля</h3>
+                <p>Рубяще-колющее оружие. Удары и уколы в верхнюю часть тела. Самое динамичное направление.</p>
+            </div>
+            <div class="card">
+                <div class="emoji">🛡️</div>
+                <h3>Историческое фехтование</h3>
+                <p>HEMA — реконструкция средневековых техник. Мечи, щиты, доспехи.</p>
+            </div>
+        </div>
     </main>
     <footer>
-        <p>© 2025 Wild Cards Fencing</p>
+        <p>© 2025 Wild Cards Fencing | Все права защищены</p>
     </footer>
-    <script src="js/script.js"></script>
 </body>
 </html>
