@@ -67,45 +67,65 @@
             margin-bottom: 50px;
         }
         .faq-section {
-            margin-bottom: 50px;
-        }
-        .faq-section h2 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 28px;
-            font-weight: 600;
-            color: #d32f2f;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #222;
-            text-transform: uppercase;
-        }
-        .faq-item {
-            background: #111;
+            margin-bottom: 30px;
             border: 1px solid #222;
-            margin-bottom: 20px;
-            border-radius: 0;
+            background: #111;
         }
-        .faq-question {
+        .faq-section-header {
+            background: #1a1a1a;
             padding: 18px 25px;
-            font-size: 18px;
-            font-weight: 600;
             cursor: pointer;
             transition: 0.2s;
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+        .faq-section-header:hover {
+            background: #222;
+        }
+        .faq-section-header h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
             color: #fff;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        .faq-section-header .toggle-icon {
+            font-size: 28px;
+            font-weight: bold;
+            color: #d32f2f;
+            transition: transform 0.2s;
+        }
+        .faq-items-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .faq-section.active .faq-items-wrapper {
+            max-height: 3000px;
+            transition: max-height 0.6s ease-in;
+        }
+        .faq-item {
+            border-top: 1px solid #222;
+        }
+        .faq-question {
+            padding: 16px 25px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #111;
         }
         .faq-question:hover {
             background: #1a1a1a;
         }
-        .faq-question::after {
-            content: '+';
-            font-size: 24px;
+        .faq-question .q-icon {
+            font-size: 22px;
             color: #d32f2f;
-        }
-        .faq-item.active .faq-question::after {
-            content: '−';
+            font-weight: bold;
         }
         .faq-answer {
             padding: 0 25px;
@@ -113,7 +133,7 @@
             overflow: hidden;
             transition: max-height 0.3s ease-out;
             color: #ccc;
-            border-top: 0px solid #222;
+            background: #0a0a0a;
         }
         .faq-item.active .faq-answer {
             padding: 20px 25px;
@@ -152,9 +172,12 @@
             .logo img {
                 height: 40px;
             }
+            .faq-section-header h2 {
+                font-size: 18px;
+            }
             .faq-question {
-                font-size: 16px;
-                padding: 15px;
+                font-size: 15px;
+                padding: 12px 18px;
             }
         }
     </style>
@@ -178,168 +201,157 @@
         </header>
 
         <h1>Вопросы <span>и ответы</span></h1>
-        <div class="sub">📌 Самое важное — коротко и по делу</div>
+        <div class="sub">📌 Нажмите на раздел — ответы откроются ниже</div>
 
         <!-- 1. Локации и удобства -->
         <div class="faq-section">
-            <h2>📍 Локации и удобства</h2>
-            <div class="faq-item">
-                <div class="faq-question">Где находятся залы?</div>
-                <div class="faq-answer">
-                    <p><strong>Москва:</strong><br>
-                    • 9-я ул. Соколиной горы, д. 6 — основной зал.<br>
-                    • Рабочая ул., 53, стр. 1 (Детский Дворец Спорта) — направления «Меч Ренессанса», «Клинки Востока», «Монтанте».</p>
-                    <p><strong>Филиал:</strong><br>
-                    • г. Видное, ул. Советская, д. 19 — направление «Артистическое фехтование».</p>
-                </div>
+            <div class="faq-section-header">
+                <h2>📍 Локации и удобства</h2>
+                <span class="toggle-icon">+</span>
             </div>
-            <div class="faq-item">
-                <div class="faq-question">Какой график работы?</div>
-                <div class="faq-answer">
-                    <p>• Зал на Соколиной горе работает с 8:00 до 23:00.<br>
-                    • Администраторы работают с 17:00 до 22:00 по будням и с 12:00 до 17:00 по выходным.</p>
+            <div class="faq-items-wrapper">
+                <div class="faq-item">
+                    <div class="faq-question">Где находятся залы?<span class="q-icon">+</span></div>
+                    <div class="faq-answer">
+                        <p><strong>Москва:</strong><br>• 9-я ул. Соколиной горы, д. 6 — основной зал.<br>• Рабочая ул., 53, стр. 1 (Детский Дворец Спорта) — направления «Меч Ренессанса», «Клинки Востока», «Монтанте».</p>
+                        <p><strong>Филиал:</strong><br>• г. Видное, ул. Советская, д. 19 — направление «Артистическое фехтование».</p>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Есть ли парковка?</div>
-                <div class="faq-answer">
-                    <p>Собственной парковки нет, но рядом есть городская парковка (40 ₽/час) и дворы, где можно оставить машину.</p>
+                <div class="faq-item">
+                    <div class="faq-question">Какой график работы?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p>• Зал на Соколиной горе работает с 8:00 до 23:00.<br>• Администраторы работают с 17:00 до 22:00 по будням и с 12:00 до 17:00 по выходным.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Есть ли парковка?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p>Собственной парковки нет, но рядом есть городская парковка (40 ₽/час) и дворы, где можно оставить машину.</p></div>
                 </div>
             </div>
         </div>
 
         <!-- 2. Выбор направления -->
         <div class="faq-section">
-            <h2>⚔️ Выбор направления</h2>
-            <div class="faq-item">
-                <div class="faq-question">Какое направление выбрать?</div>
-                <div class="faq-answer">
-                    <p>В школе более 30 направлений:<br>
-                    • от средневекового до современного спортивного фехтования<br>
-                    • контактные (спарринговые) и бесконтактные (постановочные)<br>
-                    • европейское и восточное оружие</p>
-                    <p>Помимо фехтования: стрельба из лука, фаер-шоу, основы шитья.<br>
-                    Полный список — в разделе <a href="https://vk.com/market-130125846?screen=group" target="_blank">«Товары» VK</a>. Если сомневаетесь — напишите, мы подскажем.</p>
-                </div>
+            <div class="faq-section-header">
+                <h2>⚔️ Выбор направления</h2>
+                <span class="toggle-icon">+</span>
             </div>
-            <div class="faq-item">
-                <div class="faq-question">Чем отличается контактное фехтование от бесконтактного?</div>
-                <div class="faq-answer">
-                    <p>• Контактное фехтование — спарринги, цель победить противника.<br>
-                    • Бесконтактное — изучение аутентичной техники и/или красивый поединок по заранее отрепетированной хореографии.</p>
+            <div class="faq-items-wrapper">
+                <div class="faq-item">
+                    <div class="faq-question">Какое направление выбрать?<span class="q-icon">+</span></div>
+                    <div class="faq-answer">
+                        <p>В школе более 30 направлений:<br>• от средневекового до современного спортивного фехтования<br>• контактные (спарринговые) и бесконтактные (постановочные)<br>• европейское и восточное оружие</p>
+                        <p>Помимо фехтования: стрельба из лука, фаер-шоу, основы шитья.<br>Полный список — в разделе <a href="https://vk.com/market-130125846?screen=group" target="_blank">«Товары» VK</a>. Если сомневаетесь — напишите, мы подскажем.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Чем отличается контактное фехтование от бесконтактного?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p>• Контактное фехтование — спарринги, цель победить противника.<br>• Бесконтактное — изучение аутентичной техники и/или красивый поединок по заранее отрепетированной хореографии.</p></div>
                 </div>
             </div>
         </div>
 
         <!-- 3. Пробное занятие и запись -->
         <div class="faq-section">
-            <h2>📝 Пробное занятие и запись</h2>
-            <div class="faq-item">
-                <div class="faq-question">Хочу прийти на пробное занятие. Что делать?</div>
-                <div class="faq-answer">
-                    <p>Напишите нам направление, которое вас интересует, ваши ФИО и возраст, а также как вы узнали о нас — мы подберём ближайшую удобную дату. Вам останется только прийти.</p>
-                </div>
+            <div class="faq-section-header">
+                <h2>📝 Пробное занятие и запись</h2>
+                <span class="toggle-icon">+</span>
             </div>
-            <div class="faq-item">
-                <div class="faq-question">Когда можно прийти? Где посмотреть расписание?</div>
-                <div class="faq-answer">
-                    <p>Расписание занятий размещено в <a href="schedule.html">разделе «Расписание»</a> на нашем сайте.</p>
+            <div class="faq-items-wrapper">
+                <div class="faq-item">
+                    <div class="faq-question">Хочу прийти на пробное занятие. Что делать?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p>Напишите нам направление, которое вас интересует, ваши ФИО и возраст, а также как вы узнали о нас — мы подберём ближайшую удобную дату. Вам останется только прийти.</p></div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">С какого возраста можно заниматься?</div>
-                <div class="faq-answer">
-                    <p>• Спортивная шпага — с 7 лет.<br>
-                    • Остальные детские группы — с 10 лет.<br>
-                    • Подростки 14–16 лет могут посещать взрослые группы по согласованию с тренером.</p>
+                <div class="faq-item">
+                    <div class="faq-question">Когда можно прийти? Где посмотреть расписание?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p>Расписание занятий размещено в <a href="schedule.html">разделе «Расписание»</a> на нашем сайте.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">С какого возраста можно заниматься?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p>• Спортивная шпага — с 7 лет.<br>• Остальные детские группы — с 10 лет.<br>• Подростки 14–16 лет могут посещать взрослые группы по согласованию с тренером.</p></div>
                 </div>
             </div>
         </div>
 
         <!-- 4. Стоимость -->
         <div class="faq-section">
-            <h2>💰 Стоимость</h2>
-            <div class="faq-item">
-                <div class="faq-question">Сколько стоит пробное занятие?</div>
-                <div class="faq-answer"><p>В зависимости от направления: от 0 до 2350 ₽.</p></div>
+            <div class="faq-section-header">
+                <h2>💰 Стоимость</h2>
+                <span class="toggle-icon">+</span>
             </div>
-            <div class="faq-item">
-                <div class="faq-question">Сколько стоят обычные тренировки и абонементы?</div>
-                <div class="faq-answer">
-                    <p><strong>Разовые занятия:</strong> от 1000 до 2350 ₽.<br>
-                    <strong>Абонементы:</strong><br>
-                    • 4 занятия / месяц — от 2000 до 8000 ₽<br>
-                    • 8 занятий / месяц — от 5500 до 10000 ₽<br>
-                    • 12 занятий / месяц (в отдельных группах) — от 7500 до 12000 ₽</p>
-                    <p>Есть безлимитные абонементы на разные группы, которые ведёт один тренер.</p>
+            <div class="faq-items-wrapper">
+                <div class="faq-item">
+                    <div class="faq-question">Сколько стоит пробное занятие?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p>В зависимости от направления: от 0 до 2350 ₽.</p></div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Можно ли взять абонемент на полгода/год?</div>
-                <div class="faq-answer">
-                    <p>Да. Такой абонемент будет стоить на 10% дешевле. Возможна заморозка на период отпуска от 2 недель до месяца.<br>
-                    Внимание: если вы прекращаете ходить в течение оплаченного времени, деньги не возвращаются. Также можно взять абонемент на 3 месяца со скидкой 5%.</p>
+                <div class="faq-item">
+                    <div class="faq-question">Сколько стоят обычные тренировки и абонементы?<span class="q-icon">+</span></div>
+                    <div class="faq-answer">
+                        <p><strong>Разовые занятия:</strong> от 1000 до 2350 ₽.<br><strong>Абонементы:</strong><br>• 4 занятия / месяц — от 2000 до 8000 ₽<br>• 8 занятий / месяц — от 5500 до 10000 ₽<br>• 12 занятий / месяц (в отдельных группах) — от 7500 до 12000 ₽</p>
+                        <p>Есть безлимитные абонементы на разные группы, которые ведёт один тренер.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Есть ли скидки или акции?</div>
-                <div class="faq-answer">
-                    <p><strong>«Приведи друга»:</strong> если вы ученик школы и по вашей рекомендации приходит новый человек и покупает абонемент, вы получаете скидку 50% на абонемент ближайшего месяца.</p>
+                <div class="faq-item">
+                    <div class="faq-question">Можно ли взять абонемент на полгода/год?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p>Да. Такой абонемент будет стоить на 10% дешевле. Возможна заморозка на период отпуска от 2 недель до месяца.<br>Внимание: если вы прекращаете ходить в течение оплаченного времени, деньги не возвращаются. Также можно взять абонемент на 3 месяца со скидкой 5%.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Есть ли скидки или акции?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p><strong>«Приведи друга»:</strong> если вы ученик школы и по вашей рекомендации приходит новый человек и покупает абонемент, вы получаете скидку 50% на абонемент ближайшего месяца.</p></div>
                 </div>
             </div>
         </div>
 
         <!-- 5. Подготовка к первому занятию -->
         <div class="faq-section">
-            <h2>🥋 Подготовка к первому занятию</h2>
-            <div class="faq-item">
-                <div class="faq-question">Что взять с собой?</div>
-                <div class="faq-answer"><p>• Удобную спортивную форму<br>• Сменную спортивную обувь<br>• По желанию: воду</p></div>
+            <div class="faq-section-header">
+                <h2>🥋 Подготовка к первому занятию</h2>
+                <span class="toggle-icon">+</span>
             </div>
-            <div class="faq-item">
-                <div class="faq-question">Нужно ли снаряжение для начала тренировок?</div>
-                <div class="faq-answer"><p>Минимально необходимое снаряжение на начальном этапе выдаётся бесплатно. Если вы ходите больше 2–3 месяцев, необходимо начать приобретать собственное снаряжение. Тренеры подскажут, что и где лучше купить.</p></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Подходит ли фехтование новичкам?</div>
-                <div class="faq-answer"><p>Да. Опыт не требуется. Тренеры объяснят базу с нуля и дадут задания под ваш уровень.</p></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Сколько длится тренировка?</div>
-                <div class="faq-answer"><p>• Взрослые — 2 часа<br>• Дети — 1,5 часа<br>• Индивидуальные тренировки — 1 час</p></div>
+            <div class="faq-items-wrapper">
+                <div class="faq-item">
+                    <div class="faq-question">Что взять с собой?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p>• Удобную спортивную форму<br>• Сменную спортивную обувь<br>• По желанию: воду</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Нужно ли снаряжение для начала тренировок?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p>Минимально необходимое снаряжение на начальном этапе выдаётся бесплатно. Если вы ходите больше 2–3 месяцев, необходимо начать приобретать собственное снаряжение. Тренеры подскажут, что и где лучше купить.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Подходит ли фехтование новичкам?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p>Да. Опыт не требуется. Тренеры объяснят базу с нуля и дадут задания под ваш уровень.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Сколько длится тренировка?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p>• Взрослые — 2 часа<br>• Дети — 1,5 часа<br>• Индивидуальные тренировки — 1 час</p></div>
+                </div>
             </div>
         </div>
 
         <!-- 6. Абонементы и посещения -->
         <div class="faq-section">
-            <h2>🔄 Абонементы и посещения</h2>
-            <div class="faq-item">
-                <div class="faq-question">Можно ли заморозить абонемент?</div>
-                <div class="faq-answer">
-                    <p>Чаще всего нет. Экстренные случаи обсуждаются индивидуально.</p>
-                    <p><strong>Отпуск:</strong> если вы заранее сообщите, стоимость пересчитают (только при отпуске от 2 недель).<br>
-                    <strong>Болезнь:</strong> перерасчёт на следующий месяц возможен при предъявлении справки или больничного сроком от 2 недель.</p>
-                    <p>Пропуск одного-двух занятий не компенсируется — это заложено в стоимость абонемента.</p>
-                </div>
+            <div class="faq-section-header">
+                <h2>🔄 Абонементы и посещения</h2>
+                <span class="toggle-icon">+</span>
             </div>
-            <div class="faq-item">
-                <div class="faq-question">Что делать, если я пропустил тренировку?</div>
-                <div class="faq-answer">
-                    <p>• Если у вас абонемент раз в неделю, а тренировки чаще — можно прийти в другой день по согласованию с тренером.<br>
-                    • Если занятие отменено школой — абонемент компенсируют.<br>
-                    • В остальных случаях сумма не компенсируется.</p>
+            <div class="faq-items-wrapper">
+                <div class="faq-item">
+                    <div class="faq-question">Можно ли заморозить абонемент?<span class="q-icon">+</span></div>
+                    <div class="faq-answer">
+                        <p>Чаще всего нет. Экстренные случаи обсуждаются индивидуально.</p>
+                        <p><strong>Отпуск:</strong> если вы заранее сообщите, стоимость пересчитают (только при отпуске от 2 недель).<br><strong>Болезнь:</strong> перерасчёт на следующий месяц возможен при предъявлении справки или больничного сроком от 2 недель.</p>
+                        <p>Пропуск одного-двух занятий не компенсируется — это заложено в стоимость абонемента.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Вы пересчитаете абонемент, если я решу прекратить занятия?</div>
-                <div class="faq-answer">
-                    <p>Да. Каждое посещённое занятие будет считаться как разовая тренировка, остаток возвращается за вычетом 3% за банковский перевод.</p>
+                <div class="faq-item">
+                    <div class="faq-question">Что делать, если я пропустил тренировку?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p>• Если у вас абонемент раз в неделю, а тренировки чаще — можно прийти в другой день по согласованию с тренером.<br>• Если занятие отменено школой — абонемент компенсируют.<br>• В остальных случаях сумма не компенсируется.</p></div>
                 </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Что делать, если забыл(а) вещи в школе?</div>
-                <div class="faq-answer">
-                    <p>Сразу связывайтесь с администрацией. Забрать можно в рабочие часы школы (будни 17:00–21:00, выходные 12:00–17:00). Забытые вещи хранятся до 7 дней, потом утилизируются. Школа ответственности не несёт.</p>
+                <div class="faq-item">
+                    <div class="faq-question">Вы пересчитаете абонемент, если я решу прекратить занятия?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p>Да. Каждое посещённое занятие будет считаться как разовая тренировка, остаток возвращается за вычетом 3% за банковский перевод.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Что делать, если забыл(а) вещи в школе?<span class="q-icon">+</span></div>
+                    <div class="faq-answer"><p>Сразу связывайтесь с администрацией. Забрать можно в рабочие часы школы (будни 17:00–21:00, выходные 12:00–17:00). Забытые вещи хранятся до 7 дней, потом утилизируются. Школа ответственности не несёт.</p></div>
                 </div>
             </div>
         </div>
@@ -352,11 +364,24 @@
     </footer>
 
     <script>
-        // Аккордеон для FAQ
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const parent = question.parentElement;
-                parent.classList.toggle('active');
+        // Аккордеон для разделов FAQ (заголовки разделов)
+        document.querySelectorAll('.faq-section').forEach(section => {
+            const header = section.querySelector('.faq-section-header');
+            const icon = header.querySelector('.toggle-icon');
+            header.addEventListener('click', () => {
+                section.classList.toggle('active');
+                icon.textContent = section.classList.contains('active') ? '−' : '+';
+            });
+        });
+
+        // Аккордеон для конкретных вопросов внутри раздела
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const qIcon = question.querySelector('.q-icon');
+            question.addEventListener('click', (e) => {
+                e.stopPropagation();
+                item.classList.toggle('active');
+                qIcon.textContent = item.classList.contains('active') ? '−' : '+';
             });
         });
     </script>
