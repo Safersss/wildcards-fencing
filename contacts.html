@@ -13,6 +13,7 @@
         .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
         .logo img { height: 50px; width: auto; display: block; }
         nav a { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: #fff; text-decoration: none; margin-left: 30px; transition: 0.2s; text-transform: uppercase; }
+        nav a:first-child { margin-left: 0; }
         nav a:hover { color: #d32f2f; }
         h1 { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; text-align: center; margin: 60px 0 20px; text-transform: uppercase; }
         h1 span { color: #d32f2f; }
@@ -38,6 +39,7 @@
         @media (max-width: 700px) {
             .header-inner { flex-direction: column; gap: 15px; }
             nav a { margin: 0 12px; font-size: 14px; }
+            nav a:first-child { margin-left: 12px; }
             h1 { font-size: 32px; }
             .logo img { height: 40px; }
             .tab-btn { padding: 8px 20px; font-size: 14px; }
@@ -78,43 +80,4 @@
                 <div class="info-text">
                     <p><strong>🚇 Метро:</strong> МЦД «Соколиная Гора» — 7–12 мин пешком. м. Семёновская — 20–25 мин пешком или 15 мин на трамвае.</p>
                     <p><strong>🚗 Парковка:</strong> Городские парковки до 40 ₽/ч, во дворах — бесплатно.</p>
-                    <p><strong>🚪 Вход:</strong> С северной стороны, с 9-й улицы Соколиной горы. Дальний от входа подъезд, лифт на 4 этаж.</p>
-                    <p><strong>📞 По любым вопросам:</strong> <a href="tel:+79060688845" style="color:#d32f2f;">+7 906 068 88 45</a> или сообщения в VK.</p>
-                </div>
-                <div class="map"><iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1a2b3c4d5e6f7g8h9i0j&source=constructor" allowfullscreen></iframe></div>
-            </div>
-            <div class="video-link"><a href="https://vk.com/@wildcardsfencing-kak-dobratsya" target="_blank">🎥 Смотреть видео: как добраться до Соколиной Горы</a></div>
-        </div>
-
-        <div id="dds" class="tab-content">
-            <div class="location-name">🏛️ Дворец Детского Спорта — Рабочая ул., 53, стр. 1</div>
-            <div class="info-block">
-                <div class="info-text">
-                    <p><strong>🚇 Метро:</strong> Площадь Ильича / Римская — далее пешком 15 мин или автобус.</p>
-                    <p><strong>📍 Этажи:</strong> Раздевалки — 7 этаж, зал — 2 этаж.</p>
-                    <p><strong>⚔️ Здесь проходят:</strong> группы «Ведьмак», Монтанте, Клинки Востока.</p>
-                    <p><strong>📞 Телефон:</strong> <a href="tel:+79060688845" style="color:#d32f2f;">+7 906 068 88 45</a></p>
-                </div>
-                <div class="map"><iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A9z8y7x6w5v4u3t2s1r0q&source=constructor" allowfullscreen></iframe></div>
-            </div>
-            <div class="video-link"><a href="https://vk.com/@wildcardsfencing-kak-dobratsya" target="_blank">🎥 Смотреть видео: как добраться до ДДС</a></div>
-        </div>
-
-        <div class="phone">📞 Единый телефон для записи и вопросов: <a href="tel:+79060688845">+7 906 068 88 45</a><br>✉️ Почта: <a href="mailto:info@wildcardsfencing.ru" style="color:#d32f2f;">info@wildcardsfencing.ru</a></div>
-    </div>
-    <footer><div class="container"><p>© 2025 Wild Cards Fencing | Все права защищены</p></div></footer>
-    <script>
-        const tabs = document.querySelectorAll('.tab-btn');
-        const contents = document.querySelectorAll('.tab-content');
-        tabs.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const tabId = btn.getAttribute('data-tab');
-                tabs.forEach(b => b.classList.remove('active'));
-                contents.forEach(c => c.classList.remove('active'));
-                btn.classList.add('active');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-    </script>
-</body>
-</html>
+                    <p><strong>🚪 Вход:</strong> С северной стороны, с 9-й улицы Соколиной горы. Дальний от входа подъезд, лифт на 4 этаж.</p
