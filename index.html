@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wild Cards Fencing</title>
+    <title>Wild Cards Fencing — Школа фехтования</title>
     <style>
         * {
             margin: 0;
@@ -11,61 +11,153 @@
             box-sizing: border-box;
         }
         body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f2f5;
+            line-height: 1.6;
         }
         header {
-            background: #1a1a2e;
+            background: #0a192f;
             color: white;
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 32px;
+            letter-spacing: 2px;
         }
         nav {
             margin-top: 15px;
         }
         nav a {
             color: white;
-            margin: 0 15px;
+            margin: 0 12px;
             text-decoration: none;
+            font-size: 16px;
+            padding: 8px 12px;
+            transition: 0.3s;
         }
         nav a:hover {
-            text-decoration: underline;
+            background: #e94560;
+            border-radius: 25px;
         }
         main {
-            padding: 40px 20px;
             max-width: 1200px;
-            margin: 0 auto;
-            min-height: 60vh;
+            margin: 40px auto;
+            padding: 0 20px;
+            min-height: 55vh;
+        }
+        .hero {
             text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #0a192f 0%, #1a3a5f 100%);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 40px;
         }
-        h2 {
+        .hero h2 {
+            font-size: 42px;
             margin-bottom: 20px;
-            color: #1a1a2e;
         }
-        button {
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .btn {
             background: #e94560;
             color: white;
-            padding: 12px 24px;
+            padding: 14px 32px;
             border: none;
-            border-radius: 8px;
+            border-radius: 40px;
             cursor: pointer;
-            font-size: 16px;
-            margin-top: 20px;
+            font-size: 18px;
+            margin-top: 25px;
+            transition: 0.3s;
         }
-        button:hover {
+        .btn:hover {
             background: #c73a52;
+            transform: scale(1.05);
         }
         footer {
-            background: #1a1a2e;
+            background: #0a192f;
             color: white;
             text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+        /* карточки для тренеров */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
             padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            color: #0a192f;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #0a192f;
+            color: white;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 350px;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        .modal input, .modal select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Wild Cards Fencing</h1>
+        <h1>⚔️ Wild Cards Fencing</h1>
         <nav>
             <a href="index.html">Главная</a>
             <a href="about.html">О школе</a>
@@ -77,17 +169,66 @@
         </nav>
     </header>
     <main>
-        <h2>Добро пожаловать в Wild Cards Fencing</h2>
-        <p>Школа фехтования для детей и взрослых. Начните свой путь в благородном спорте!</p>
-        <button id="openFormBtn">Записаться на пробное занятие</button>
+        <div class="hero">
+            <h2>Добро пожаловать в Wild Cards Fencing</h2>
+            <p>Школа фехтования для детей и взрослых. Начни свой путь в благородном спорте!</p>
+            <button class="btn" id="openFormBtn">📝 Записаться на пробное занятие</button>
+        </div>
     </main>
     <footer>
-        <p>© 2025 Wild Cards Fencing</p>
+        <p>© 2025 Wild Cards Fencing | Все права защищены</p>
     </footer>
+
+    <!-- Модальное окно -->
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="modal">
+        <h3>Запись на пробное занятие</h3>
+        <input type="text" id="name" placeholder="ФИО">
+        <input type="tel" id="phone" placeholder="Телефон">
+        <select id="direction">
+            <option>Рапира</option>
+            <option>Шпага</option>
+            <option>Сабля</option>
+            <option>Историческое фехтование</option>
+        </select>
+        <label>
+            <input type="checkbox" id="consent"> Я соглашаюсь на обработку данных
+        </label>
+        <button class="btn" id="submitForm" style="width:100%; margin-top:15px;">Отправить</button>
+        <button id="closeModal" style="margin-top:10px; width:100%; background:#ccc; border:none; padding:10px; border-radius:40px;">Закрыть</button>
+    </div>
+
     <script>
-        // Форма и Google Sheets будут позже
-        document.getElementById('openFormBtn').onclick = function() {
-            alert('Форма будет добавлена позже');
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxX_pP2WXjnYOHD2JJrOiqhveRk5ZnPXB6J7o8rM4JdE6heHnGhe3l_PwUwFvowXYIw/exec';
+        
+        document.getElementById('openFormBtn').onclick = () => {
+            document.getElementById('modal').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        };
+        document.getElementById('closeModal').onclick = () => {
+            document.getElementById('modal').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        };
+        document.getElementById('submitForm').onclick = async () => {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const direction = document.getElementById('direction').value;
+            const consent = document.getElementById('consent').checked;
+            if (!name || !phone || !consent) {
+                alert('Заполни все поля и дай согласие');
+                return;
+            }
+            await fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify({ name, phone, direction })
+            });
+            alert('Заявка отправлена! Мы свяжемся с тобой');
+            document.getElementById('modal').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('name').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('consent').checked = false;
         };
     </script>
 </body>
