@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Cards Fencing — школа фехтования</title>
+    <!-- Подключаем бесплатный рубленый шрифт, похожий на логотип -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,6 +14,7 @@
         }
         body {
             background: #000000;
+            /* Основной шрифт для текста */
             font-family: 'Inter', 'Segoe UI', sans-serif;
             color: #fff;
             line-height: 1.5;
@@ -36,12 +39,17 @@
             width: auto;
             display: block;
         }
+        /* Стиль навигации - как логотип */
         nav a {
+            font-family: 'Oswald', 'Impact', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
             color: #fff;
             text-decoration: none;
             margin-left: 30px;
-            font-size: 16px;
             transition: 0.2s;
+            text-transform: uppercase;
         }
         nav a:hover {
             color: #d32f2f;
@@ -51,9 +59,12 @@
             padding: 100px 0 120px;
         }
         .hero h1 {
-            font-size: 56px;
+            font-family: 'Oswald', 'Impact', sans-serif;
+            font-size: 80px;
             font-weight: 700;
+            letter-spacing: 4px;
             margin-bottom: 20px;
+            text-transform: uppercase;
         }
         .hero h1 span {
             color: #d32f2f;
@@ -64,13 +75,17 @@
             max-width: 600px;
             margin: 0 auto 30px;
         }
+        /* Кнопки в стиле логотипа */
         .btn {
             background: #d32f2f;
             color: #fff;
             border: none;
             padding: 14px 36px;
-            font-size: 18px;
+            font-family: 'Oswald', 'Impact', sans-serif;
+            font-size: 20px;
             font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             cursor: pointer;
             transition: 0.2s;
         }
@@ -81,11 +96,15 @@
             padding: 80px 0;
             border-top: 1px solid #222;
         }
+        /* Заголовки секций в стиле логотипа */
         .section h2 {
-            font-size: 36px;
+            font-family: 'Oswald', 'Impact', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: 2px;
             text-align: center;
             margin-bottom: 50px;
-            font-weight: 600;
+            text-transform: uppercase;
         }
         .directions-grid, .trainers-grid {
             display: grid;
@@ -99,11 +118,15 @@
             border: 1px solid #222;
         }
         .direction-card h3 {
-            font-size: 24px;
+            font-family: 'Oswald', 'Impact', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
             margin: 15px 0 10px;
+            text-transform: uppercase;
         }
         .direction-card p {
             color: #aaa;
+            font-size: 16px;
         }
         .trainer-card img {
             width: 180px;
@@ -112,17 +135,23 @@
             margin-bottom: 20px;
         }
         .trainer-card h3 {
-            font-size: 20px;
+            font-family: 'Oswald', 'Impact', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-transform: uppercase;
         }
         .trainer-card p {
             color: #aaa;
             margin-top: 5px;
+            font-size: 14px;
         }
         footer {
             border-top: 1px solid #222;
             padding: 40px 0;
             text-align: center;
             color: #555;
+            font-family: 'Inter', sans-serif;
         }
         .modal {
             display: none;
@@ -170,9 +199,13 @@
             }
             nav a {
                 margin: 0 12px;
+                font-size: 14px;
             }
             .hero h1 {
-                font-size: 36px;
+                font-size: 48px;
+            }
+            .section h2 {
+                font-size: 32px;
             }
             .logo img {
                 height: 40px;
@@ -208,24 +241,24 @@
         <section class="section">
             <h2>Направления</h2>
             <div class="directions-grid">
-                <div class="direction-card"><h3>⚔️ Рапира</h3><p>Спортивное и историческое</p></div>
-                <div class="direction-card"><h3>🗡️ Шпага</h3><p>Классическое фехтование</p></div>
-                <div class="direction-card"><h3>🏹 Сабля</h3><p>Рубяще-колющее оружие</p></div>
-                <div class="direction-card"><h3>🛡️ HEMA</h3><p>Историческое фехтование</p></div>
-                <div class="direction-card"><h3>⭐ СМБ</h3><p>Современный мечевой бой</p></div>
-                <div class="direction-card"><h3>🏹 Лук</h3><p>Стрельба из традиционного лука</p></div>
+                <div class="direction-card"><h3>Рапира</h3><p>Спортивное и историческое</p></div>
+                <div class="direction-card"><h3>Шпага</h3><p>Классическое фехтование</p></div>
+                <div class="direction-card"><h3>Сабля</h3><p>Рубяще-колющее оружие</p></div>
+                <div class="direction-card"><h3>HEMA</h3><p>Историческое фехтование</p></div>
+                <div class="direction-card"><h3>СМБ</h3><p>Современный мечевой бой</p></div>
+                <div class="direction-card"><h3>Лук</h3><p>Стрельба из традиционного лука</p></div>
             </div>
         </section>
 
         <section class="section">
             <h2>Тренеры</h2>
             <div class="trainers-grid">
-                <div class="trainer-card"><img src="img/alexey-besfamilny.jpg" alt="Алексей"><h3>Алексей Бесфамильный</h3><p>Основатель, тренер</p></div>
-                <div class="trainer-card"><img src="img/ivan-bobrovsky.jpg" alt="Иван"><h3>Иван Бобровский</h3><p>Инструктор</p></div>
-                <div class="trainer-card"><img src="img/tatyana-gribanova.jpg" alt="Татьяна"><h3>Татьяна Грибанова</h3><p>Тренер</p></div>
-                <div class="trainer-card"><img src="img/stasya-evseeva.jpg" alt="Стася"><h3>Стася Евсеева</h3><p>Тренер</p></div>
-                <div class="trainer-card"><img src="img/gagik-oganesyan.jpg" alt="Гагик"><h3>Гагик Оганесян</h3><p>Ведущий тренер</p></div>
-                <div class="trainer-card"><img src="img/max-kiselev.jpg" alt="Макс"><h3>Макс Киселев</h3><p>Методолог</p></div>
+                <div class="trainer-card"><img src="img/alexey-besfamilny.jpg" alt="Алексей"><h3>Алексей</h3><p>Основатель</p></div>
+                <div class="trainer-card"><img src="img/ivan-bobrovsky.jpg" alt="Иван"><h3>Иван</h3><p>Инструктор</p></div>
+                <div class="trainer-card"><img src="img/tatyana-gribanova.jpg" alt="Татьяна"><h3>Татьяна</h3><p>Тренер</p></div>
+                <div class="trainer-card"><img src="img/stasya-evseeva.jpg" alt="Стася"><h3>Стася</h3><p>Тренер</p></div>
+                <div class="trainer-card"><img src="img/gagik-oganesyan.jpg" alt="Гагик"><h3>Гагик</h3><p>Шпага</p></div>
+                <div class="trainer-card"><img src="img/max-kiselev.jpg" alt="Макс"><h3>Макс</h3><p>Методолог</p></div>
             </div>
         </section>
     </div>
