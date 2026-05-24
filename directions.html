@@ -5,92 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Cards Fencing — Направления</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f0f2f5;
-            line-height: 1.6;
-        }
-        header {
-            background: #0a192f;
-            color: white;
-            padding: 25px 20px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        header h1 {
-            font-size: 32px;
-            letter-spacing: 2px;
-        }
-        nav {
-            margin-top: 15px;
-        }
-        nav a {
-            color: white;
-            margin: 0 12px;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 8px 12px;
-            transition: 0.3s;
-        }
-        nav a:hover {
-            background: #e94560;
-            border-radius: 25px;
-        }
-        main {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            min-height: 55vh;
-        }
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            width: 260px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .card h3 {
-            color: #0a192f;
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
-        .card p {
-            color: #555;
-            font-size: 16px;
-        }
-        .card .emoji {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-        footer {
-            background: #0a192f;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            margin-top: 40px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0a0a; color: #e0e0e0; }
+        header { background: #0a0a0a; border-bottom: 2px solid #cc0000; padding: 20px; text-align: center; }
+        .logo { font-size: 28px; font-weight: bold; letter-spacing: 3px; }
+        .logo span { color: #cc0000; }
+        nav { margin-top: 15px; }
+        nav a { color: #e0e0e0; margin: 0 12px; text-decoration: none; font-size: 16px; transition: 0.3s; }
+        nav a:hover { color: #cc0000; }
+        main { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
+        h2 { text-align: center; color: #cc0000; font-size: 32px; margin-bottom: 40px; }
+        .cards { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+        .card { background: #1a1a1a; border-radius: 20px; padding: 30px; width: 260px; text-align: center; border: 1px solid #333; }
+        .card h3 { font-size: 24px; margin-bottom: 10px; }
+        .card p { color: #aaa; }
+        footer { background: #0a0a0a; text-align: center; padding: 30px; border-top: 1px solid #222; margin-top: 40px; }
     </style>
 </head>
 <body>
     <header>
-        <h1>⚔️ Wild Cards Fencing</h1>
+        <div class="logo">WILD <span>CVRDS</span><br>FENCING</div>
         <nav>
             <a href="index.html">Главная</a>
             <a href="about.html">О школе</a>
@@ -102,28 +36,16 @@
         </nav>
     </header>
     <main>
-        <h2 style="text-align:center; color:#0a192f;">Направления фехтования</h2>
+        <h2>Наши направления</h2>
         <div class="cards">
-            <div class="card">
-                <div class="emoji">⚔️</div>
-                <h3>Рапира</h3>
-                <p>Колющее оружие. Уколы только в туловище. Самое техничное и элегантное направление.</p>
-            </div>
-            <div class="card">
-                <div class="emoji">🗡️</div>
-                <h3>Шпага</h3>
-                <p>Колющее оружие. Уколы во все части тела. Требует выдержки и тактического мышления.</p>
-            </div>
-            <div class="card">
-                <div class="emoji">🏹</div>
-                <h3>Сабля</h3>
-                <p>Рубяще-колющее оружие. Удары и уколы в верхнюю часть тела. Самое динамичное направление.</p>
-            </div>
-            <div class="card">
-                <div class="emoji">🛡️</div>
-                <h3>Историческое фехтование</h3>
-                <p>HEMA — реконструкция средневековых техник. Мечи, щиты, доспехи.</p>
-            </div>
+            <div class="card"><h3>⚔️ Рапира</h3><p>Спортивное и историческое фехтование</p></div>
+            <div class="card"><h3>🗡️ Шпага</h3><p>Классическое фехтование</p></div>
+            <div class="card"><h3>🏹 Сабля</h3><p>Рубяще-колющее оружие</p></div>
+            <div class="card"><h3>🛡️ HEMA</h3><p>Историческое фехтование (длинный меч)</p></div>
+            <div class="card"><h3>⭐ СМБ</h3><p>Современный мечевой бой</p></div>
+            <div class="card"><h3>🏹 Лук</h3><p>Стрельба из традиционного лука</p></div>
+            <div class="card"><h3>⚔️ Саберфайтинг</h3><p>Бои в стилистике "Звёздных войн"</p></div>
+            <div class="card"><h3>🛡️ Викинги</h3><p>Фехтование эпохи викингов</p></div>
         </div>
     </main>
     <footer>
