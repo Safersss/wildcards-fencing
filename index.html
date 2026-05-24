@@ -4,11 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Cards Fencing</title>
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        header {
+            background: #1a1a2e;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 60vh;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #1a1a2e;
+        }
+        button {
+            background: #e94560;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #c73a52;
+        }
+        footer {
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <img src="https://via.placeholder.com/80" alt="Логотип">
         <h1>Wild Cards Fencing</h1>
         <nav>
             <a href="index.html">Главная</a>
@@ -28,6 +84,11 @@
     <footer>
         <p>© 2025 Wild Cards Fencing</p>
     </footer>
-    <script src="js/script.js"></script>
+    <script>
+        // Форма и Google Sheets будут позже
+        document.getElementById('openFormBtn').onclick = function() {
+            alert('Форма будет добавлена позже');
+        };
+    </script>
 </body>
 </html>
