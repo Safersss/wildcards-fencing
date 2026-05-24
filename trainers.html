@@ -4,75 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Cards Fencing — Тренеры</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #1a1a1a; color: #e0e0e0; }
-        header { background: #0a0a0a; border-bottom: 2px solid #cc0000; padding: 20px; text-align: center; }
-        .logo { font-size: 28px; font-weight: bold; letter-spacing: 3px; }
-        .logo span { color: #cc0000; }
-        nav { margin-top: 15px; }
-        nav a { color: #e0e0e0; margin: 0 12px; text-decoration: none; font-size: 16px; transition: 0.3s; }
-        nav a:hover { color: #cc0000; }
-        main { max-width: 1400px; margin: 60px auto; padding: 0 20px; }
-        h2 { text-align: center; color: #cc0000; font-size: 32px; margin-bottom: 40px; }
-        .trainers-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
-        .trainer-card { background: #2a2a2a; border-radius: 15px; padding: 20px; width: 220px; text-align: center; border: 1px solid #444; transition: 0.3s; }
-        .trainer-card:hover { transform: translateY(-5px); border-color: #cc0000; }
-        .photo { width: 180px; height: 180px; margin: 0 auto 15px; border-radius: 15px; overflow: hidden; background: #3a3a3a; display: flex; align-items: center; justify-content: center; border: 2px solid #cc0000; }
-        .photo img { width: 100%; height: 100%; object-fit: cover; }
-        .trainer-card h3 { font-size: 18px; margin-bottom: 5px; }
-        .trainer-card p { font-size: 14px; color: #aaa; margin-bottom: 8px; }
-        .trainer-card .role { color: #cc0000; font-weight: bold; font-size: 12px; }
-        footer { background: #0a0a0a; text-align: center; padding: 30px; border-top: 1px solid #222; margin-top: 40px; }
-        @media (max-width: 700px) { .trainer-card { width: 180px; } .photo { width: 140px; height: 140px; } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000000;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #fff;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #222;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo img {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+        nav a {
+            font-family: 'Oswald', 'Impact', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+        nav a:hover {
+            color: #d32f2f;
+        }
+        h1 {
+            font-family: 'Oswald', 'Impact', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-align: center;
+            margin: 60px 0 40px;
+            text-transform: uppercase;
+        }
+        h1 span {
+            color: #d32f2f;
+        }
+        .trainers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .trainer-card {
+            background: #111;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #222;
+            transition: 0.2s;
+        }
+        .trainer-card:hover {
+            border-color: #d32f2f;
+        }
+        .trainer-card img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .trainer-card h3 {
+            font-family: 'Oswald', 'Impact', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .trainer-card p {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .trainer-card .role {
+            color: #d32f2f;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        footer {
+            border-top: 1px solid #222;
+            padding: 40px 0;
+            text-align: center;
+            color: #555;
+        }
+        @media (max-width: 700px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav a {
+                margin: 0 12px;
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 32px;
+            }
+            .trainers-grid {
+                gap: 15px;
+            }
+            .trainer-card img {
+                width: 140px;
+                height: 140px;
+            }
+            .logo img {
+                height: 40px;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">WILD <span>CVRDS</span><br>FENCING</div>
-        <nav>
-            <a href="index.html">Главная</a>
-            <a href="about.html">О школе</a>
-            <a href="directions.html">Направления</a>
-            <a href="trainers.html">Тренеры</a>
-            <a href="schedule.html">Расписание</a>
-            <a href="prices.html">Цены</a>
-            <a href="contacts.html">Контакты</a>
-        </nav>
-    </header>
-    <main>
-        <h2>Наши тренеры</h2>
+    <div class="container">
+        <header>
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <img src="./logo.jpg" alt="Wild Cards Fencing">
+                </a>
+                <nav>
+                    <a href="index.html">Главная</a>
+                    <a href="about.html">О школе</a>
+                    <a href="directions.html">Направления</a>
+                    <a href="trainers.html">Тренеры</a>
+                    <a href="schedule.html">Расписание</a>
+                    <a href="prices.html">Цены</a>
+                    <a href="contacts.html">Контакты</a>
+                </nav>
+            </div>
+        </header>
+
+        <h1>Наши <span>тренеры</span></h1>
+
         <div class="trainers-grid">
-            <div class="trainer-card"><div class="photo"><img src="img/alexey-besfamilny.jpg" alt="Алексей Бесфамильный"></div><h3>Алексей Бесфамильный</h3><p>Основатель, тренер</p><p class="role">Мастер спорта, чемпион мира</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/ivan-bobrovsky.jpg" alt="Иван Бобровский"></div><h3>Иван Бобровский</h3><p>Инструктор</p><p class="role">Испанская рапира, монтате</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/sergy-gershkovich.jpg" alt="Сергий Гершкович"></div><h3>Сергий Гершкович</h3><p>Инструктор</p><p class="role">СМБ, сабля-баклер</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/tatyana-gribanova.jpg" alt="Татьяна Грибанова"></div><h3>Татьяна Грибанова</h3><p>Тренер</p><p class="role">Ушу, арт-фехтование</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/stasya-evseeva.jpg" alt="Стася Евсеева"></div><h3>Стася Евсеева</h3><p>Тренер</p><p class="role">Мастер спорта, Girl Power</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/andrey-egorov.jpg" alt="Андрей Егоров"></div><h3>Андрей Егоров</h3><p>Тренер-преподаватель</p><p class="role">Мастер спорта, каскадёр</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/stanislav-ivanov.jpg" alt="Станислав Иванов"></div><h3>Станислав Иванов</h3><p>Инструктор</p><p class="role">Иберийский меч, цеп</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/alexey-kabanov.jpg" alt="Алексей Кабанов"></div><h3>Алексей Кабанов</h3><p>Инструктор</p><p class="role">Фланкировка</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/sergey-kazakov.jpg" alt="Сергей Казаков"></div><h3>Сергей Казаков</h3><p>Инструктор</p><p class="role">Постановочное фехтование</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/max-kiselev.jpg" alt="Макс Киселев"></div><h3>Макс Киселев</h3><p>Ведущий педагог</p><p class="role">Методолог HEMA</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/konstantin-kozlov.jpg" alt="Константин Козлов"></div><h3>Константин Козлов</h3><p>Тренер</p><p class="role">Рапира и дага XVII века</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/valery-kochnev.jpg" alt="Валерий Кочнев"></div><h3>Валерий Кочнев</h3><p>Инструктор</p><p class="role">Саберфайтинг, хореография</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/alexander-leonov.jpg" alt="Александр Леонов"></div><h3>Александр Леонов</h3><p>Тренер</p><p class="role">Итальянский двуручный меч</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/nikolay-lobaev.jpg" alt="Николай Лобаев"></div><h3>Николай Лобаев</h3><p>Младший инструктор</p><p class="role">Итальянская рапира</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/ivan-lopan.jpg" alt="Иван Лопан"></div><h3>Иван Лопан</h3><p>Тренер-преподаватель</p><p class="role">Саберфайтинг глефа</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/maria-lukatskaya.jpg" alt="Мария Лукацкая"></div><h3>Мария Лукацкая</h3><p>Преподаватель</p><p class="role">Шитьё и дизайн костюма</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/andrey-makashov.jpg" alt="Андрей Макашов"></div><h3>Андрей Макашов</h3><p>Преподаватель</p><p class="role">Постановочное фехтование</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/denis-markov.jpg" alt="Денис Марков"></div><h3>Денис Марков</h3><p>Инструктор</p><p class="role">Фланкировка шашкой, нагайкой</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/gagik-oganesyan.jpg" alt="Гагик Оганесян"></div><h3>Гагик Оганесян</h3><p>Ведущий тренер</p><p class="role">Мастер спорта СССР, шпага</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/olga-petlitskaya.jpg" alt="Ольга Петлицкая"></div><h3>Ольга Петлицкая</h3><p>Тренер-преподаватель</p><p class="role">Саберфайтинг глефа</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/evgeny-petrovsky.jpg" alt="Евгений Петровский"></div><h3>Евгений Петровский</h3><p>Тренер-реабилитолог</p><p class="role">Арт-фехтование, реабилитация</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/vadim-senichev.jpg" alt="Вадим Сеничев"></div><h3>Вадим Сеничев</h3><p>Преподаватель</p><p class="role">Итальянский длинный меч</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/egor-simankov.jpg" alt="Егор Симанков"></div><h3>Егор Симанков</h3><p>Инструктор</p><p class="role">Сабля, палаш, стрельба из лука</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/vladimir-sorokin.jpg" alt="Владимир Сорокин"></div><h3>Владимир Сорокин</h3><p>Преподаватель</p><p class="role">Мастер спорта, арт-фехтование</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/alexander-ushakov.jpg" alt="Александр Ушаков"></div><h3>Александр Ушаков</h3><p>Инструктор</p><p class="role">Ролевое фехтование, копьё</p></div>
-            <div class="trainer-card"><div class="photo"><img src="img/alexander-chernikov.jpg" alt="Александр Черников"></div><h3>Александр Черников</h3><p>Инструктор</p><p class="role">Школа самураев</p></div>
+            <div class="trainer-card"><img src="img/alexey-besfamilny.jpg" alt="Алексей Бесфамильный"><h3>Алексей Бесфамильный</h3><p>Основатель, тренер</p><p class="role">Мастер спорта</p></div>
+            <div class="trainer-card"><img src="img/ivan-bobrovsky.jpg" alt="Иван Бобровский"><h3>Иван Бобровский</h3><p>Инструктор</p><p class="role">Испанская рапира</p></div>
+            <div class="trainer-card"><img src="img/sergy-gershkovich.jpg" alt="Сергий Гершкович"><h3>Сергий Гершкович</h3><p>Инструктор</p><p class="role">СМБ, сабля</p></div>
+            <div class="trainer-card"><img src="img/tatyana-gribanova.jpg" alt="Татьяна Грибанова"><h3>Татьяна Грибанова</h3><p>Тренер</p><p class="role">Ушу, арт-фехтование</p></div>
+            <div class="trainer-card"><img src="img/stasya-evseeva.jpg" alt="Стася Евсеева"><h3>Стася Евсеева</h3><p>Тренер</p><p class="role">Мастер спорта</p></div>
+            <div class="trainer-card"><img src="img/andrey-egorov.jpg" alt="Андрей Егоров"><h3>Андрей Егоров</h3><p>Тренер-преподаватель</p><p class="role">Мастер спорта</p></div>
+            <div class="trainer-card"><img src="img/stanislav-ivanov.jpg" alt="Станислав Иванов"><h3>Станислав Иванов</h3><p>Инструктор</p><p class="role">Иберийский меч</p></div>
+            <div class="trainer-card"><img src="img/alexey-kabanov.jpg" alt="Алексей Кабанов"><h3>Алексей Кабанов</h3><p>Инструктор</p><p class="role">Фланкировка</p></div>
+            <div class="trainer-card"><img src="img/sergey-kazakov.jpg" alt="Сергей Казаков"><h3>Сергей Казаков</h3><p>Инструктор</p><p class="role">Постановочное фехтование</p></div>
+            <div class="trainer-card"><img src="img/max-kiselev.jpg" alt="Макс Киселев"><h3>Макс Киселев</h3><p>Ведущий педагог</p><p class="role">Методолог HEMA</p></div>
+            <div class="trainer-card"><img src="img/konstantin-kozlov.jpg" alt="Константин Козлов"><h3>Константин Козлов</h3><p>Тренер</p><p class="role">Рапира и дага</p></div>
+            <div class="trainer-card"><img src="img/valery-kochnev.jpg" alt="Валерий Кочнев"><h3>Валерий Кочнев</h3><p>Инструктор</p><p class="role">Саберфайтинг</p></div>
+            <div class="trainer-card"><img src="img/alexander-leonov.jpg" alt="Александр Леонов"><h3>Александр Леонов</h3><p>Тренер</p><p class="role">Двуручный меч</p></div>
+            <div class="trainer-card"><img src="img/nikolay-lobaev.jpg" alt="Николай Лобаев"><h3>Николай Лобаев</h3><p>Младший инструктор</p><p class="role">Итальянская рапира</p></div>
+            <div class="trainer-card"><img src="img/ivan-lopan.jpg" alt="Иван Лопан"><h3>Иван Лопан</h3><p>Тренер-преподаватель</p><p class="role">Саберфайтинг</p></div>
+            <div class="trainer-card"><img src="img/maria-lukatskaya.jpg" alt="Мария Лукацкая"><h3>Мария Лукацкая</h3><p>Преподаватель</p><p class="role">Дизайн костюма</p></div>
+            <div class="trainer-card"><img src="img/andrey-makashov.jpg" alt="Андрей Макашов"><h3>Андрей Макашов</h3><p>Преподаватель</p><p class="role">Постановочное фехтование</p></div>
+            <div class="trainer-card"><img src="img/denis-markov.jpg" alt="Денис Марков"><h3>Денис Марков</h3><p>Инструктор</p><p class="role">Фланкировка</p></div>
+            <div class="trainer-card"><img src="img/gagik-oganesyan.jpg" alt="Гагик Оганесян"><h3>Гагик Оганесян</h3><p>Ведущий тренер</p><p class="role">Мастер спорта СССР</p></div>
+            <div class="trainer-card"><img src="img/olga-petlitskaya.jpg" alt="Ольга Петлицкая"><h3>Ольга Петлицкая</h3><p>Тренер-преподаватель</p><p class="role">Саберфайтинг</p></div>
+            <div class="trainer-card"><img src="img/evgeny-petrovsky.jpg" alt="Евгений Петровский"><h3>Евгений Петровский</h3><p>Тренер-реабилитолог</p><p class="role">Арт-фехтование</p></div>
+            <div class="trainer-card"><img src="img/vadim-senichev.jpg" alt="Вадим Сеничев"><h3>Вадим Сеничев</h3><p>Преподаватель</p><p class="role">Длинный меч</p></div>
+            <div class="trainer-card"><img src="img/egor-simankov.jpg" alt="Егор Симанков"><h3>Егор Симанков</h3><p>Инструктор</p><p class="role">Сабля, лук</p></div>
+            <div class="trainer-card"><img src="img/vladimir-sorokin.jpg" alt="Владимир Сорокин"><h3>Владимир Сорокин</h3><p>Преподаватель</p><p class="role">Арт-фехтование</p></div>
+            <div class="trainer-card"><img src="img/alexander-ushakov.jpg" alt="Александр Ушаков"><h3>Александр Ушаков</h3><p>Инструктор</p><p class="role">Ролевое фехтование</p></div>
+            <div class="trainer-card"><img src="img/alexander-chernikov.jpg" alt="Александр Черников"><h3>Александр Черников</h3><p>Инструктор</p><p class="role">Школа самураев</p></div>
         </div>
-    </main>
+    </div>
+
     <footer>
-        <p>© 2025 Wild Cards Fencing | Все права защищены</p>
+        <div class="container">
+            <p>© 2025 Wild Cards Fencing | Все права защищены</p>
+        </div>
     </footer>
 </body>
 </html>
