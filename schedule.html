@@ -11,7 +11,10 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         header { padding: 20px 0; border-bottom: 1px solid #222; }
         .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
         .logo img { height: 50px; width: auto; display: block; }
+        .logo-text { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 2px; color: #fff; text-transform: uppercase; line-height: 1.2; }
+        .logo-text span { color: #d32f2f; }
         nav a { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: #fff; text-decoration: none; margin-left: 30px; transition: 0.2s; text-transform: uppercase; }
         nav a:first-child { margin-left: 0; }
         nav a:hover { color: #d32f2f; }
@@ -37,6 +40,7 @@
             nav a:first-child { margin-left: 12px; }
             h1 { font-size: 32px; }
             .logo img { height: 40px; }
+            .logo-text { font-size: 18px; }
             .tab-btn { padding: 8px 20px; font-size: 14px; }
             th, td { padding: 8px 10px; font-size: 12px; }
         }
@@ -46,7 +50,10 @@
     <div class="container">
         <header>
             <div class="header-inner">
-                <a href="index.html" class="logo"><img src="./logo.jpg" alt="Wild Cards Fencing"></a>
+                <a href="index.html" class="logo">
+                    <img src="logo.jpg" alt="Wild Cards Fencing">
+                    <div class="logo-text">WILD <span>CARDS</span><br>FENCING</div>
+                </a>
                 <nav>
                     <a href="index.html">Главная</a>
                     <a href="about.html">О школе</a>
