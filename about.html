@@ -4,46 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Cards Fencing — О школе</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.6; }
-        header { background: #0a0a0a; border-bottom: 2px solid #cc0000; padding: 20px; text-align: center; }
-        .logo { font-size: 28px; font-weight: bold; letter-spacing: 3px; }
-        .logo span { color: #cc0000; }
-        nav { margin-top: 15px; }
-        nav a { color: #e0e0e0; margin: 0 12px; text-decoration: none; font-size: 16px; transition: 0.3s; }
-        nav a:hover { color: #cc0000; }
-        main { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
-        .content-block { background: #1a1a1a; padding: 40px; border-radius: 20px; border: 1px solid #333; }
-        .content-block h2 { color: #cc0000; margin-bottom: 20px; }
-        .content-block p { margin-bottom: 15px; }
-        footer { background: #0a0a0a; text-align: center; padding: 30px; border-top: 1px solid #222; margin-top: 40px; }
-        .btn { background: #cc0000; color: white; padding: 12px 30px; border: none; border-radius: 40px; cursor: pointer; margin-top: 20px; }
+        body { background: #000000; font-family: 'Inter', 'Segoe UI', sans-serif; color: #fff; line-height: 1.5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { padding: 20px 0; border-bottom: 1px solid #222; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo img { height: 50px; width: auto; display: block; }
+        nav a { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: #fff; text-decoration: none; margin-left: 30px; transition: 0.2s; text-transform: uppercase; }
+        nav a:hover { color: #d32f2f; }
+        h1 { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; text-align: center; margin: 60px 0 40px; text-transform: uppercase; }
+        h1 span { color: #d32f2f; }
+        .content { background: #111; padding: 40px; border: 1px solid #222; margin-bottom: 60px; }
+        .content p { margin-bottom: 20px; font-size: 18px; color: #ccc; line-height: 1.6; }
+        footer { border-top: 1px solid #222; padding: 40px 0; text-align: center; color: #555; }
+        @media (max-width: 700px) {
+            .header-inner { flex-direction: column; gap: 15px; }
+            nav a { margin: 0 12px; font-size: 14px; }
+            h1 { font-size: 32px; }
+            .logo img { height: 40px; }
+            .content { padding: 25px; }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">WILD <span>CVRDS</span><br>FENCING</div>
-        <nav>
-            <a href="index.html">Главная</a>
-            <a href="about.html">О школе</a>
-            <a href="directions.html">Направления</a>
-            <a href="trainers.html">Тренеры</a>
-            <a href="schedule.html">Расписание</a>
-            <a href="prices.html">Цены</a>
-            <a href="contacts.html">Контакты</a>
-        </nav>
-    </header>
-    <main>
-        <div class="content-block">
-            <h2>О школе Wild Cards Fencing</h2>
-            <p>Wild Cards Fencing — первая многопрофильная школа фехтования в Москве. Мы объединяем традиции и современность, Европу и Восток. Наши тренеры — чемпионы России и мира, специалисты с огромным опытом.</p>
-            <p>Мы не привязываем учеников к одному клубу. Главное для нас — научить побеждать. В наших залах более 10 направлений: от спортивной шпаги до исторического фехтования и стрельбы из лука.</p>
-            <button class="btn" onclick="window.location.href='index.html'">Записаться на пробное занятие</button>
+    <div class="container">
+        <header>
+            <div class="header-inner">
+                <a href="index.html" class="logo"><img src="./logo.jpg" alt="Wild Cards Fencing"></a>
+                <nav>
+                    <a href="index.html">Главная</a>
+                    <a href="about.html">О школе</a>
+                    <a href="directions.html">Направления</a>
+                    <a href="trainers.html">Тренеры</a>
+                    <a href="schedule.html">Расписание</a>
+                    <a href="prices.html">Цены</a>
+                    <a href="contacts.html">Контакты</a>
+                </nav>
+            </div>
+        </header>
+        <h1>О <span>школе</span></h1>
+        <div class="content">
+            <p>Wild Cards Fencing — первая многопрофильная школа фехтования в Москве. Мы объединяем традиции и современность, Европу и Восток. Наши тренеры — чемпионы России и мира, специалисты с огромным опытом, которые за несколько лет вырастили учеников до призёров российских и международных соревнований.</p>
+            <p>Мы не привязываем учеников к одному клубу. Главное для нас — научить побеждать. В наших залах более 10 направлений: от спортивной шпаги до исторического фехтования и стрельбы из лука. Вся экипировка предоставляется бесплатно.</p>
+            <p>Наши залы находятся в 10 минутах от метро Соколиная Гора и Римская. Мы — спортивная организация, входящая в Федерацию Фехтования Москвы.</p>
         </div>
-    </main>
-    <footer>
-        <p>© 2025 Wild Cards Fencing | Все права защищены</p>
-    </footer>
+    </div>
+    <footer><div class="container"><p>© 2025 Wild Cards Fencing | Все права защищены</p></div></footer>
 </body>
 </html>
