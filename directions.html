@@ -4,52 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Cards Fencing — Направления</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0a0a; color: #e0e0e0; }
-        header { background: #0a0a0a; border-bottom: 2px solid #cc0000; padding: 20px; text-align: center; }
-        .logo { font-size: 28px; font-weight: bold; letter-spacing: 3px; }
-        .logo span { color: #cc0000; }
-        nav { margin-top: 15px; }
-        nav a { color: #e0e0e0; margin: 0 12px; text-decoration: none; font-size: 16px; transition: 0.3s; }
-        nav a:hover { color: #cc0000; }
-        main { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
-        h2 { text-align: center; color: #cc0000; font-size: 32px; margin-bottom: 40px; }
-        .cards { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
-        .card { background: #1a1a1a; border-radius: 20px; padding: 30px; width: 260px; text-align: center; border: 1px solid #333; }
-        .card h3 { font-size: 24px; margin-bottom: 10px; }
-        .card p { color: #aaa; }
-        footer { background: #0a0a0a; text-align: center; padding: 30px; border-top: 1px solid #222; margin-top: 40px; }
+        body { background: #000000; font-family: 'Inter', 'Segoe UI', sans-serif; color: #fff; line-height: 1.5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { padding: 20px 0; border-bottom: 1px solid #222; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo img { height: 50px; width: auto; display: block; }
+        nav a { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: #fff; text-decoration: none; margin-left: 30px; transition: 0.2s; text-transform: uppercase; }
+        nav a:hover { color: #d32f2f; }
+        h1 { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; text-align: center; margin: 60px 0 40px; text-transform: uppercase; }
+        h1 span { color: #d32f2f; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .card { background: #111; padding: 30px 20px; text-align: center; border: 1px solid #222; transition: 0.2s; }
+        .card:hover { border-color: #d32f2f; }
+        .card h3 { font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 600; margin-bottom: 10px; text-transform: uppercase; }
+        .card p { color: #aaa; font-size: 16px; }
+        footer { border-top: 1px solid #222; padding: 40px 0; text-align: center; color: #555; }
+        @media (max-width: 700px) {
+            .header-inner { flex-direction: column; gap: 15px; }
+            nav a { margin: 0 12px; font-size: 14px; }
+            h1 { font-size: 32px; }
+            .logo img { height: 40px; }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">WILD <span>CVRDS</span><br>FENCING</div>
-        <nav>
-            <a href="index.html">Главная</a>
-            <a href="about.html">О школе</a>
-            <a href="directions.html">Направления</a>
-            <a href="trainers.html">Тренеры</a>
-            <a href="schedule.html">Расписание</a>
-            <a href="prices.html">Цены</a>
-            <a href="contacts.html">Контакты</a>
-        </nav>
-    </header>
-    <main>
-        <h2>Наши направления</h2>
-        <div class="cards">
+    <div class="container">
+        <header>
+            <div class="header-inner">
+                <a href="index.html" class="logo"><img src="./logo.jpg" alt="Wild Cards Fencing"></a>
+                <nav>
+                    <a href="index.html">Главная</a>
+                    <a href="about.html">О школе</a>
+                    <a href="directions.html">Направления</a>
+                    <a href="trainers.html">Тренеры</a>
+                    <a href="schedule.html">Расписание</a>
+                    <a href="prices.html">Цены</a>
+                    <a href="contacts.html">Контакты</a>
+                </nav>
+            </div>
+        </header>
+        <h1>Наши <span>направления</span></h1>
+        <div class="grid">
             <div class="card"><h3>⚔️ Рапира</h3><p>Спортивное и историческое фехтование</p></div>
             <div class="card"><h3>🗡️ Шпага</h3><p>Классическое фехтование</p></div>
             <div class="card"><h3>🏹 Сабля</h3><p>Рубяще-колющее оружие</p></div>
-            <div class="card"><h3>🛡️ HEMA</h3><p>Историческое фехтование (длинный меч)</p></div>
+            <div class="card"><h3>🛡️ HEMA</h3><p>Длинный меч, итальянская традиция</p></div>
             <div class="card"><h3>⭐ СМБ</h3><p>Современный мечевой бой</p></div>
             <div class="card"><h3>🏹 Лук</h3><p>Стрельба из традиционного лука</p></div>
             <div class="card"><h3>⚔️ Саберфайтинг</h3><p>Бои в стилистике "Звёздных войн"</p></div>
             <div class="card"><h3>🛡️ Викинги</h3><p>Фехтование эпохи викингов</p></div>
+            <div class="card"><h3>🎭 Арт-фехтование</h3><p>Постановочные бои и выступления</p></div>
         </div>
-    </main>
-    <footer>
-        <p>© 2025 Wild Cards Fencing | Все права защищены</p>
-    </footer>
+    </div>
+    <footer><div class="container"><p>© 2025 Wild Cards Fencing | Все права защищены</p></div></footer>
 </body>
 </html>
