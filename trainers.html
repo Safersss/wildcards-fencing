@@ -11,19 +11,22 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         header { padding: 20px 0; border-bottom: 1px solid #222; }
         .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
         .logo img { height: 50px; width: auto; display: block; }
+        .logo-text { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 2px; color: #fff; text-transform: uppercase; line-height: 1.2; }
+        .logo-text span { color: #d32f2f; }
         nav a { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: #fff; text-decoration: none; margin-left: 30px; transition: 0.2s; text-transform: uppercase; }
         nav a:first-child { margin-left: 0; }
         nav a:hover { color: #d32f2f; }
         h1 { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; text-align: center; margin: 60px 0 40px; text-transform: uppercase; }
         h1 span { color: #d32f2f; }
-        .trainers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 30px; margin-bottom: 60px; }
-        .trainer-card { background: #111; padding: 20px; text-align: center; border: 1px solid #222; transition: 0.2s; cursor: pointer; }
+        .trainers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 60px; justify-items: center; }
+        .trainer-card { background: #111; padding: 20px; text-align: center; border: 1px solid #222; transition: 0.2s; cursor: pointer; width: 100%; max-width: 220px; }
         .trainer-card:hover { border-color: #d32f2f; transform: translateY(-3px); }
-        .trainer-card img { width: 180px; height: 180px; object-fit: cover; margin-bottom: 15px; }
-        .trainer-card h3 { font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; }
-        .trainer-card p { color: #aaa; font-size: 14px; margin-bottom: 8px; }
-        .trainer-card .role { color: #d32f2f; font-size: 12px; font-weight: bold; text-transform: uppercase; }
+        .trainer-card img { width: 150px; height: 150px; object-fit: cover; margin-bottom: 15px; }
+        .trainer-card h3 { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; }
+        .trainer-card p { color: #aaa; font-size: 12px; margin-bottom: 8px; }
+        .trainer-card .role { color: #d32f2f; font-size: 11px; font-weight: bold; text-transform: uppercase; }
         footer { border-top: 1px solid #222; padding: 40px 0; text-align: center; color: #555; }
         .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #111; border: 1px solid #d32f2f; padding: 30px; width: 90%; max-width: 500px; z-index: 1000; }
         .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 999; }
@@ -34,13 +37,16 @@
         .modal .info { color: #ccc; font-size: 15px; line-height: 1.6; margin-bottom: 8px; }
         .close-modal { background: #d32f2f; color: #fff; border: none; padding: 10px 24px; font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 20px; }
         .close-modal:hover { background: #b71c1c; }
+        @media (max-width: 1000px) { .trainers-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 700px) {
             .header-inner { flex-direction: column; gap: 15px; }
             nav a { margin: 0 12px; font-size: 14px; }
             nav a:first-child { margin-left: 12px; }
             h1 { font-size: 32px; }
             .logo img { height: 40px; }
-            .trainer-card img { width: 140px; height: 140px; }
+            .logo-text { font-size: 18px; }
+            .trainers-grid { grid-template-columns: repeat(2, 1fr); }
+            .trainer-card img { width: 120px; height: 120px; }
         }
     </style>
 </head>
@@ -48,7 +54,10 @@
     <div class="container">
         <header>
             <div class="header-inner">
-                <a href="index.html" class="logo"><img src="./logo.jpg" alt="Wild Cards Fencing"></a>
+                <a href="index.html" class="logo">
+                    <img src="logo.jpg" alt="Wild Cards Fencing">
+                    <div class="logo-text">WILD <span>CARDS</span><br>FENCING</div>
+                </a>
                 <nav>
                     <a href="index.html">Главная</a>
                     <a href="about.html">О школе</a>
@@ -65,46 +74,41 @@
         <h1>Наши <span>тренеры</span></h1>
 
         <div class="trainers-grid">
-            <!-- 26 тренеров (такие же, как в предыдущем коде) -->
-            <div class="trainer-card" data-name="Алексей Бесфамильный" data-role="Основатель, тренер" data-desc="Мастер спорта России по фехтованию, магистр педагогики. Многократный чемпион России и четырехкратный чемпион мира по артистическому фехтованию. Каскадер, постановщик боевых сцен в кино. Стаж в фехтовании — с 2008 года." data-img="img/alexey-besfamilny.jpg"><img src="img/alexey-besfamilny.jpg"><h3>Алексей Бесфамильный</h3><p>Основатель, тренер</p><p class="role">Мастер спорта</p></div>
-            <div class="trainer-card" data-name="Иван Бобровский" data-role="Инструктор" data-desc="Инженер-конструктор. Специализируется на испанской и португальской боевых традициях XVI-XVII веков. Ведет: иберийский двуручный меч, испанская рапира." data-img="img/ivan-bobrovsky.jpg"><img src="img/ivan-bobrovsky.jpg"><h3>Иван Бобровский</h3><p>Инструктор</p><p class="role">Испанская рапира</p></div>
-            <div class="trainer-card" data-name="Сергий Гершкович" data-role="Инструктор" data-desc="Психолог, серебряный призер чемпионата России и бронзовый призер чемпионата мира по СМБ. Ведет: сабля-баклер, меч и баклер." data-img="img/sergy-gershkovich.jpg"><img src="img/sergy-gershkovich.jpg"><h3>Сергий Гершкович</h3><p>Инструктор</p><p class="role">СМБ, сабля</p></div>
-            <div class="trainer-card" data-name="Татьяна Грибанова" data-role="Тренер" data-desc="КМС, двукратная чемпионка Москвы, чемпионка России по артистическому фехтованию. Ведет: ушу, арт-фехтование для детей." data-img="img/tatyana-gribanova.jpg"><img src="img/tatyana-gribanova.jpg"><h3>Татьяна Грибанова</h3><p>Тренер</p><p class="role">Ушу, арт-фехтование</p></div>
-            <div class="trainer-card" data-name="Стася Евсеева" data-role="Тренер" data-desc="Мастер спорта России по фехтованию. Чемпион Москвы, победитель Кубка России по арт-фехтованию. Ведет: Girl Power, длинный меч для девушек." data-img="img/stasya-evseeva.jpg"><img src="img/stasya-evseeva.jpg"><h3>Стася Евсеева</h3><p>Тренер</p><p class="role">Мастер спорта</p></div>
-            <div class="trainer-card" data-name="Андрей Егоров" data-role="Тренер-преподаватель" data-desc="Мастер спорта по фехтованию. Чемпион России по артистическому фехтованию. Каскадер. Тренерский стаж с 2016 года." data-img="img/andrey-egorov.jpg"><img src="img/andrey-egorov.jpg"><h3>Андрей Егоров</h3><p>Тренер-преподаватель</p><p class="role">Мастер спорта</p></div>
-            <div class="trainer-card" data-name="Станислав Иванов" data-role="Инструктор" data-desc="Кандидат в мастера спорта по артистическому фехтованию. Призер чемпионатов Москвы и России. Ведет: иберийский двуручный меч, цеп." data-img="img/stanislav-ivanov.jpg"><img src="img/stanislav-ivanov.jpg"><h3>Станислав Иванов</h3><p>Инструктор</p><p class="role">Иберийский меч</p></div>
-            <div class="trainer-card" data-name="Алексей Кабанов" data-role="Инструктор" data-desc="Опыт конной джигитовки, участник фестивалей. Ведет: фланкировка казачьей шашкой." data-img="img/alexey-kabanov.jpg"><img src="img/alexey-kabanov.jpg"><h3>Алексей Кабанов</h3><p>Инструктор</p><p class="role">Фланкировка</p></div>
-            <div class="trainer-card" data-name="Сергей Казаков" data-role="Инструктор" data-desc="Чемпион России по артистическому фехтованию. Участник и постановщик боев для мюзиклов и кино. Ведет: постановочное фехтование." data-img="img/sergey-kazakov.jpg"><img src="img/sergey-kazakov.jpg"><h3>Сергей Казаков</h3><p>Инструктор</p><p class="role">Постановочное фехтование</p></div>
-            <div class="trainer-card" data-name="Макс Киселев" data-role="Ведущий педагог-методолог" data-desc="Лингвист, специалист по итальянской боевой традиции XV-XVI веков. Ведет: длинный меч, древковое оружие, Viking HEMA." data-img="img/max-kiselev.jpg"><img src="img/max-kiselev.jpg"><h3>Макс Киселев</h3><p>Ведущий педагог</p><p class="role">Методолог HEMA</p></div>
-            <div class="trainer-card" data-name="Константин Козлов" data-role="Тренер" data-desc="Профессиональный тренер по фитнесу. Исследует фехтование рапирой и дагой начала XVII века." data-img="img/konstantin-kozlov.jpg"><img src="img/konstantin-kozlov.jpg"><h3>Константин Козлов</h3><p>Тренер</p><p class="role">Рапира и дага</p></div>
-            <div class="trainer-card" data-name="Валерий Кочнев" data-role="Инструктор" data-desc="Чемпион России по арт-фехтованию. Ведет: саберфайтинг, постановка хореографии." data-img="img/valery-kochnev.jpg"><img src="img/valery-kochnev.jpg"><h3>Валерий Кочнев</h3><p>Инструктор</p><p class="role">Саберфайтинг</p></div>
-            <div class="trainer-card" data-name="Александр Леонов" data-role="Тренер" data-desc="Специалист по итальянской боевой традиции. Ведет: начальная подготовка, итальянский двуручный меч." data-img="img/alexander-leonov.jpg"><img src="img/alexander-leonov.jpg"><h3>Александр Леонов</h3><p>Тренер</p><p class="role">Двуручный меч</p></div>
-            <div class="trainer-card" data-name="Николай Лобаев" data-role="Младший инструктор" data-desc="Чемпион Москвы и победитель Кубка России по арт-фехтованию. Ведет: итальянская рапира." data-img="img/nikolay-lobaev.jpg"><img src="img/nikolay-lobaev.jpg"><h3>Николай Лобаев</h3><p>Младший инструктор</p><p class="role">Итальянская рапира</p></div>
-            <div class="trainer-card" data-name="Иван Лопан" data-role="Тренер-преподаватель" data-desc="Кандидат в мастера спорта. Ведет: саберфайтинг (глефа), световое оружие." data-img="img/ivan-lopan.jpg"><img src="img/ivan-lopan.jpg"><h3>Иван Лопан</h3><p>Тренер-преподаватель</p><p class="role">Саберфайтинг</p></div>
-            <div class="trainer-card" data-name="Мария Лукацкая" data-role="Преподаватель" data-desc="Педагог, дизайнер костюма. Руководитель ателье сценического костюма. Ведет: шитье и дизайн." data-img="img/maria-lukatskaya.jpg"><img src="img/maria-lukatskaya.jpg"><h3>Мария Лукацкая</h3><p>Преподаватель</p><p class="role">Дизайн костюма</p></div>
-            <div class="trainer-card" data-name="Андрей Макашов" data-role="Преподаватель" data-desc="Чемпион России по артистическому фехтованию. Постановщик боев для мюзиклов и кино." data-img="img/andrey-makashov.jpg"><img src="img/andrey-makashov.jpg"><h3>Андрей Макашов</h3><p>Преподаватель</p><p class="role">Постановочное фехтование</p></div>
-            <div class="trainer-card" data-name="Денис Марков" data-role="Инструктор" data-desc="Кандидат в мастера спорта по военному четырехборью. Ведет: фланкировка казачьей шашкой, нагайкой." data-img="img/denis-markov.jpg"><img src="img/denis-markov.jpg"><h3>Денис Марков</h3><p>Инструктор</p><p class="role">Фланкировка</p></div>
-            <div class="trainer-card" data-name="Гагик Оганесян" data-role="Ведущий тренер" data-desc="Мастер спорта СССР по фехтованию на шпагах. Стаж преподавания — с 1984 года. Ведет: спортивная шпага (взрослые и дети)." data-img="img/gagik-oganesyan.jpg"><img src="img/gagik-oganesyan.jpg"><h3>Гагик Оганесян</h3><p>Ведущий тренер</p><p class="role">Мастер спорта СССР</p></div>
-            <div class="trainer-card" data-name="Ольга Петлицкая" data-role="Тренер-преподаватель" data-desc="Кандидат в мастера спорта. Ведет: саберфайтинг глефа, световое оружие." data-img="img/olga-petlitskaya.jpg"><img src="img/olga-petlitskaya.jpg"><h3>Ольга Петлицкая</h3><p>Тренер-преподаватель</p><p class="role">Саберфайтинг</p></div>
-            <div class="trainer-card" data-name="Евгений Петровский" data-role="Тренер-реабилитолог" data-desc="КМС по рукопашному бою. Тренер сборной России по арт-фехтованию. Ведет: арт-фехтование, реабилитация." data-img="img/evgeny-petrovsky.jpg"><img src="img/evgeny-petrovsky.jpg"><h3>Евгений Петровский</h3><p>Тренер-реабилитолог</p><p class="role">Арт-фехтование</p></div>
-            <div class="trainer-card" data-name="Вадим Сеничев" data-role="Преподаватель" data-desc="Историк, автор научных статей. Исследует итальянский длинный меч. Организатор турниров по HEMA." data-img="img/vadim-senichev.jpg"><img src="img/vadim-senichev.jpg"><h3>Вадим Сеничев</h3><p>Преподаватель</p><p class="role">Длинный меч</p></div>
-            <div class="trainer-card" data-name="Егор Симанков" data-role="Инструктор" data-desc="В реконструкции с 1991 года. Ведет: сабля/палаш, стрельба из лука." data-img="img/egor-simankov.jpg"><img src="img/egor-simankov.jpg"><h3>Егор Симанков</h3><p>Инструктор</p><p class="role">Сабля, лук</p></div>
-            <div class="trainer-card" data-name="Владимир Сорокин" data-role="Преподаватель" data-desc="Мастер спорта по фехтованию, бронзовый призер чемпионата мира. Педагог-психолог." data-img="img/vladimir-sorokin.jpg"><img src="img/vladimir-sorokin.jpg"><h3>Владимир Сорокин</h3><p>Преподаватель</p><p class="role">Арт-фехтование</p></div>
-            <div class="trainer-card" data-name="Александр Ушаков" data-role="Инструктор" data-desc="Специалист по ОФП. Ведет: ролевое фехтование, копье, щит-меч викингов." data-img="img/alexander-ushakov.jpg"><img src="img/alexander-ushakov.jpg"><h3>Александр Ушаков</h3><p>Инструктор</p><p class="role">Ролевое фехтование</p></div>
-            <div class="trainer-card" data-name="Александр Черников" data-role="Инструктор" data-desc="Изучает японский язык и дзен. Ведет: Школа самураев (катана, базовая техника)." data-img="img/alexander-chernikov.jpg"><img src="img/alexander-chernikov.jpg"><h3>Александр Черников</h3><p>Инструктор</p><p class="role">Школа самураев</p></div>
+            <div class="trainer-card" data-name="Алексей Бесфамильный" data-role="Основатель, тренер" data-desc="Мастер спорта России по фехтованию, магистр педагогики. Многократный чемпион России и четырехкратный чемпион мира по артистическому фехтованию. Каскадер." data-img="img/alexey-besfamilny.jpg"><img src="img/alexey-besfamilny.jpg"><h3>Алексей Бесфамильный</h3><p>Основатель</p><p class="role">Мастер спорта</p></div>
+            <div class="trainer-card" data-name="Иван Бобровский" data-role="Инструктор" data-desc="Инженер-конструктор. Специалист по испанской и португальской боевым традициям." data-img="img/ivan-bobrovsky.jpg"><img src="img/ivan-bobrovsky.jpg"><h3>Иван Бобровский</h3><p>Инструктор</p><p class="role">Испанская рапира</p></div>
+            <div class="trainer-card" data-name="Сергий Гершкович" data-role="Инструктор" data-desc="Психолог, призер чемпионатов России и мира по СМБ." data-img="img/sergy-gershkovich.jpg"><img src="img/sergy-gershkovich.jpg"><h3>Сергий Гершкович</h3><p>Инструктор</p><p class="role">СМБ, сабля</p></div>
+            <div class="trainer-card" data-name="Татьяна Грибанова" data-role="Тренер" data-desc="КМС, чемпионка России по артистическому фехтованию." data-img="img/tatyana-gribanova.jpg"><img src="img/tatyana-gribanova.jpg"><h3>Татьяна Грибанова</h3><p>Тренер</p><p class="role">Ушу, арт-фехтование</p></div>
+            <div class="trainer-card" data-name="Стася Евсеева" data-role="Тренер" data-desc="Мастер спорта, чемпион Москвы по арт-фехтованию." data-img="img/stasya-evseeva.jpg"><img src="img/stasya-evseeva.jpg"><h3>Стася Евсеева</h3><p>Тренер</p><p class="role">Girl Power</p></div>
+            <div class="trainer-card" data-name="Андрей Егоров" data-role="Тренер-преподаватель" data-desc="Мастер спорта, чемпион России по арт-фехтованию. Каскадер." data-img="img/andrey-egorov.jpg"><img src="img/andrey-egorov.jpg"><h3>Андрей Егоров</h3><p>Тренер-преподаватель</p><p class="role">Мастер спорта</p></div>
+            <div class="trainer-card" data-name="Станислав Иванов" data-role="Инструктор" data-desc="КМС по арт-фехтованию. Ведет иберийский меч." data-img="img/stanislav-ivanov.jpg"><img src="img/stanislav-ivanov.jpg"><h3>Станислав Иванов</h3><p>Инструктор</p><p class="role">Иберийский меч</p></div>
+            <div class="trainer-card" data-name="Алексей Кабанов" data-role="Инструктор" data-desc="Опыт конной джигитовки. Ведет фланкировку." data-img="img/alexey-kabanov.jpg"><img src="img/alexey-kabanov.jpg"><h3>Алексей Кабанов</h3><p>Инструктор</p><p class="role">Фланкировка</p></div>
+            <div class="trainer-card" data-name="Сергей Казаков" data-role="Инструктор" data-desc="Чемпион России по арт-фехтованию. Постановщик боев." data-img="img/sergey-kazakov.jpg"><img src="img/sergey-kazakov.jpg"><h3>Сергей Казаков</h3><p>Инструктор</p><p class="role">Постановочное фехтование</p></div>
+            <div class="trainer-card" data-name="Макс Киселев" data-role="Ведущий педагог-методолог" data-desc="Лингвист, специалист по итальянской традиции HEMA." data-img="img/max-kiselev.jpg"><img src="img/max-kiselev.jpg"><h3>Макс Киселев</h3><p>Методолог</p><p class="role">HEMA</p></div>
+            <div class="trainer-card" data-name="Константин Козлов" data-role="Тренер" data-desc="Профессиональный тренер по фитнесу. Исследует рапиру и дагу." data-img="img/konstantin-kozlov.jpg"><img src="img/konstantin-kozlov.jpg"><h3>Константин Козлов</h3><p>Тренер</p><p class="role">Рапира и дага</p></div>
+            <div class="trainer-card" data-name="Валерий Кочнев" data-role="Инструктор" data-desc="Чемпион России по арт-фехтованию. Ведет саберфайтинг." data-img="img/valery-kochnev.jpg"><img src="img/valery-kochnev.jpg"><h3>Валерий Кочнев</h3><p>Инструктор</p><p class="role">Саберфайтинг</p></div>
+            <div class="trainer-card" data-name="Александр Леонов" data-role="Тренер" data-desc="Специалист по итальянскому двуручному мечу." data-img="img/alexander-leonov.jpg"><img src="img/alexander-leonov.jpg"><h3>Александр Леонов</h3><p>Тренер</p><p class="role">Двуручный меч</p></div>
+            <div class="trainer-card" data-name="Николай Лобаев" data-role="Младший инструктор" data-desc="Чемпион Москвы по арт-фехтованию. Ведет итальянскую рапиру." data-img="img/nikolay-lobaev.jpg"><img src="img/nikolay-lobaev.jpg"><h3>Николай Лобаев</h3><p>Инструктор</p><p class="role">Итальянская рапира</p></div>
+            <div class="trainer-card" data-name="Иван Лопан" data-role="Тренер-преподаватель" data-desc="КМС. Ведет саберфайтинг глефа." data-img="img/ivan-lopan.jpg"><img src="img/ivan-lopan.jpg"><h3>Иван Лопан</h3><p>Тренер-преподаватель</p><p class="role">Саберфайтинг</p></div>
+            <div class="trainer-card" data-name="Мария Лукацкая" data-role="Преподаватель" data-desc="Педагог, дизайнер костюма. Ведет шитье." data-img="img/maria-lukatskaya.jpg"><img src="img/maria-lukatskaya.jpg"><h3>Мария Лукацкая</h3><p>Преподаватель</p><p class="role">Дизайн костюма</p></div>
+            <div class="trainer-card" data-name="Андрей Макашов" data-role="Преподаватель" data-desc="Чемпион России по арт-фехтованию. Постановщик боев." data-img="img/andrey-makashov.jpg"><img src="img/andrey-makashov.jpg"><h3>Андрей Макашов</h3><p>Преподаватель</p><p class="role">Постановочное фехтование</p></div>
+            <div class="trainer-card" data-name="Денис Марков" data-role="Инструктор" data-desc="КМС по военному четырехборью. Ведет фланкировку." data-img="img/denis-markov.jpg"><img src="img/denis-markov.jpg"><h3>Денис Марков</h3><p>Инструктор</p><p class="role">Фланкировка</p></div>
+            <div class="trainer-card" data-name="Гагик Оганесян" data-role="Ведущий тренер" data-desc="Мастер спорта СССР по фехтованию. Стаж с 1984 года." data-img="img/gagik-oganesyan.jpg"><img src="img/gagik-oganesyan.jpg"><h3>Гагик Оганесян</h3><p>Ведущий тренер</p><p class="role">Шпага</p></div>
+            <div class="trainer-card" data-name="Ольга Петлицкая" data-role="Тренер-преподаватель" data-desc="КМС. Ведет саберфайтинг глефа." data-img="img/olga-petlitskaya.jpg"><img src="img/olga-petlitskaya.jpg"><h3>Ольга Петлицкая</h3><p>Тренер-преподаватель</p><p class="role">Саберфайтинг</p></div>
+            <div class="trainer-card" data-name="Евгений Петровский" data-role="Тренер-реабилитолог" data-desc="КМС по рукопашному бою. Тренер сборной России." data-img="img/evgeny-petrovsky.jpg"><img src="img/evgeny-petrovsky.jpg"><h3>Евгений Петровский</h3><p>Тренер-реабилитолог</p><p class="role">Арт-фехтование</p></div>
+            <div class="trainer-card" data-name="Вадим Сеничев" data-role="Преподаватель" data-desc="Историк, исследователь итальянского длинного меча." data-img="img/vadim-senichev.jpg"><img src="img/vadim-senichev.jpg"><h3>Вадим Сеничев</h3><p>Преподаватель</p><p class="role">Длинный меч</p></div>
+            <div class="trainer-card" data-name="Егор Симанков" data-role="Инструктор" data-desc="В реконструкции с 1991 года. Ведет саблю и лук." data-img="img/egor-simankov.jpg"><img src="img/egor-simankov.jpg"><h3>Егор Симанков</h3><p>Инструктор</p><p class="role">Сабля, лук</p></div>
+            <div class="trainer-card" data-name="Владимир Сорокин" data-role="Преподаватель" data-desc="Мастер спорта, призер чемпионата мира. Педагог-психолог." data-img="img/vladimir-sorokin.jpg"><img src="img/vladimir-sorokin.jpg"><h3>Владимир Сорокин</h3><p>Преподаватель</p><p class="role">Арт-фехтование</p></div>
+            <div class="trainer-card" data-name="Александр Ушаков" data-role="Инструктор" data-desc="Специалист по ОФП. Ведет ролевое фехтование." data-img="img/alexander-ushakov.jpg"><img src="img/alexander-ushakov.jpg"><h3>Александр Ушаков</h3><p>Инструктор</p><p class="role">Ролевое фехтование</p></div>
+            <div class="trainer-card" data-name="Александр Черников" data-role="Инструктор" data-desc="Изучает японский язык и дзен. Ведет Школу самураев." data-img="img/alexander-chernikov.jpg"><img src="img/alexander-chernikov.jpg"><h3>Александр Черников</h3><p>Инструктор</p><p class="role">Школа самураев</p></div>
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>© 2025 Wild Cards Fencing | Все права защищены</p>
-        </div>
-    </footer>
+    <footer><div class="container"><p>© 2025 Wild Cards Fencing | Все права защищены</p></div></footer>
 
     <div class="overlay" id="overlay"></div>
     <div class="modal" id="modal">
         <div class="modal-content">
-            <img id="modal-img" src="" alt="">
+            <img id="modal-img" src="">
             <h3 id="modal-name"></h3>
             <div class="role" id="modal-role"></div>
             <div class="info" id="modal-desc"></div>
@@ -131,11 +135,6 @@
             overlay.style.display = 'block';
         }
 
-        function closeModalFunc() {
-            modal.style.display = 'none';
-            overlay.style.display = 'none';
-        }
-
         cards.forEach(card => {
             card.addEventListener('click', () => {
                 const name = card.getAttribute('data-name');
@@ -146,8 +145,8 @@
             });
         });
 
-        closeModal.addEventListener('click', closeModalFunc);
-        overlay.addEventListener('click', closeModalFunc);
+        closeModal.addEventListener('click', () => { modal.style.display = 'none'; overlay.style.display = 'none'; });
+        overlay.addEventListener('click', () => { modal.style.display = 'none'; overlay.style.display = 'none'; });
     </script>
 </body>
 </html>
