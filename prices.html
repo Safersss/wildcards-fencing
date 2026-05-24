@@ -20,19 +20,80 @@
         nav a:hover { color: #d32f2f; }
         h1 { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; text-align: center; margin: 60px 0 40px; text-transform: uppercase; }
         h1 span { color: #d32f2f; }
-        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 60px; justify-items: center; }
-        .card { background: #111; padding: 30px; text-align: center; border: 1px solid #222; transition: 0.2s; width: 100%; max-width: 320px; }
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 32px;
+            text-align: center;
+            margin: 50px 0 30px;
+            color: #d32f2f;
+            text-transform: uppercase;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: #111;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #222;
+            transition: 0.2s;
+        }
         .card:hover { border-color: #d32f2f; }
-        .card h3 { font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 600; margin-bottom: 15px; text-transform: uppercase; }
-        .price { font-size: 36px; font-weight: bold; color: #d32f2f; margin-bottom: 20px; }
-        .card ul { text-align: left; margin: 20px 0; padding-left: 20px; color: #aaa; }
-        .card li { margin-bottom: 10px; }
-        .btn { background: #d32f2f; color: #fff; border: none; padding: 12px 24px; font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 600; cursor: pointer; transition: 0.2s; text-transform: uppercase; margin-top: 10px; }
+        .card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .price {
+            font-size: 36px;
+            font-weight: bold;
+            color: #d32f2f;
+            margin: 15px 0;
+        }
+        .price small {
+            font-size: 16px;
+            color: #aaa;
+        }
+        .card ul {
+            text-align: left;
+            margin: 20px 0;
+            padding-left: 20px;
+            color: #aaa;
+            list-style: none;
+        }
+        .card li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        .card li::before {
+            content: "⚔️";
+            position: absolute;
+            left: 0;
+            color: #d32f2f;
+        }
+        .btn {
+            background: #d32f2f;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            text-transform: uppercase;
+            margin-top: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
         .btn:hover { background: #b71c1c; }
         footer { border-top: 1px solid #222; padding: 40px 0; text-align: center; color: #555; }
-        @media (max-width: 900px) {
-            .grid { grid-template-columns: repeat(2, 1fr); }
-        }
         @media (max-width: 700px) {
             .header-inner { flex-direction: column; gap: 15px; }
             nav a { margin: 0 12px; font-size: 14px; }
@@ -40,7 +101,7 @@
             h1 { font-size: 32px; }
             .logo img { height: 40px; }
             .logo-text { font-size: 18px; }
-            .grid { grid-template-columns: 1fr; justify-items: center; }
+            .section-title { font-size: 26px; }
         }
     </style>
 </head>
@@ -64,13 +125,181 @@
                 </nav>
             </div>
         </header>
+
         <h1>Наши <span>цены</span></h1>
+
+        <!-- Пробные занятия -->
+        <div class="section-title">🥋 Пробные занятия</div>
         <div class="grid">
-            <div class="card"><h3>Пробное занятие</h3><div class="price">500 ₽</div><ul><li>✅ 1 занятие 1.5 часа</li><li>✅ Экипировка входит</li><li>✅ Знакомство с тренером</li></ul><button class="btn" onclick="window.location.href='index.html'">Записаться</button></div>
-            <div class="card"><h3>Абонемент 8 занятий</h3><div class="price">4 000 ₽</div><ul><li>✅ 8 занятий в месяц</li><li>✅ Экипировка входит</li><li>✅ Скидка на сборы</li></ul><button class="btn" onclick="window.location.href='index.html'">Записаться</button></div>
-            <div class="card"><h3>Абонемент 12 занятий</h3><div class="price">5 500 ₽</div><ul><li>✅ 12 занятий в месяц</li><li>✅ Экипировка входит</li><li>✅ Бесплатная консультация</li></ul><button class="btn" onclick="window.location.href='index.html'">Записаться</button></div>
+            <div class="card">
+                <h3>Пробное занятие</h3>
+                <div class="price">от 0 ₽ <small>до 2350 ₽</small></div>
+                <ul>
+                    <li>В зависимости от направления (от 0 до 2350 ₽)</li>
+                    <li>✅ Экипировка предоставляется бесплатно</li>
+                    <li>✅ Знакомство с тренером и школой</li>
+                    <li>✅ Продолжительность: 1.5–2 часа</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='index.html'">Записаться</button>
+            </div>
+            <div class="card">
+                <h3>Первое ознакомительное занятие</h3>
+                <div class="price">1 000 ₽</div>
+                <ul>
+                    <li>Для направлений "Два меча (Dos espadas)"</li>
+                    <li>✅ Погружение в испанскую традицию</li>
+                    <li>✅ Группа до 6 человек</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='index.html'">Записаться</button>
+            </div>
+        </div>
+
+        <!-- Абонементы -->
+        <div class="section-title">📅 Абонементы</div>
+        <div class="grid">
+            <div class="card">
+                <h3>Абонемент на 4 занятия</h3>
+                <div class="price">2 000 – 8 000 ₽</div>
+                <ul>
+                    <li>Зависит от направления и тренера</li>
+                    <li>✅ Срок действия: 1 месяц</li>
+                    <li>✅ Экономия до 20% от разовых занятий</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='index.html'">Записаться</button>
+            </div>
+            <div class="card">
+                <h3>Абонемент на 8 занятий</h3>
+                <div class="price">5 500 – 10 000 ₽</div>
+                <ul>
+                    <li>Зависит от направления и тренера</li>
+                    <li>✅ Срок действия: 1 месяц</li>
+                    <li>✅ Самый популярный формат</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='index.html'">Записаться</button>
+            </div>
+            <div class="card">
+                <h3>Абонемент на 12 занятий</h3>
+                <div class="price">7 500 – 12 000 ₽</div>
+                <ul>
+                    <li>Для отдельных групп (шпага, HEMA)</li>
+                    <li>✅ Максимальная экономия</li>
+                    <li>✅ Скидка до 30% от разовых</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='index.html'">Записаться</button>
+            </div>
+        </div>
+
+        <!-- Специальные предложения -->
+        <div class="section-title">🎓 Специальные предложения</div>
+        <div class="grid">
+            <div class="card">
+                <h3>Студенческая группа (рапира)</h3>
+                <div class="price">4 000 / 7 000 / 9 000 ₽</div>
+                <ul>
+                    <li>1 раз в неделю — 4000 ₽/мес</li>
+                    <li>2 раза в неделю — 7000 ₽/мес</li>
+                    <li>3 раза в неделю — 9000 ₽/мес</li>
+                    <li>✅ Итальянская рапира, экипировка предоставляется</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='index.html'">Записаться</button>
+            </div>
+            <div class="card">
+                <h3>Долгосрочный абонемент</h3>
+                <div class="price">−10%</div>
+                <ul>
+                    <li>При оплате на полгода или год</li>
+                    <li>✅ Заморозка на время отпуска</li>
+                    <li>✅ Скидка 5% на 3 месяца</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='index.html'">Подробнее</button>
+            </div>
+            <div class="card">
+                <h3>Акция «Приведи друга»</h3>
+                <div class="price">−50%</div>
+                <ul>
+                    <li>50% скидка на следующий абонемент</li>
+                    <li>✅ При условии покупки абонемента другом</li>
+                    <li>✅ Для действующих учеников школы</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='index.html'">Подробнее</button>
+            </div>
+        </div>
+
+        <!-- Разовые и индивидуальные занятия -->
+        <div class="section-title">🎯 Разовые и индивидуальные занятия</div>
+        <div class="grid">
+            <div class="card">
+                <h3>Разовое занятие в группе</h3>
+                <div class="price">1 500 – 2 000 ₽</div>
+                <ul>
+                    <li>В зависимости от направления</li>
+                    <li>✅ Без привязки к абонементу</li>
+                    <li>✅ Можно прийти в любое удобное время</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='index.html'">Записаться</button>
+            </div>
+            <div class="card">
+                <h3>Индивидуальная тренировка</h3>
+                <div class="price">3 500 ₽ <small>/ час</small></div>
+                <ul>
+                    <li>2 750 ₽/час при оплате 2+ тренировок</li>
+                    <li>✅ Гибкий график, любое направление</li>
+                    <li>✅ Тренер: Алексей Бесфамильный и другие</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='index.html'">Записаться</button>
+            </div>
+            <div class="card">
+                <h3>Онлайн-занятие</h3>
+                <div class="price">3 500 ₽ <small>/ час</small></div>
+                <ul>
+                    <li>2 750 ₽/час при оплате 2+ тренировок</li>
+                    <li>✅ Из любой точки мира</li>
+                    <li>✅ Для начинающих и опытных</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='index.html'">Записаться</button>
+            </div>
+        </div>
+
+        <!-- Дополнительные услуги -->
+        <div class="section-title">📌 Дополнительные услуги</div>
+        <div class="grid">
+            <div class="card">
+                <h3>Аренда зала</h3>
+                <div class="price">по запросу</div>
+                <ul>
+                    <li>80 м², 120 м², 160 м², 400 м²</li>
+                    <li>✅ Для тренировок, репетиций, мероприятий</li>
+                    <li>✅ Амортизирующее покрытие, раздевалки</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='contacts.html'">Узнать цену</button>
+            </div>
+            <div class="card">
+                <h3>Запись с камер видеонаблюдения</h3>
+                <div class="price">1 750 ₽ <small>/ час</small></div>
+                <ul>
+                    <li>435 ₽ / 15 минут</li>
+                    <li>✅ Получите видео ваших боёв</li>
+                    <li>✅ Поможет найти потерянные вещи</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='contacts.html'">Заказать</button>
+            </div>
+            <div class="card">
+                <h3>Хранение снаряжения</h3>
+                <div class="price">по запросу</div>
+                <ul>
+                    <li>Оставьте снаряжение в школе</li>
+                    <li>✅ Удобно и безопасно</li>
+                    <li>✅ Не носите тяжести с собой</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='contacts.html'">Узнать цену</button>
+            </div>
         </div>
     </div>
-    <footer><div class="container"><p>© 2025 Wild Cards Fencing | Все права защищены</p></div></footer>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Wild Cards Fencing | Все права защищены</p>
+        </div>
+    </footer>
 </body>
 </html>
