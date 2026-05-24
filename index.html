@@ -32,10 +32,28 @@
             align-items: center;
             flex-wrap: wrap;
         }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
         .logo img {
             height: 50px;
             width: auto;
             display: block;
+        }
+        .logo-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        .logo-text span {
+            color: #d32f2f;
         }
         nav a {
             font-family: 'Oswald', sans-serif;
@@ -46,6 +64,9 @@
             margin-left: 30px;
             transition: 0.2s;
             text-transform: uppercase;
+        }
+        nav a:first-child {
+            margin-left: 0;
         }
         nav a:hover {
             color: #d32f2f;
@@ -203,6 +224,9 @@
             .logo img {
                 height: 40px;
             }
+            .logo-text {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
@@ -210,7 +234,10 @@
     <div class="container">
         <header>
             <div class="header-inner">
-                <a href="index.html" class="logo"><img src="./logo.jpg" alt="Wild Cards Fencing"></a>
+                <a href="index.html" class="logo">
+                    <img src="./icon.png" alt="Wild Cards Fencing">
+                    <div class="logo-text">WILD <span>CARDS</span><br>FENCING</div>
+                </a>
                 <nav>
                     <a href="index.html">Главная</a>
                     <a href="about.html">О школе</a>
@@ -225,7 +252,7 @@
         </header>
 
         <section class="hero">
-            <h1>WILD <span>CVRDS</span><br>FENCING</h1>
+            <h1>WILD <span>CARDS</span><br>FENCING</h1>
             <p>Школа фехтования для детей и взрослых. От Средневековья до современности.</p>
             <button class="btn" id="openFormBtn">Записаться на пробное занятие</button>
         </section>
@@ -233,12 +260,12 @@
         <section class="section">
             <h2>Направления</h2>
             <div class="directions-grid">
-                <div class="direction-card"><h3>Рапира</h3><p>Спортивное и историческое</p></div>
-                <div class="direction-card"><h3>Шпага</h3><p>Классическое фехтование</p></div>
-                <div class="direction-card"><h3>Сабля</h3><p>Рубяще-колющее оружие</p></div>
-                <div class="direction-card"><h3>HEMA</h3><p>Историческое фехтование</p></div>
-                <div class="direction-card"><h3>СМБ</h3><p>Современный мечевой бой</p></div>
-                <div class="direction-card"><h3>Лук</h3><p>Стрельба из традиционного лука</p></div>
+                <div class="direction-card"><h3>⚔️ Рапира</h3><p>Спортивное и историческое</p></div>
+                <div class="direction-card"><h3>🗡️ Шпага</h3><p>Классическое фехтование</p></div>
+                <div class="direction-card"><h3>🏹 Сабля</h3><p>Рубяще-колющее оружие</p></div>
+                <div class="direction-card"><h3>🛡️ HEMA</h3><p>Историческое фехтование</p></div>
+                <div class="direction-card"><h3>⭐ СМБ</h3><p>Современный мечевой бой</p></div>
+                <div class="direction-card"><h3>🏹 Лук</h3><p>Стрельба из традиционного лука</p></div>
             </div>
         </section>
 
