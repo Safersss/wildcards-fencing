@@ -3,13 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wild Cards Fencing</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Wild Cards Fencing — О школе</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f2f5;
+            line-height: 1.6;
+        }
+        header {
+            background: #0a192f;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 32px;
+            letter-spacing: 2px;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav a {
+            color: white;
+            margin: 0 12px;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 12px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background: #e94560;
+            border-radius: 25px;
+        }
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            min-height: 55vh;
+        }
+        .content-block {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .content-block h2 {
+            color: #0a192f;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+        .content-block p {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #333;
+        }
+        footer {
+            background: #0a192f;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+        .btn {
+            background: #e94560;
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .btn:hover {
+            background: #c73a52;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <img src="https://via.placeholder.com/80" alt="Логотип">
-        <h1>Wild Cards Fencing</h1>
+        <h1>⚔️ Wild Cards Fencing</h1>
         <nav>
             <a href="index.html">Главная</a>
             <a href="about.html">О школе</a>
@@ -21,13 +100,16 @@
         </nav>
     </header>
     <main>
-        <h2>О школе</h2><p>Напишите здесь историю школы...</p>
-        <p>Школа фехтования для детей и взрослых. Начните свой путь в благородном спорте!</p>
-        <button id="openFormBtn">Записаться на пробное занятие</button>
+        <div class="content-block">
+            <h2>О школе Wild Cards Fencing</h2>
+            <p>Wild Cards Fencing — это современная школа фехтования, открытая для всех, кто хочет прикоснуться к благородному искусству владения клинком. Мы обучаем детей от 7 лет и взрослых без ограничения возраста.</p>
+            <p>Наши тренеры — действующие спортсмены и мастера спорта, которые знают всё о фехтовании. Мы используем современные методики тренировок, безопасный инвентарь и создаём дружелюбную атмосферу.</p>
+            <p>Фехтование развивает реакцию, координацию, стратегическое мышление и дисциплину. Это спорт для сильных духом и тех, кто не боится вызовов.</p>
+            <button class="btn" onclick="window.location.href='index.html'">Записаться на пробное занятие</button>
+        </div>
     </main>
     <footer>
-        <p>© 2025 Wild Cards Fencing</p>
+        <p>© 2025 Wild Cards Fencing | Все права защищены</p>
     </footer>
-    <script src="js/script.js"></script>
 </body>
 </html>
