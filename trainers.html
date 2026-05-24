@@ -5,97 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Cards Fencing — Тренеры</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f0f2f5;
-            line-height: 1.6;
-        }
-        header {
-            background: #0a192f;
-            color: white;
-            padding: 25px 20px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        header h1 {
-            font-size: 32px;
-            letter-spacing: 2px;
-        }
-        nav {
-            margin-top: 15px;
-        }
-        nav a {
-            color: white;
-            margin: 0 12px;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 8px 12px;
-            transition: 0.3s;
-        }
-        nav a:hover {
-            background: #e94560;
-            border-radius: 25px;
-        }
-        main {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            min-height: 55vh;
-        }
-        h2 {
-            text-align: center;
-            color: #0a192f;
-            margin-bottom: 30px;
-        }
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-        }
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            width: 260px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .card .avatar {
-            font-size: 64px;
-            margin-bottom: 15px;
-        }
-        .card h3 {
-            color: #0a192f;
-            margin-bottom: 10px;
-        }
-        .card p {
-            color: #555;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-        .card .specialty {
-            color: #e94560;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        footer {
-            background: #0a192f;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            margin-top: 40px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0a0a; color: #e0e0e0; }
+        header { background: #0a0a0a; border-bottom: 2px solid #cc0000; padding: 20px; text-align: center; }
+        .logo { font-size: 28px; font-weight: bold; letter-spacing: 3px; }
+        .logo span { color: #cc0000; }
+        nav { margin-top: 15px; }
+        nav a { color: #e0e0e0; margin: 0 12px; text-decoration: none; font-size: 16px; transition: 0.3s; }
+        nav a:hover { color: #cc0000; }
+        main { max-width: 1400px; margin: 60px auto; padding: 0 20px; }
+        h2 { text-align: center; color: #cc0000; font-size: 32px; margin-bottom: 40px; }
+        .trainers-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+        .trainer-card { background: #1a1a1a; border-radius: 20px; padding: 20px; width: 220px; text-align: center; border: 1px solid #333; transition: 0.3s; }
+        .trainer-card:hover { transform: translateY(-5px); border-color: #cc0000; }
+        .trainer-card img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 2px solid #cc0000; }
+        .trainer-card h3 { font-size: 18px; margin-bottom: 5px; }
+        .trainer-card p { font-size: 14px; color: #aaa; margin-bottom: 8px; }
+        .trainer-card .role { color: #cc0000; font-weight: bold; font-size: 12px; }
+        footer { background: #0a0a0a; text-align: center; padding: 30px; border-top: 1px solid #222; margin-top: 40px; }
+        @media (max-width: 700px) { .trainer-card { width: 180px; } .trainer-card img { width: 120px; height: 120px; } }
     </style>
 </head>
 <body>
     <header>
-        <h1>⚔️ Wild Cards Fencing</h1>
+        <div class="logo">WILD <span>CVRDS</span><br>FENCING</div>
         <nav>
             <a href="index.html">Главная</a>
             <a href="about.html">О школе</a>
@@ -108,35 +41,15 @@
     </header>
     <main>
         <h2>Наши тренеры</h2>
-        <div class="cards">
-            <div class="card">
-                <div class="avatar">🏅</div>
-                <h3>Алексей Соколов</h3>
-                <p>Мастер спорта по рапире</p>
-                <p>Стаж: 12 лет</p>
-                <p class="specialty">Рапира, взрослые группы</p>
-            </div>
-            <div class="card">
-                <div class="avatar">🏅</div>
-                <h3>Мария Волкова</h3>
-                <p>КМС по шпаге</p>
-                <p>Стаж: 8 лет</p>
-                <p class="specialty">Шпага, дети от 10 лет</p>
-            </div>
-            <div class="card">
-                <div class="avatar">🏅</div>
-                <h3>Дмитрий Орлов</h3>
-                <p>Мастер спорта по сабле</p>
-                <p>Стаж: 10 лет</p>
-                <p class="specialty">Сабля, начинающие и продвинутые</p>
-            </div>
-            <div class="card">
-                <div class="avatar">🏅</div>
-                <h3>Елена Новикова</h3>
-                <p>Инструктор HEMA</p>
-                <p>Стаж: 6 лет</p>
-                <p class="specialty">Историческое фехтование</p>
-            </div>
+        <div class="trainers-grid">
+            <div class="trainer-card"><img src="img/alexey-besfamilny.jpg" alt="Алексей"><h3>Алексей Бесфамильный</h3><p>Основатель, тренер</p><p class="role">Мастер спорта, чемпион мира</p></div>
+            <div class="trainer-card"><img src="img/ivan-bobrovsky.jpg" alt="Иван"><h3>Иван Бобровский</h3><p>Инструктор</p><p class="role">Испанская рапира, монтате</p></div>
+            <div class="trainer-card"><img src="img/tatyana-gribanova.jpg" alt="Татьяна"><h3>Татьяна Грибанова</h3><p>Тренер</p><p class="role">Ушу, арт-фехтование</p></div>
+            <div class="trainer-card"><img src="img/stasya-evseeva.jpg" alt="Стася"><h3>Стася Евсеева</h3><p>Тренер</p><p class="role">Мастер спорта, Girl Power</p></div>
+            <div class="trainer-card"><img src="img/gagik-oganesyan.jpg" alt="Гагик"><h3>Гагик Оганесян</h3><p>Ведущий тренер</p><p class="role">Мастер спорта СССР, шпага</p></div>
+            <div class="trainer-card"><img src="img/max-kiselev.jpg" alt="Макс"><h3>Макс Киселев</h3><p>Ведущий педагог</p><p class="role">Методолог HEMA</p></div>
+            <div class="trainer-card"><div style="width:150px;height:150px;background:#2a2a2a;border-radius:50%;margin:0 auto 15px;display:flex;align-items:center;justify-content:center;font-size:48px;">👤</div><h3>Андрей Егоров</h3><p>Тренер-преподаватель</p><p class="role">Мастер спорта, каскадёр</p></div>
+            <div class="trainer-card"><div style="width:150px;height:150px;background:#2a2a2a;border-radius:50%;margin:0 auto 15px;display:flex;align-items:center;justify-content:center;font-size:48px;">👤</div><h3>Константин Козлов</h3><p>Тренер</p><p class="role">Рапира и дага XVII века</p></div>
         </div>
     </main>
     <footer>
