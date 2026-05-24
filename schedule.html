@@ -5,93 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Cards Fencing — Расписание</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f0f2f5;
-            line-height: 1.6;
-        }
-        header {
-            background: #0a192f;
-            color: white;
-            padding: 25px 20px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        header h1 {
-            font-size: 32px;
-            letter-spacing: 2px;
-        }
-        nav {
-            margin-top: 15px;
-        }
-        nav a {
-            color: white;
-            margin: 0 12px;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 8px 12px;
-            transition: 0.3s;
-        }
-        nav a:hover {
-            background: #e94560;
-            border-radius: 25px;
-        }
-        main {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-            min-height: 55vh;
-        }
-        h2 {
-            text-align: center;
-            color: #0a192f;
-            margin-bottom: 30px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background: #0a192f;
-            color: white;
-            font-weight: bold;
-        }
-        tr:hover {
-            background: #f5f5f5;
-        }
-        .note {
-            margin-top: 30px;
-            padding: 20px;
-            background: #fff3cd;
-            border-radius: 15px;
-            color: #856404;
-        }
-        footer {
-            background: #0a192f;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            margin-top: 40px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0a0a; color: #e0e0e0; }
+        header { background: #0a0a0a; border-bottom: 2px solid #cc0000; padding: 20px; text-align: center; }
+        .logo { font-size: 28px; font-weight: bold; letter-spacing: 3px; }
+        .logo span { color: #cc0000; }
+        nav { margin-top: 15px; }
+        nav a { color: #e0e0e0; margin: 0 12px; text-decoration: none; font-size: 16px; transition: 0.3s; }
+        nav a:hover { color: #cc0000; }
+        main { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+        h2 { text-align: center; color: #cc0000; margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; background: #1a1a1a; border-radius: 15px; overflow: hidden; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #333; }
+        th { background: #cc0000; color: white; }
+        .note { margin-top: 30px; padding: 20px; background: #1a1a1a; border-radius: 15px; color: #aaa; text-align: center; }
+        footer { background: #0a0a0a; text-align: center; padding: 30px; border-top: 1px solid #222; margin-top: 40px; }
     </style>
 </head>
 <body>
     <header>
-        <h1>⚔️ Wild Cards Fencing</h1>
+        <div class="logo">WILD <span>CVRDS</span><br>FENCING</div>
         <nav>
             <a href="index.html">Главная</a>
             <a href="about.html">О школе</a>
@@ -105,52 +38,15 @@
     <main>
         <h2>Расписание занятий</h2>
         <table>
-            <tr>
-                <th>День недели</th>
-                <th>Время</th>
-                <th>Группа</th>
-                <th>Тренер</th>
-            </tr>
-            <tr>
-                <td>Понедельник</td>
-                <td>18:00 - 19:30</td>
-                <td>Дети 7-12 лет (рапира)</td>
-                <td>Алексей Соколов</td>
-            </tr>
-            <tr>
-                <td>Среда</td>
-                <td>19:30 - 21:00</td>
-                <td>Взрослые (шпага)</td>
-                <td>Мария Волкова</td>
-            </tr>
-            <tr>
-                <td>Пятница</td>
-                <td>18:00 - 19:30</td>
-                <td>Начинающие (рапира)</td>
-                <td>Алексей Соколов</td>
-            </tr>
-            <tr>
-                <td>Суббота</td>
-                <td>11:00 - 12:30</td>
-                <td>Дети 7-12 лет (сабля)</td>
-                <td>Дмитрий Орлов</td>
-            </tr>
-            <tr>
-                <td>Суббота</td>
-                <td>13:00 - 14:30</td>
-                <td>Историческое фехтование</td>
-                <td>Елена Новикова</td>
-            </tr>
-            <tr>
-                <td>Воскресенье</td>
-                <td>12:00 - 13:30</td>
-                <td>Взрослые (сабля)</td>
-                <td>Дмитрий Орлов</td>
-            </tr>
+            <tr><th>День</th><th>Время</th><th>Направление</th><th>Тренер</th></tr>
+            <tr><td>Понедельник</td><td>18:00-19:30</td><td>Рапира (дети)</td><td>Алексей</td></tr>
+            <tr><td>Среда</td><td>19:30-21:00</td><td>Шпага (взрослые)</td><td>Гагик</td></tr>
+            <tr><td>Пятница</td><td>18:00-19:30</td><td>HEMA длинный меч</td><td>Алексей</td></tr>
+            <tr><td>Суббота</td><td>11:00-12:30</td><td>Сабля (дети)</td><td>Дмитрий</td></tr>
+            <tr><td>Суббота</td><td>13:00-14:30</td><td>Стрельба из лука</td><td>Владимир</td></tr>
+            <tr><td>Воскресенье</td><td>12:00-13:30</td><td>Историческое фехтование</td><td>Макс</td></tr>
         </table>
-        <div class="note">
-            📌 Расписание может меняться. Актуальное расписание уточняйте у администратора.
-        </div>
+        <div class="note">📍 Расписание может меняться. Актуальную информацию уточняйте у администратора.</div>
     </main>
     <footer>
         <p>© 2025 Wild Cards Fencing | Все права защищены</p>
