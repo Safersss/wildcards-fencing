@@ -11,7 +11,10 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         header { padding: 20px 0; border-bottom: 1px solid #222; }
         .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
         .logo img { height: 50px; width: auto; display: block; }
+        .logo-text { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 2px; color: #fff; text-transform: uppercase; line-height: 1.2; }
+        .logo-text span { color: #d32f2f; }
         nav a { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: #fff; text-decoration: none; margin-left: 30px; transition: 0.2s; text-transform: uppercase; }
         nav a:first-child { margin-left: 0; }
         nav a:hover { color: #d32f2f; }
@@ -26,6 +29,7 @@
             nav a:first-child { margin-left: 12px; }
             h1 { font-size: 32px; }
             .logo img { height: 40px; }
+            .logo-text { font-size: 18px; }
             .content { padding: 25px; }
         }
     </style>
@@ -34,7 +38,10 @@
     <div class="container">
         <header>
             <div class="header-inner">
-                <a href="index.html" class="logo"><img src="./logo.jpg" alt="Wild Cards Fencing"></a>
+                <a href="index.html" class="logo">
+                    <img src="logo.jpg" alt="Wild Cards Fencing">
+                    <div class="logo-text">WILD <span>CARDS</span><br>FENCING</div>
+                </a>
                 <nav>
                     <a href="index.html">Главная</a>
                     <a href="about.html">О школе</a>
@@ -50,7 +57,7 @@
         <h1>О <span>школе</span></h1>
         <div class="content">
             <p>Wild Cards Fencing — первая многопрофильная школа фехтования в Москве. Мы объединяем традиции и современность, Европу и Восток. Наши тренеры — чемпионы России и мира, специалисты с огромным опытом, которые за несколько лет вырастили учеников до призёров российских и международных соревнований.</p>
-            <p>Мы не привязываем учеников к одному клубу. Главное для нас — научить побеждать. В наших залах более 10 направлений: от спортивной шпаги до исторического фехтования и стрельбы из лука. Вся экипировка предоставляется бесплатно.</p>
+            <p>Мы не привязываем учеников к одному клубу. Главное для нас — научить побеждать. В наших залах более 19 направлений: от спортивной шпаги до исторического фехтования и стрельбы из лука. Вся экипировка предоставляется бесплатно.</p>
             <p>Наши залы находятся в 10 минутах от метро Соколиная Гора и Римская. Мы — спортивная организация, входящая в Федерацию Фехтования Москвы.</p>
         </div>
     </div>
