@@ -121,16 +121,25 @@
             margin-bottom: 50px;
             text-transform: uppercase;
         }
-        .directions-grid, .trainers-grid {
+        .directions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
+            justify-items: center;
+        }
+        .trainers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            justify-items: center;
         }
         .direction-card, .trainer-card {
             background: #111;
             padding: 30px 20px;
             text-align: center;
             border: 1px solid #222;
+            width: 100%;
+            max-width: 280px;
         }
         .direction-card h3 {
             font-family: 'Oswald', sans-serif;
@@ -206,6 +215,11 @@
             width: 100%;
             margin-top: 10px;
         }
+        @media (max-width: 900px) {
+            .directions-grid, .trainers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
         @media (max-width: 700px) {
             .header-inner {
                 flex-direction: column;
@@ -229,6 +243,10 @@
             }
             .logo-text {
                 font-size: 18px;
+            }
+            .directions-grid, .trainers-grid {
+                grid-template-columns: 1fr;
+                justify-items: center;
             }
         }
     </style>
