@@ -3,13 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wild Cards Fencing</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Wild Cards Fencing — Тренеры</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f2f5;
+            line-height: 1.6;
+        }
+        header {
+            background: #0a192f;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 32px;
+            letter-spacing: 2px;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav a {
+            color: white;
+            margin: 0 12px;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 12px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background: #e94560;
+            border-radius: 25px;
+        }
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            min-height: 55vh;
+        }
+        h2 {
+            text-align: center;
+            color: #0a192f;
+            margin-bottom: 30px;
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            width: 260px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .card .avatar {
+            font-size: 64px;
+            margin-bottom: 15px;
+        }
+        .card h3 {
+            color: #0a192f;
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .card .specialty {
+            color: #e94560;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        footer {
+            background: #0a192f;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <img src="https://via.placeholder.com/80" alt="Логотип">
-        <h1>Wild Cards Fencing</h1>
+        <h1>⚔️ Wild Cards Fencing</h1>
         <nav>
             <a href="index.html">Главная</a>
             <a href="about.html">О школе</a>
@@ -21,13 +107,40 @@
         </nav>
     </header>
     <main>
-        <h2>Наши тренеры</h2><p>Иванов Иван — тренер по рапире...</p>
-        <p>Школа фехтования для детей и взрослых. Начните свой путь в благородном спорте!</p>
-        <button id="openFormBtn">Записаться на пробное занятие</button>
+        <h2>Наши тренеры</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="avatar">🏅</div>
+                <h3>Алексей Соколов</h3>
+                <p>Мастер спорта по рапире</p>
+                <p>Стаж: 12 лет</p>
+                <p class="specialty">Рапира, взрослые группы</p>
+            </div>
+            <div class="card">
+                <div class="avatar">🏅</div>
+                <h3>Мария Волкова</h3>
+                <p>КМС по шпаге</p>
+                <p>Стаж: 8 лет</p>
+                <p class="specialty">Шпага, дети от 10 лет</p>
+            </div>
+            <div class="card">
+                <div class="avatar">🏅</div>
+                <h3>Дмитрий Орлов</h3>
+                <p>Мастер спорта по сабле</p>
+                <p>Стаж: 10 лет</p>
+                <p class="specialty">Сабля, начинающие и продвинутые</p>
+            </div>
+            <div class="card">
+                <div class="avatar">🏅</div>
+                <h3>Елена Новикова</h3>
+                <p>Инструктор HEMA</p>
+                <p>Стаж: 6 лет</p>
+                <p class="specialty">Историческое фехтование</p>
+            </div>
+        </div>
     </main>
     <footer>
-        <p>© 2025 Wild Cards Fencing</p>
+        <p>© 2025 Wild Cards Fencing | Все права защищены</p>
     </footer>
-    <script src="js/script.js"></script>
 </body>
 </html>
