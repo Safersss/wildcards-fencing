@@ -3,13 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wild Cards Fencing</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Wild Cards Fencing — Цены</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f2f5;
+            line-height: 1.6;
+        }
+        header {
+            background: #0a192f;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 32px;
+            letter-spacing: 2px;
+        }
+        nav {
+            margin-top: 15px;
+        }
+        nav a {
+            color: white;
+            margin: 0 12px;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 12px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background: #e94560;
+            border-radius: 25px;
+        }
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            min-height: 55vh;
+        }
+        h2 {
+            text-align: center;
+            color: #0a192f;
+            margin-bottom: 30px;
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            color: #0a192f;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        .price {
+            font-size: 32px;
+            font-weight: bold;
+            color: #e94560;
+            margin-bottom: 20px;
+        }
+        .card ul {
+            text-align: left;
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        .card li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .btn {
+            background: #e94560;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        footer {
+            background: #0a192f;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <img src="https://via.placeholder.com/80" alt="Логотип">
-        <h1>Wild Cards Fencing</h1>
+        <h1>⚔️ Wild Cards Fencing</h1>
         <nav>
             <a href="index.html">Главная</a>
             <a href="about.html">О школе</a>
@@ -21,13 +118,42 @@
         </nav>
     </header>
     <main>
-        <h2>Цены</h2><p>Пробное занятие — 500 руб. Абонемент на 8 занятий — 4000 руб.</p>
-        <p>Школа фехтования для детей и взрослых. Начните свой путь в благородном спорте!</p>
-        <button id="openFormBtn">Записаться на пробное занятие</button>
+        <h2>Цены на обучение</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Пробное занятие</h3>
+                <div class="price">500 ₽</div>
+                <ul>
+                    <li>✅ 1 занятие 1.5 часа</li>
+                    <li>✅ Экипировка входит</li>
+                    <li>✅ Знакомство с тренером</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='index.html'">Записаться</button>
+            </div>
+            <div class="card">
+                <h3>Абонемент на 8 занятий</h3>
+                <div class="price">4 000 ₽</div>
+                <ul>
+                    <li>✅ 8 занятий в месяц</li>
+                    <li>✅ Экипировка входит</li>
+                    <li>✅ Скидка на летние сборы</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='index.html'">Записаться</button>
+            </div>
+            <div class="card">
+                <h3>Абонемент на 12 занятий</h3>
+                <div class="price">5 500 ₽</div>
+                <ul>
+                    <li>✅ 12 занятий в месяц</li>
+                    <li>✅ Экипировка входит</li>
+                    <li>✅ Бесплатная консультация</li>
+                </ul>
+                <button class="btn" onclick="window.location.href='index.html'">Записаться</button>
+            </div>
+        </div>
     </main>
     <footer>
-        <p>© 2025 Wild Cards Fencing</p>
+        <p>© 2025 Wild Cards Fencing | Все права защищены</p>
     </footer>
-    <script src="js/script.js"></script>
 </body>
 </html>
