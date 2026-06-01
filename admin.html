@@ -4,90 +4,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Cards Fencing — Админ-панель</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: #0a0a0a;
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Arial, sans-serif;
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000000;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #fff;
+            line-height: 1.5;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 15px;
+            padding: 40px 20px;
         }
         h1 {
-            color: #d32f2f;
             font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
             margin-bottom: 20px;
+            text-transform: uppercase;
         }
-        select, button {
-            background: #333;
+        h1 span {
+            color: #d32f2f;
+        }
+        .sub {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 50px;
+        }
+        /* Карточки выбора страницы */
+        .page-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .page-btn {
+            background: #111;
+            border: 1px solid #222;
+            padding: 12px 24px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
             color: #fff;
-            border: 1px solid #555;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 8px;
             cursor: pointer;
-            margin-right: 10px;
+            transition: 0.2s;
+            text-transform: uppercase;
         }
-        button {
+        .page-btn.active {
             background: #d32f2f;
             border-color: #d32f2f;
         }
-        button:hover {
+        .page-btn:hover:not(.active) {
+            border-color: #d32f2f;
+        }
+        /* Секция редактора */
+        .editor-section {
+            background: #111;
+            border: 1px solid #222;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .save-btn {
+            background: #d32f2f;
+            color: #fff;
+            border: none;
+            padding: 12px 32px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+        .save-btn:hover {
             background: #b71c1c;
         }
         .status {
-            margin-top: 20px;
-            padding: 10px;
+            padding: 12px 20px;
             border-radius: 8px;
-            background: #2a2a2a;
             display: none;
+            margin-top: 20px;
         }
         .status.success {
             background: #1e4620;
             color: #8bc34a;
+            border: 1px solid #8bc34a;
         }
         .status.error {
             background: #5c1e1e;
             color: #ff8a80;
+            border: 1px solid #ff8a80;
         }
         .password-section {
+            max-width: 400px;
+            margin: 100px auto;
+            background: #111;
+            border: 1px solid #222;
+            padding: 40px;
+            text-align: center;
+        }
+        .password-section h2 {
+            font-family: 'Oswald', sans-serif;
             margin-bottom: 20px;
-            padding: 15px;
-            background: #2a2a2a;
-            border-radius: 10px;
         }
         .password-section input {
-            background: #333;
+            width: 100%;
+            padding: 12px;
+            background: #000;
+            border: 1px solid #333;
             color: #fff;
-            border: 1px solid #555;
-            padding: 8px;
-            border-radius: 5px;
-            margin-left: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .password-section button {
+            background: #d32f2f;
+            color: #fff;
+            border: none;
+            padding: 12px 32px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            color: #555;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 20px; }
+            h1 { font-size: 32px; }
+            .page-btn { padding: 8px 16px; font-size: 14px; }
+            .editor-section { padding: 20px; }
         }
     </style>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
-        // Расширенная конфигурация TinyMCE — максимально приближена к Word
+        let currentPage = 'index';
+        
+        // Максимально красивая конфигурация TinyMCE
         tinymce.init({
             selector: '#content',
-            height: 600,
+            height: 550,
             plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks | bold italic underline strikethrough | alignleft aligncenter alignright | outdent indent | numlist bullist | link image media | table | removeformat',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link image media | table | removeformat',
             toolbar_mode: 'wrap',
             language: 'ru',
             branding: false,
             statusbar: true,
             resize: true,
+            content_style: 'body { font-family: "Inter", Arial, sans-serif; font-size: 16px; line-height: 1.5; background: #1a1a1a; color: #fff; padding: 20px; }',
             image_title: true,
-            automatic_uploads: true,
+            automatic_uploads: false,
             file_picker_types: 'image',
-            /* Простая вставка картинок (попросим вставить URL) */
             file_picker_callback: (cb, value, meta) => {
                 const input = document.createElement('input');
                 input.setAttribute('type', 'text');
@@ -102,7 +188,7 @@
                 dialog.style.top = '50%';
                 dialog.style.left = '50%';
                 dialog.style.transform = 'translate(-50%, -50%)';
-                dialog.style.background = '#2a2a2a';
+                dialog.style.background = '#1a1a1a';
                 dialog.style.padding = '20px';
                 dialog.style.borderRadius = '10px';
                 dialog.style.border = '1px solid #d32f2f';
@@ -117,99 +203,116 @@
             }
         });
         
-        let currentPage = 'index';
-        
         async function loadPage(page) {
             currentPage = page;
-            document.getElementById('status').style.display = 'none';
+            document.querySelectorAll('.page-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-page') === page) btn.classList.add('active');
+            });
+            showStatus('Загрузка...', 'info');
             try {
                 const response = await fetch(`${page}.html`);
                 if (!response.ok) throw new Error('Страница не найдена');
-                const html = await response.text();
-                // Извлекаем текст внутри <body> (упрощённо)
+                let html = await response.text();
                 const bodyMatch = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
                 let content = bodyMatch ? bodyMatch[1] : html;
-                // Убираем лишние скрипты и стили
                 content = content.replace(/<script[\s\S]*?<\/script>/gi, '');
                 content = content.replace(/<style[\s\S]*?<\/style>/gi, '');
                 tinymce.activeEditor.setContent(content);
-                document.getElementById('status').className = 'status success';
-                document.getElementById('status').textContent = `Загружено: ${page}.html`;
-                document.getElementById('status').style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById('status').style.display = 'none';
-                }, 2000);
+                showStatus(`✅ Загружено: ${page}.html`, 'success');
             } catch (error) {
-                document.getElementById('status').className = 'status error';
-                document.getElementById('status').textContent = 'Ошибка загрузки: ' + error.message;
-                document.getElementById('status').style.display = 'block';
+                showStatus('❌ Ошибка загрузки: ' + error.message, 'error');
             }
         }
         
         async function savePage() {
             const content = tinymce.activeEditor.getContent();
-            document.getElementById('status').style.display = 'none';
-            document.getElementById('saveBtn').disabled = true;
-            document.getElementById('saveBtn').textContent = 'Сохраняю...';
+            const saveBtn = document.getElementById('saveBtn');
+            saveBtn.disabled = true;
+            saveBtn.textContent = 'Сохраняю...';
+            showStatus('Сохранение...', 'info');
             try {
-                // Здесь будем сохранять через серверную часть позже
-                // Пока показываем, что нужно сохранить
+                // Пока сохраняем в localStorage + показываем, что нужно сделать финальную настройку
                 localStorage.setItem(`content_${currentPage}`, content);
-                document.getElementById('status').className = 'status success';
-                document.getElementById('status').textContent = `Текст сохранён локально. После настройки сервера отправится на сайт.`;
-                document.getElementById('status').style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById('status').style.display = 'none';
-                }, 3000);
+                showStatus(`✅ Текст страницы ${currentPage}.html сохранён локально. После настройки сервера изменения отправятся на сайт.`, 'success');
             } catch (error) {
-                document.getElementById('status').className = 'status error';
-                document.getElementById('status').textContent = 'Ошибка сохранения: ' + error.message;
-                document.getElementById('status').style.display = 'block';
+                showStatus('❌ Ошибка сохранения: ' + error.message, 'error');
             }
-            document.getElementById('saveBtn').disabled = false;
-            document.getElementById('saveBtn').textContent = 'Сохранить изменения';
+            saveBtn.disabled = false;
+            saveBtn.textContent = '💾 Сохранить изменения';
+        }
+        
+        function showStatus(msg, type) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = msg;
+            statusDiv.className = `status ${type}`;
+            statusDiv.style.display = 'block';
+            if (type !== 'error') {
+                setTimeout(() => {
+                    statusDiv.style.display = 'none';
+                }, 3000);
+            }
         }
         
         function checkPassword() {
             const pwd = document.getElementById('adminPassword').value;
-            const correct = 'WCF2025'; // Простой пароль — потом сменим
+            const correct = 'WCF2025';
             if (pwd === correct) {
                 document.getElementById('passwordSection').style.display = 'none';
-                document.getElementById('editorSection').style.display = 'block';
+                document.getElementById('mainEditor').style.display = 'block';
                 loadPage('index');
             } else {
-                alert('Неверный пароль');
+                alert('❌ Неверный пароль');
             }
+        }
+        
+        function logout() {
+            document.getElementById('passwordSection').style.display = 'block';
+            document.getElementById('mainEditor').style.display = 'none';
+            document.getElementById('adminPassword').value = '';
         }
     </script>
 </head>
 <body>
-    <div class="container">
-        <h1>⚔️ Админ-панель Wild Cards Fencing</h1>
-        
-        <div id="passwordSection" class="password-section">
-            <label>🔒 Введите пароль для входа:
-                <input type="password" id="adminPassword" placeholder="Пароль">
-            </label>
-            <button onclick="checkPassword()">Войти</button>
-        </div>
-        
-        <div id="editorSection" style="display: none;">
-            <div>
-                <label>Выберите страницу для редактирования: </label>
-                <select id="pageSelect" onchange="loadPage(this.value)">
-                    <option value="index">Главная</option>
-                    <option value="about">О школе</option>
-                    <option value="contacts">Контакты</option>
-                </select>
-                <button id="saveBtn" onclick="savePage()">Сохранить изменения</button>
+    <!-- Страница входа с паролем -->
+    <div id="passwordSection" class="password-section">
+        <h2>⚔️ WILD CARDS FENCING</h2>
+        <p style="margin-bottom: 20px; color: #aaa;">Введите пароль для входа в админ-панель</p>
+        <input type="password" id="adminPassword" placeholder="Пароль">
+        <button onclick="checkPassword()">Войти</button>
+    </div>
+
+    <!-- Основной редактор (скрыт до входа) -->
+    <div id="mainEditor" style="display: none;">
+        <div class="container">
+            <h1>Админ-панель <span>WCF</span></h1>
+            <div class="sub">📝 Редактируй текст как в Word — изменения сохраняются локально</div>
+
+            <!-- Карточки выбора страницы -->
+            <div class="page-selector">
+                <div class="page-btn active" data-page="index" onclick="loadPage('index')">Главная</div>
+                <div class="page-btn" data-page="about" onclick="loadPage('about')">О школе</div>
+                <div class="page-btn" data-page="contacts" onclick="loadPage('contacts')">Контакты</div>
             </div>
-            <div style="margin-top: 20px;">
+
+            <!-- Редактор -->
+            <div class="editor-section">
+                <div class="editor-header">
+                    <span style="font-family: 'Oswald'; color: #d32f2f;">Редактирование страницы</span>
+                    <button id="saveBtn" class="save-btn" onclick="savePage()">💾 Сохранить изменения</button>
+                </div>
                 <textarea id="content"></textarea>
+                <div id="status" class="status"></div>
+                <p style="margin-top: 20px; font-size: 12px; color: #666;">ℹ️ Изменения пока сохраняются локально. После настройки сервера они будут отправляться на сайт.</p>
             </div>
-            <div id="status" class="status"></div>
-            <p style="margin-top: 20px; font-size: 12px; color: #888;">✅ Редактор работает как Word. Пока изменения сохраняются локально. После финальной настройки будут отправляться на сайт.</p>
+
+            <button onclick="logout()" style="background: #222; border: 1px solid #d32f2f; color: #fff; padding: 8px 20px; cursor: pointer; margin-top: 10px;">Выйти из админки</button>
         </div>
+        <footer>
+            <div class="container">
+                <p>© 2025 Wild Cards Fencing | Админ-панель</p>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
