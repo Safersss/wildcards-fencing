@@ -87,6 +87,7 @@
             cursor: pointer;
             transition: 0.2s;
             border-radius: 15px;
+            text-align: left;
         }
         .page-card:hover {
             border-color: #d32f2f;
@@ -146,6 +147,10 @@
                 <h3>📞 Контакты</h3>
                 <p>Редактировать телефоны, адреса, почту</p>
             </div>
+            <div class="page-card" onclick="openEditor('trainers')">
+                <h3>👥 Тренеры</h3>
+                <p>Редактировать список и фото тренеров</p>
+            </div>
         </div>
     </div>
     <footer>
@@ -172,7 +177,6 @@
         }
         
         function openEditor(page) {
-            // Открываем редактор для выбранной страницы в новом окне
             window.location.href = `edit-${page}.html`;
         }
     </script>
