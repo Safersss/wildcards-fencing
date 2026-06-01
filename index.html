@@ -176,6 +176,7 @@
             text-align: center;
             color: #555;
         }
+        /* Стили модального окна */
         .modal {
             display: none;
             position: fixed;
@@ -188,6 +189,7 @@
             max-width: 400px;
             z-index: 1000;
             border: 1px solid #333;
+            border-radius: 15px;
         }
         .overlay {
             display: none;
@@ -206,14 +208,43 @@
             background: #000;
             border: 1px solid #333;
             color: #fff;
+            border-radius: 8px;
+        }
+        .modal select {
+            height: auto;
         }
         .modal label {
-            display: block;
-            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+            cursor: pointer;
+        }
+        .modal input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            cursor: pointer;
+        }
+        .modal label span {
+            color: #ccc;
         }
         .modal .btn {
             width: 100%;
-            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        #closeModal {
+            width: 100%;
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #closeModal:hover {
+            background: #555;
         }
         @media (max-width: 900px) {
             .directions-grid, .trainers-grid {
@@ -317,15 +348,25 @@
 
     <div class="overlay" id="overlay"></div>
     <div class="modal" id="modal">
-        <h3>Запись на пробное занятие</h3>
+        <h3 style="color: #fff; text-align: center; margin-bottom: 20px;">Запись на пробное занятие</h3>
         <input type="text" id="name" placeholder="ФИО">
         <input type="tel" id="phone" placeholder="Телефон">
-        <select id="direction">
-            <option>Рапира</option><option>Шпага</option><option>Сабля</option><option>HEMA</option>
+        <select id="direction" size="5" style="height: auto;">
+            <option>Рапира</option>
+            <option>Шпага</option>
+            <option>Сабля</option>
+            <option>HEMA</option>
+            <option>СМБ</option>
+            <option>Лук</option>
+            <option>Артистическое фехтование</option>
+            <option>Саберфайтинг</option>
         </select>
-        <label><input type="checkbox" id="consent"> Я соглашаюсь на обработку данных</label>
+        <label>
+            <input type="checkbox" id="consent">
+            <span>Я соглашаюсь на обработку персональных данных</span>
+        </label>
         <button class="btn" id="submitForm">Отправить</button>
-        <button id="closeModal" style="background:#222; margin-top:10px;">Закрыть</button>
+        <button id="closeModal">Закрыть</button>
     </div>
 
     <script>
