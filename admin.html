@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Wild Cards Fencing — Админ-панель</title>
+    <!-- 1. Подключаем сам TinyMCE через облако (это бесплатно) [citation:7] -->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        // 2. Ждём загрузки страницы и инициализируем редактор на textarea [citation:2]
+        tinymce.init({
+            selector: '#content',
+            height: 500,
+            plugins: 'lists link image',
+            toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright | bullist numlist | link image',
+            // Устанавливаем русский язык интерфейса [citation:2]
+            language: 'ru'
+        });
+    </script>
+</head>
+<body>
+    <!-- Простая форма для редактирования -->
+    <h1>Редактирование главной страницы</h1>
+    <form method="post" action="/save-page">
+        <textarea id="content" name="content">
+            <h2>Добро пожаловать в Wild Cards Fencing!</h2>
+            <p>Здесь будет текст, который Алексей увидит в редакторе и сможет поменять.</p>
+        </textarea>
+        <button type="submit">Сохранить изменения</button>
+    </form>
+</body>
+</html>
