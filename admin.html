@@ -2,30 +2,214 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Cards Fencing — Админ-панель</title>
-    <!-- 1. Подключаем сам TinyMCE через облако (это бесплатно) [citation:7] -->
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+        }
+        h1 {
+            color: #d32f2f;
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 20px;
+        }
+        select, button {
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button {
+            background: #d32f2f;
+            border-color: #d32f2f;
+        }
+        button:hover {
+            background: #b71c1c;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            background: #2a2a2a;
+            display: none;
+        }
+        .status.success {
+            background: #1e4620;
+            color: #8bc34a;
+        }
+        .status.error {
+            background: #5c1e1e;
+            color: #ff8a80;
+        }
+        .password-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #2a2a2a;
+            border-radius: 10px;
+        }
+        .password-section input {
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+            padding: 8px;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+    </style>
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
-        // 2. Ждём загрузки страницы и инициализируем редактор на textarea [citation:2]
+        // Расширенная конфигурация TinyMCE — максимально приближена к Word
         tinymce.init({
             selector: '#content',
-            height: 500,
-            plugins: 'lists link image',
-            toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright | bullist numlist | link image',
-            // Устанавливаем русский язык интерфейса [citation:2]
-            language: 'ru'
+            height: 600,
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks | bold italic underline strikethrough | alignleft aligncenter alignright | outdent indent | numlist bullist | link image media | table | removeformat',
+            toolbar_mode: 'wrap',
+            language: 'ru',
+            branding: false,
+            statusbar: true,
+            resize: true,
+            image_title: true,
+            automatic_uploads: true,
+            file_picker_types: 'image',
+            /* Простая вставка картинок (попросим вставить URL) */
+            file_picker_callback: (cb, value, meta) => {
+                const input = document.createElement('input');
+                input.setAttribute('type', 'text');
+                input.setAttribute('placeholder', 'Введите URL картинки');
+                input.style.width = '300px';
+                input.style.padding = '8px';
+                const confirmBtn = document.createElement('button');
+                confirmBtn.textContent = 'Вставить';
+                confirmBtn.style.marginLeft = '10px';
+                const dialog = document.createElement('div');
+                dialog.style.position = 'fixed';
+                dialog.style.top = '50%';
+                dialog.style.left = '50%';
+                dialog.style.transform = 'translate(-50%, -50%)';
+                dialog.style.background = '#2a2a2a';
+                dialog.style.padding = '20px';
+                dialog.style.borderRadius = '10px';
+                dialog.style.border = '1px solid #d32f2f';
+                dialog.style.zIndex = 10000;
+                dialog.appendChild(input);
+                dialog.appendChild(confirmBtn);
+                document.body.appendChild(dialog);
+                confirmBtn.onclick = () => {
+                    cb(input.value);
+                    document.body.removeChild(dialog);
+                };
+            }
         });
+        
+        let currentPage = 'index';
+        
+        async function loadPage(page) {
+            currentPage = page;
+            document.getElementById('status').style.display = 'none';
+            try {
+                const response = await fetch(`${page}.html`);
+                if (!response.ok) throw new Error('Страница не найдена');
+                const html = await response.text();
+                // Извлекаем текст внутри <body> (упрощённо)
+                const bodyMatch = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
+                let content = bodyMatch ? bodyMatch[1] : html;
+                // Убираем лишние скрипты и стили
+                content = content.replace(/<script[\s\S]*?<\/script>/gi, '');
+                content = content.replace(/<style[\s\S]*?<\/style>/gi, '');
+                tinymce.activeEditor.setContent(content);
+                document.getElementById('status').className = 'status success';
+                document.getElementById('status').textContent = `Загружено: ${page}.html`;
+                document.getElementById('status').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('status').style.display = 'none';
+                }, 2000);
+            } catch (error) {
+                document.getElementById('status').className = 'status error';
+                document.getElementById('status').textContent = 'Ошибка загрузки: ' + error.message;
+                document.getElementById('status').style.display = 'block';
+            }
+        }
+        
+        async function savePage() {
+            const content = tinymce.activeEditor.getContent();
+            document.getElementById('status').style.display = 'none';
+            document.getElementById('saveBtn').disabled = true;
+            document.getElementById('saveBtn').textContent = 'Сохраняю...';
+            try {
+                // Здесь будем сохранять через серверную часть позже
+                // Пока показываем, что нужно сохранить
+                localStorage.setItem(`content_${currentPage}`, content);
+                document.getElementById('status').className = 'status success';
+                document.getElementById('status').textContent = `Текст сохранён локально. После настройки сервера отправится на сайт.`;
+                document.getElementById('status').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('status').style.display = 'none';
+                }, 3000);
+            } catch (error) {
+                document.getElementById('status').className = 'status error';
+                document.getElementById('status').textContent = 'Ошибка сохранения: ' + error.message;
+                document.getElementById('status').style.display = 'block';
+            }
+            document.getElementById('saveBtn').disabled = false;
+            document.getElementById('saveBtn').textContent = 'Сохранить изменения';
+        }
+        
+        function checkPassword() {
+            const pwd = document.getElementById('adminPassword').value;
+            const correct = 'WCF2025'; // Простой пароль — потом сменим
+            if (pwd === correct) {
+                document.getElementById('passwordSection').style.display = 'none';
+                document.getElementById('editorSection').style.display = 'block';
+                loadPage('index');
+            } else {
+                alert('Неверный пароль');
+            }
+        }
     </script>
 </head>
 <body>
-    <!-- Простая форма для редактирования -->
-    <h1>Редактирование главной страницы</h1>
-    <form method="post" action="/save-page">
-        <textarea id="content" name="content">
-            <h2>Добро пожаловать в Wild Cards Fencing!</h2>
-            <p>Здесь будет текст, который Алексей увидит в редакторе и сможет поменять.</p>
-        </textarea>
-        <button type="submit">Сохранить изменения</button>
-    </form>
+    <div class="container">
+        <h1>⚔️ Админ-панель Wild Cards Fencing</h1>
+        
+        <div id="passwordSection" class="password-section">
+            <label>🔒 Введите пароль для входа:
+                <input type="password" id="adminPassword" placeholder="Пароль">
+            </label>
+            <button onclick="checkPassword()">Войти</button>
+        </div>
+        
+        <div id="editorSection" style="display: none;">
+            <div>
+                <label>Выберите страницу для редактирования: </label>
+                <select id="pageSelect" onchange="loadPage(this.value)">
+                    <option value="index">Главная</option>
+                    <option value="about">О школе</option>
+                    <option value="contacts">Контакты</option>
+                </select>
+                <button id="saveBtn" onclick="savePage()">Сохранить изменения</button>
+            </div>
+            <div style="margin-top: 20px;">
+                <textarea id="content"></textarea>
+            </div>
+            <div id="status" class="status"></div>
+            <p style="margin-top: 20px; font-size: 12px; color: #888;">✅ Редактор работает как Word. Пока изменения сохраняются локально. После финальной настройки будут отправляться на сайт.</p>
+        </div>
+    </div>
 </body>
 </html>
