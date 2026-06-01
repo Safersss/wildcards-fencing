@@ -4,281 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Cards Fencing — школа фехтования</title>
-    <link href="https://script.google.com/macros/s/AKfycby5pEIRmF8zilPZlVnBqzhd6e3eACfCyUkvfHzUIDoxYXIX3poyxvHerevO1x8WOX9l/exec">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: #000000;
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-            color: #fff;
-            line-height: 1.5;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        header {
-            padding: 20px 0;
-            border-bottom: 1px solid #222;
-        }
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-        }
-        .logo img {
-            height: 50px;
-            width: auto;
-            display: block;
-        }
-        .logo-text {
-            font-family: 'Oswald', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #fff;
-            text-transform: uppercase;
-            line-height: 1.2;
-        }
-        .logo-text span {
-            color: #d32f2f;
-        }
-        nav a {
-            font-family: 'Oswald', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: #fff;
-            text-decoration: none;
-            margin-left: 30px;
-            transition: 0.2s;
-            text-transform: uppercase;
-        }
-        nav a:first-child {
-            margin-left: 0;
-        }
-        nav a:hover {
-            color: #d32f2f;
-        }
-        .hero {
-            text-align: center;
-            padding: 100px 0 120px;
-        }
-        .hero h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 80px;
-            font-weight: 700;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-        .hero h1 span {
-            color: #d32f2f;
-        }
-        .hero p {
-            font-size: 20px;
-            color: #aaa;
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-        .btn {
-            background: #d32f2f;
-            color: #fff;
-            border: none;
-            padding: 14px 36px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 20px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .btn:hover {
-            background: #b71c1c;
-        }
-        .section {
-            padding: 80px 0;
-            border-top: 1px solid #222;
-        }
-        .section h2 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 48px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-align: center;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-        }
-        .directions-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            justify-items: center;
-        }
-        .trainers-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            justify-items: center;
-        }
-        .direction-card, .trainer-card {
-            background: #111;
-            padding: 30px 20px;
-            text-align: center;
-            border: 1px solid #222;
-            width: 100%;
-            max-width: 280px;
-        }
-        .direction-card h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 28px;
-            font-weight: 600;
-            margin: 15px 0 10px;
-            text-transform: uppercase;
-        }
-        .direction-card p {
-            color: #aaa;
-            font-size: 16px;
-        }
-        .trainer-card img {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-        .trainer-card h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
-        .trainer-card p {
-            color: #aaa;
-            margin-top: 5px;
-            font-size: 14px;
-        }
-        footer {
-            border-top: 1px solid #222;
-            padding: 40px 0;
-            text-align: center;
-            color: #555;
-        }
-        /* Стили модального окна */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #111;
-            padding: 30px;
-            width: 90%;
-            max-width: 400px;
-            z-index: 1000;
-            border: 1px solid #333;
-            border-radius: 15px;
-        }
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 999;
-        }
-        .modal input, .modal select {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            background: #000;
-            border: 1px solid #333;
-            color: #fff;
-            border-radius: 8px;
-        }
-        .modal select {
-            height: auto;
-        }
-        .modal label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 15px 0;
-            cursor: pointer;
-        }
-        .modal input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            margin: 0;
-            cursor: pointer;
-        }
-        .modal label span {
-            color: #ccc;
-        }
-        .modal .btn {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-        #closeModal {
-            width: 100%;
-            background: #333;
-            color: #fff;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        #closeModal:hover {
-            background: #555;
-        }
-        @media (max-width: 900px) {
-            .directions-grid, .trainers-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #000000; font-family: 'Inter', 'Segoe UI', sans-serif; color: #fff; line-height: 1.5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { padding: 20px 0; border-bottom: 1px solid #222; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo img { height: 50px; width: auto; display: block; }
+        .logo-text { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 2px; color: #fff; text-transform: uppercase; line-height: 1.2; }
+        .logo-text span { color: #d32f2f; }
+        nav a { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: #fff; text-decoration: none; margin-left: 30px; transition: 0.2s; text-transform: uppercase; }
+        nav a:first-child { margin-left: 0; }
+        nav a:hover { color: #d32f2f; }
+        .hero { text-align: center; padding: 100px 0 120px; }
+        .hero h1 { font-family: 'Oswald', sans-serif; font-size: 80px; font-weight: 700; letter-spacing: 4px; margin-bottom: 20px; text-transform: uppercase; }
+        .hero h1 span { color: #d32f2f; }
+        .hero p { font-size: 20px; color: #aaa; max-width: 600px; margin: 0 auto 30px; }
+        .btn { background: #d32f2f; color: #fff; border: none; padding: 14px 36px; font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: 0.2s; display: inline-block; }
+        .btn:hover { background: #b71c1c; }
+        .section { padding: 80px 0; border-top: 1px solid #222; }
+        .section h2 { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; letter-spacing: 2px; text-align: center; margin-bottom: 50px; text-transform: uppercase; }
+        .directions-grid, .trainers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; justify-items: center; margin-bottom: 40px; }
+        .direction-card, .trainer-card { background: #111; padding: 30px 20px; text-align: center; border: 1px solid #222; width: 100%; max-width: 280px; }
+        .direction-card h3 { font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 600; margin: 15px 0 10px; text-transform: uppercase; }
+        .direction-card p { color: #aaa; font-size: 16px; }
+        .trainer-card img { width: 180px; height: 180px; object-fit: cover; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }
+        .trainer-card h3 { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; text-align: center; }
+        .trainer-card p { color: #aaa; margin-top: 8px; font-size: 14px; text-align: center; }
+        footer { border-top: 1px solid #222; padding: 40px 0; text-align: center; color: #555; }
+        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #111; padding: 30px; width: 90%; max-width: 400px; z-index: 1000; border: 1px solid #333; border-radius: 15px; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 999; }
+        .modal input, .modal select { width: 100%; padding: 12px; margin: 10px 0; background: #000; border: 1px solid #333; color: #fff; border-radius: 8px; }
+        .modal select { height: auto; }
+        .modal label { display: flex; align-items: center; gap: 10px; margin: 15px 0; cursor: pointer; }
+        .modal input[type="checkbox"] { width: 18px; height: 18px; margin: 0; cursor: pointer; }
+        .modal label span { color: #ccc; }
+        .modal .btn { width: 100%; margin-bottom: 10px; }
+        #closeModal { width: 100%; background: #333; color: #fff; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-size: 16px; }
+        #closeModal:hover { background: #555; }
+        .center-btn { text-align: center; margin-top: 20px; }
+        @media (max-width: 900px) { .directions-grid, .trainers-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 700px) {
-            .header-inner {
-                flex-direction: column;
-                gap: 15px;
-            }
-            nav a {
-                margin: 0 12px;
-                font-size: 14px;
-            }
-            nav a:first-child {
-                margin-left: 12px;
-            }
-            .hero h1 {
-                font-size: 48px;
-            }
-            .section h2 {
-                font-size: 32px;
-            }
-            .logo img {
-                height: 40px;
-            }
-            .logo-text {
-                font-size: 18px;
-            }
-            .directions-grid, .trainers-grid {
-                grid-template-columns: 1fr;
-                justify-items: center;
-            }
+            .header-inner { flex-direction: column; gap: 15px; }
+            nav a { margin: 0 12px; font-size: 14px; }
+            nav a:first-child { margin-left: 12px; }
+            .hero h1 { font-size: 48px; }
+            .section h2 { font-size: 32px; }
+            .logo img { height: 40px; }
+            .logo-text { font-size: 18px; }
+            .directions-grid, .trainers-grid { grid-template-columns: 1fr; justify-items: center; }
         }
     </style>
 </head>
@@ -306,7 +82,7 @@
         <section class="hero">
             <h1>WILD <span>CARDS</span><br>FENCING</h1>
             <p>Школа фехтования для детей и взрослых. От Средневековья до современности.</p>
-            <button class="btn" id="openFormBtn">Записаться на пробное занятие</button>
+            <div class="center-btn"><button class="btn" id="openFormBtn">Записаться на пробное занятие</button></div>
         </section>
 
         <section class="section">
@@ -319,9 +95,7 @@
                 <div class="direction-card"><h3>⭐ СМБ</h3><p>Современный мечевой бой</p></div>
                 <div class="direction-card"><h3>🏹 Лук</h3><p>Стрельба из традиционного лука</p></div>
             </div>
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="directions.html" class="btn" style="display: inline-block; text-decoration: none;">📋 Все направления →</a>
-            </div>
+            <div class="center-btn"><a href="directions.html" class="btn" style="display: inline-block; text-decoration: none;">📋 Все направления →</a></div>
         </section>
 
         <section class="section">
@@ -334,9 +108,7 @@
                 <div class="trainer-card"><img src="img/gagik-oganesyan.jpg" alt="Гагик"><h3>Гагик</h3><p>Шпага</p></div>
                 <div class="trainer-card"><img src="img/max-kiselev.jpg" alt="Макс"><h3>Макс</h3><p>Методолог</p></div>
             </div>
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="trainers.html" class="btn" style="display: inline-block; text-decoration: none;">👥 Все тренеры →</a>
-            </div>
+            <div class="center-btn"><a href="trainers.html" class="btn" style="display: inline-block; text-decoration: none;">👥 Все тренеры →</a></div>
         </section>
     </div>
 
@@ -348,30 +120,21 @@
 
     <div class="overlay" id="overlay"></div>
     <div class="modal" id="modal">
-        <h3 style="color: #fff; text-align: center; margin-bottom: 20px;">Запись на пробное занятие</h3>
+        <h3 style="color:#fff; text-align:center; margin-bottom:20px;">Запись на пробное занятие</h3>
         <input type="text" id="name" placeholder="ФИО">
         <input type="tel" id="phone" placeholder="Телефон">
-        <select id="direction" size="5" style="height: auto;">
-            <option>Рапира</option>
-            <option>Шпага</option>
-            <option>Сабля</option>
-            <option>HEMA</option>
-            <option>СМБ</option>
-            <option>Лук</option>
-            <option>Артистическое фехтование</option>
-            <option>Саберфайтинг</option>
+        <select id="direction" size="5" style="height:auto;">
+            <option>Рапира</option><option>Шпага</option><option>Сабля</option><option>HEMA</option>
+            <option>СМБ</option><option>Лук</option><option>Артистическое фехтование</option><option>Саберфайтинг</option>
         </select>
-        <label>
-            <input type="checkbox" id="consent">
-            <span>Я соглашаюсь на обработку персональных данных</span>
-        </label>
+        <label><input type="checkbox" id="consent"><span>Я соглашаюсь на обработку персональных данных</span></label>
         <button class="btn" id="submitForm">Отправить</button>
         <button id="closeModal">Закрыть</button>
     </div>
 
     <script>
-        // ВСТАВЬ СЮДА СВОЮ ССЫЛКУ НА GOOGLE APPS SCRIPT
-        const SCRIPT_URL = 'https://script.google.com/macros/s/ТВОЙ_НОВЫЙ_URL/exec';
+        // ⚠️ ВСТАВЬ СЮДА СВОЮ ССЫЛКУ НА GOOGLE APPS SCRIPT ⚠️
+        const SCRIPT_URL = 'https://script.google.com/macros/s/ТВОЙ_URL/exec';
         
         const modal = document.getElementById('modal');
         const overlay = document.getElementById('overlay');
@@ -379,43 +142,28 @@
         const closeBtn = document.getElementById('closeModal');
         const submitBtn = document.getElementById('submitForm');
 
-        openBtn.onclick = () => {
-            modal.style.display = 'block';
-            overlay.style.display = 'block';
-        };
-        closeBtn.onclick = () => {
-            modal.style.display = 'none';
-            overlay.style.display = 'none';
-        };
-        overlay.onclick = () => {
-            modal.style.display = 'none';
-            overlay.style.display = 'none';
-        };
+        openBtn.onclick = () => { modal.style.display = 'block'; overlay.style.display = 'block'; };
+        closeBtn.onclick = () => { modal.style.display = 'none'; overlay.style.display = 'none'; };
+        overlay.onclick = () => { modal.style.display = 'none'; overlay.style.display = 'none'; };
+        
         submitBtn.onclick = async () => {
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const direction = document.getElementById('direction').value;
             const consent = document.getElementById('consent').checked;
             if (!name || !phone || !consent) {
-                alert('Заполните все поля и дайте согласие на обработку данных');
+                alert('Заполните все поля и дайте согласие');
                 return;
             }
             try {
-                await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, phone, direction })
-                });
-                alert('Заявка отправлена! Мы свяжемся с вами.');
+                await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ name, phone, direction }) });
+                alert('Заявка отправлена!');
                 modal.style.display = 'none';
                 overlay.style.display = 'none';
                 document.getElementById('name').value = '';
                 document.getElementById('phone').value = '';
                 document.getElementById('consent').checked = false;
-            } catch (error) {
-                alert('Ошибка отправки. Попробуйте позже.');
-            }
+            } catch(e) { alert('Ошибка отправки'); }
         };
     </script>
 </body>
