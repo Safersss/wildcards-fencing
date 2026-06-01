@@ -6,76 +6,305 @@
     <title>Wild Cards Fencing — Редактор «О школе»</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #000000; font-family: 'Inter', 'Segoe UI', sans-serif; color: #fff; line-height: 1.5; }
-        
-        .admin-bar { position: sticky; top: 0; background: #0a0a0a; border-bottom: 2px solid #d32f2f; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; z-index: 1000; }
-        .admin-bar button { background: #d32f2f; color: #fff; border: none; padding: 10px 24px; font-family: 'Oswald', sans-serif; font-size: 16px; cursor: pointer; border-radius: 5px; }
-        .admin-bar button:hover { background: #b71c1c; }
-        .admin-bar .status { color: #8bc34a; font-size: 14px; }
-        
-        [contenteditable="true"] { outline: none; transition: 0.1s; padding: 4px; border-radius: 8px; display: inline-block; width: 100%; }
-        [contenteditable="true"]:hover { background: rgba(211, 47, 47, 0.15); box-shadow: 0 0 0 1px #d32f2f; }
-        [contenteditable="true"]:focus { background: rgba(211, 47, 47, 0.25); box-shadow: 0 0 0 2px #d32f2f; }
-        
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        header { padding: 20px 0; border-bottom: 1px solid #222; }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .logo img { height: 50px; width: auto; display: block; }
-        .logo-text { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 2px; color: #fff; text-transform: uppercase; line-height: 1.2; }
-        .logo-text span { color: #d32f2f; }
-        nav a { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: #fff; text-decoration: none; margin-left: 30px; transition: 0.2s; text-transform: uppercase; }
-        nav a:first-child { margin-left: 0; }
-        nav a:hover { color: #d32f2f; }
-        
-        h1 { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; text-align: center; margin: 60px 0 40px; text-transform: uppercase; }
-        h1 span { color: #d32f2f; }
-        
-        .content { background: #111; padding: 40px; border: 1px solid #222; margin-bottom: 60px; border-radius: 15px; }
-        .content p { margin-bottom: 20px; font-size: 18px; color: #ccc; line-height: 1.6; }
-        
-        footer { border-top: 1px solid #222; padding: 40px 0; text-align: center; color: #555; }
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000000;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #fff;
+            line-height: 1.5;
+        }
+        .admin-bar {
+            position: sticky;
+            top: 0;
+            background: #0a0a0a;
+            border-bottom: 2px solid #d32f2f;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            z-index: 1000;
+        }
+        .admin-bar button {
+            background: #d32f2f;
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .admin-bar button:hover {
+            background: #b71c1c;
+        }
+        .admin-bar .status {
+            color: #8bc34a;
+            font-size: 14px;
+        }
+        [contenteditable="true"] {
+            outline: none;
+            transition: 0.1s;
+            padding: 4px;
+            border-radius: 8px;
+            display: inline-block;
+            width: 100%;
+        }
+        [contenteditable="true"]:hover {
+            background: rgba(211, 47, 47, 0.15);
+            box-shadow: 0 0 0 1px #d32f2f;
+        }
+        [contenteditable="true"]:focus {
+            background: rgba(211, 47, 47, 0.25);
+            box-shadow: 0 0 0 2px #d32f2f;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #222;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        .logo img {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+        .logo-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        .logo-text span {
+            color: #d32f2f;
+        }
+        nav a {
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+        nav a:first-child {
+            margin-left: 0;
+        }
+        nav a:hover {
+            color: #d32f2f;
+        }
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin: 60px 0 40px;
+            text-transform: uppercase;
+        }
+        h1 span {
+            color: #d32f2f;
+        }
+        .content {
+            background: #111;
+            padding: 40px;
+            border: 1px solid #222;
+            margin-bottom: 60px;
+            border-radius: 15px;
+        }
+        .content p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #ccc;
+            line-height: 1.6;
+            text-align: left;
+        }
+        footer {
+            border-top: 1px solid #222;
+            padding: 40px 0;
+            text-align: center;
+            color: #555;
+        }
         @media (max-width: 700px) {
-            .header-inner { flex-direction: column; gap: 15px; }
-            nav a { margin: 0 12px; font-size: 14px; }
-            h1 { font-size: 32px; }
-            .logo img { height: 40px; }
-            .logo-text { font-size: 18px; }
-            .content { padding: 25px; }
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav a {
+                margin: 0 12px;
+                font-size: 14px;
+            }
+            nav a:first-child {
+                margin-left: 12px;
+            }
+            h1 {
+                font-size: 32px;
+            }
+            .logo img {
+                height: 40px;
+            }
+            .logo-text {
+                font-size: 18px;
+            }
+            .content {
+                padding: 25px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="admin-bar">
-        <div>🔧 <strong>Редактор страницы «О школе»</strong> — кликни на текст, измени его, потом нажми «Сохранить»</div>
-        <div><button id="saveBtn">💾 Сохранить изменения</button> <span id="statusMsg" class="status"></span></div>
+        <div>🔧 <strong>Редактор страницы «О школе»</strong> — кликни на текст, измени его.</div>
+        <div>
+            <button id="copyBtn">📋 Копировать HTML</button>
+            <button id="publishBtn">🚀 Опубликовать на GitHub</button>
+            <span id="statusMsg" class="status"></span>
+        </div>
     </div>
+
     <div class="container">
         <header>
             <div class="header-inner">
-                <a href="index.html" class="logo"><img src="logo.jpg" alt="Wild Cards Fencing"><div class="logo-text">WILD <span contenteditable="true" id="logo_accent">CARDS</span><br><span contenteditable="true" id="logo_text">FENCING</span></div></a>
-                <nav><a href="index.html">Главная</a><a href="about.html">О школе</a><a href="directions.html">Направления</a><a href="trainers.html">Тренеры</a><a href="schedule.html">Расписание</a><a href="prices.html">Цены</a><a href="contacts.html">Контакты</a><a href="faq.html">FAQ</a></nav>
+                <a href="index.html" class="logo">
+                    <img src="logo.jpg" alt="Wild Cards Fencing">
+                    <div class="logo-text">WILD <span contenteditable="true" id="logo_accent">CARDS</span><br><span contenteditable="true" id="logo_text">FENCING</span></div>
+                </a>
+                <nav>
+                    <a href="index.html">Главная</a>
+                    <a href="about.html">О школе</a>
+                    <a href="directions.html">Направления</a>
+                    <a href="trainers.html">Тренеры</a>
+                    <a href="schedule.html">Расписание</a>
+                    <a href="prices.html">Цены</a>
+                    <a href="contacts.html">Контакты</a>
+                    <a href="faq.html">FAQ</a>
+                </nav>
             </div>
         </header>
+
         <h1>О <span contenteditable="true" id="about_span">школе</span></h1>
+
         <div class="content">
             <p contenteditable="true" id="about_text1">Wild Cards Fencing — первая многопрофильная школа фехтования в Москве. Мы объединяем традиции и современность, Европу и Восток. Наши тренеры — чемпионы России и мира, специалисты с огромным опытом, которые за несколько лет вырастили учеников до призёров российских и международных соревнований.</p>
             <p contenteditable="true" id="about_text2">Мы не привязываем учеников к одному клубу. Главное для нас — научить побеждать. В наших залах более 30 направлений: от спортивной шпаги до исторического фехтования и стрельбы из лука. Вся экипировка предоставляется бесплатно.</p>
             <p contenteditable="true" id="about_text3">Наши залы находятся в 10 минутах от метро Соколиная Гора и Римская. Мы — спортивная организация, входящая в Федерацию Фехтования Москвы.</p>
         </div>
     </div>
-    <footer><div class="container"><p>© 2025 Wild Cards Fencing | Все права защищены</p></div></footer>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Wild Cards Fencing | Все права защищены</p>
+        </div>
+    </footer>
+
     <script>
-        document.getElementById('saveBtn').addEventListener('click', () => {
+        let githubToken = localStorage.getItem('github_token') || '';
+
+        function getCurrentHTML() {
+            return document.documentElement.outerHTML;
+        }
+
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            const html = getCurrentHTML();
+            navigator.clipboard.writeText(html);
             const statusSpan = document.getElementById('statusMsg');
-            const fields = ['logo_accent','logo_text','about_span','about_text1','about_text2','about_text3'];
-            fields.forEach(id => { const el = document.getElementById(id); if (el) localStorage.setItem(id, el.innerText); });
-            statusSpan.textContent = '✅ Сохранено локально!';
+            statusSpan.textContent = '✅ HTML скопирован! Вставь его в save-to-github.html или нажми «Опубликовать».';
             statusSpan.style.color = '#8bc34a';
-            setTimeout(() => { statusSpan.textContent = ''; }, 2000);
+            setTimeout(() => { statusSpan.textContent = ''; }, 3000);
         });
+
+        async function publishToGitHub() {
+            const statusSpan = document.getElementById('statusMsg');
+            if (!githubToken) {
+                const token = prompt('🔑 Введите ваш GitHub токен (ghp_...). Токен сохранится в браузере.', 'ghp_');
+                if (token && token.trim() !== '') {
+                    githubToken = token.trim();
+                    localStorage.setItem('github_token', githubToken);
+                } else {
+                    statusSpan.textContent = '❌ Токен не введён';
+                    statusSpan.style.color = '#ff8a80';
+                    setTimeout(() => { statusSpan.textContent = ''; }, 3000);
+                    return;
+                }
+            }
+
+            statusSpan.textContent = '⏳ Публикация на GitHub...';
+            statusSpan.style.color = '#ffaa00';
+
+            const html = getCurrentHTML();
+            const repo = 'safersss/wildcards-fencing';
+            const filepath = 'about.html';
+            const url = `https://api.github.com/repos/${repo}/contents/${filepath}`;
+
+            try {
+                let sha = null;
+                const getRes = await fetch(url, {
+                    headers: { 'Authorization': `token ${githubToken}` }
+                });
+                if (getRes.ok) {
+                    const data = await getRes.json();
+                    sha = data.sha;
+                }
+
+                const response = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${githubToken}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: 'Обновление страницы "О школе" из редактора',
+                        content: btoa(unescape(encodeURIComponent(html))),
+                        sha: sha
+                    })
+                });
+
+                if (response.ok) {
+                    statusSpan.textContent = '✅ Сайт обновлён! Через 1-2 минуты изменения появятся.';
+                    statusSpan.style.color = '#8bc34a';
+                } else {
+                    const error = await response.json();
+                    if (error.message === 'Bad credentials') {
+                        statusSpan.textContent = '❌ Неверный токен. Удалите его и введите заново.';
+                        localStorage.removeItem('github_token');
+                        githubToken = '';
+                    } else {
+                        statusSpan.textContent = '❌ Ошибка: ' + error.message;
+                    }
+                    statusSpan.style.color = '#ff8a80';
+                }
+            } catch (error) {
+                statusSpan.textContent = '❌ Ошибка соединения: ' + error.message;
+                statusSpan.style.color = '#ff8a80';
+            }
+            setTimeout(() => { statusSpan.textContent = ''; }, 5000);
+        }
+
+        document.getElementById('publishBtn').addEventListener('click', publishToGitHub);
+
         function loadSaved() {
             const fields = ['logo_accent','logo_text','about_span','about_text1','about_text2','about_text3'];
             fields.forEach(id => { const saved = localStorage.getItem(id); if (saved) { const el = document.getElementById(id); if (el) el.innerText = saved; } });
