@@ -6,334 +6,184 @@
     <title>Wild Cards Fencing — Редактор тренеров</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #000000; font-family: 'Inter', 'Segoe UI', sans-serif; color: #fff; line-height: 1.5; }
-        .admin-bar { position: sticky; top: 0; background: #0a0a0a; border-bottom: 2px solid #d32f2f; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; z-index: 1000; }
-        .admin-bar button { background: #d32f2f; color: #fff; border: none; padding: 10px 24px; font-family: 'Oswald', sans-serif; font-size: 16px; cursor: pointer; border-radius: 5px; }
-        .admin-bar button:hover { background: #b71c1c; }
-        .admin-bar .status { color: #8bc34a; font-size: 14px; }
-        [contenteditable="true"] { outline: none; transition: 0.1s; padding: 4px; border-radius: 8px; display: inline-block; min-width: 50px; }
-        [contenteditable="true"]:hover { background: rgba(211, 47, 47, 0.15); box-shadow: 0 0 0 1px #d32f2f; }
-        [contenteditable="true"]:focus { background: rgba(211, 47, 47, 0.25); box-shadow: 0 0 0 2px #d32f2f; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        header { padding: 20px 0; border-bottom: 1px solid #222; }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .logo img { height: 50px; width: auto; display: block; }
-        .logo-text { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 2px; color: #fff; text-transform: uppercase; line-height: 1.2; }
-        .logo-text span { color: #d32f2f; }
-        nav a { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: #fff; text-decoration: none; margin-left: 30px; transition: 0.2s; text-transform: uppercase; }
-        nav a:first-child { margin-left: 0; }
-        nav a:hover { color: #d32f2f; }
-        h1 { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; text-align: center; margin: 60px 0 40px; text-transform: uppercase; }
-        h1 span { color: #d32f2f; }
-        .trainers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-bottom: 60px; justify-items: center; }
-        .trainer-card { background: #111; padding: 20px; text-align: center; border: 1px solid #222; transition: 0.2s; width: 100%; max-width: 220px; }
-        .trainer-card:hover { border-color: #d32f2f; }
-        .trainer-card img { width: 180px; height: 180px; object-fit: cover; margin-bottom: 15px; cursor: pointer; border: 2px solid transparent; transition: 0.2s; }
-        .trainer-card img:hover { border-color: #d32f2f; opacity: 0.8; }
-        .trainer-card h3 { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; }
-        .trainer-card p { color: #aaa; font-size: 12px; margin-bottom: 8px; }
-        .trainer-card .role { color: #d32f2f; font-size: 11px; font-weight: bold; text-transform: uppercase; }
-        footer { border-top: 1px solid #222; padding: 40px 0; text-align: center; color: #555; }
-        @media (max-width: 1000px) { .trainers-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 700px) {
-            .header-inner { flex-direction: column; gap: 15px; }
-            nav a { margin: 0 12px; font-size: 14px; }
-            h1 { font-size: 32px; }
-            .logo img { height: 40px; }
-            .logo-text { font-size: 18px; }
-            .trainers-grid { grid-template-columns: repeat(2, 1fr); }
-            .trainer-card img { width: 120px; height: 120px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    </style>
-</head>
-<body>
-    <div class="admin-bar">
-        <div>🔧 <strong>Редактор страницы «Тренеры»</strong> — кликни на текст, измени его. Для смены фото — кликни на фото и вставь ссылку.</div>
-        <div><button id="saveBtn">💾 Сохранить изменения</button> <span id="statusMsg" class="status"></span></div>
-    </div>
-    <div class="container">
-        <header>
-            <div class="header-inner">
-                <a href="index.html" class="logo"><img src="logo.jpg" alt="Wild Cards Fencing"><div class="logo-text">WILD <span contenteditable="true" id="logo_accent">CARDS</span><br><span contenteditable="true" id="logo_text">FENCING</span></div></a>
-                <nav><a href="index.html">Главная</a><a href="about.html">О школе</a><a href="directions.html">Направления</a><a href="trainers.html">Тренеры</a><a href="schedule.html">Расписание</a><a href="prices.html">Цены</a><a href="contacts.html">Контакты</a><a href="faq.html">FAQ</a></nav>
-            </div>
-        </header>
-        <h1>Наши <span contenteditable="true" id="trainers_title_main">тренеры</span></h1>
-        <div class="trainers-grid" id="trainersGrid">
-            <!-- Алексей Бесфамильный -->
-            <div class="trainer-card">
-                <img src="img/alexey-besfamilny.jpg" alt="Алексей Бесфамильный" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer1_name">Алексей Бесфамильный</h3>
-                <p contenteditable="true" id="trainer1_role_main">Основатель, тренер</p>
-                <div class="role" contenteditable="true" id="trainer1_badge">Мастер спорта</div>
-            </div>
-            <!-- Иван Бобровский -->
-            <div class="trainer-card">
-                <img src="img/ivan-bobrovsky.jpg" alt="Иван Бобровский" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer2_name">Иван Бобровский</h3>
-                <p contenteditable="true" id="trainer2_role_main">Инструктор</p>
-                <div class="role" contenteditable="true" id="trainer2_badge">Испанская рапира</div>
-            </div>
-            <!-- Сергий Гершкович -->
-            <div class="trainer-card">
-                <img src="img/sergy-gershkovich.jpg" alt="Сергий Гершкович" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer3_name">Сергий Гершкович</h3>
-                <p contenteditable="true" id="trainer3_role_main">Инструктор</p>
-                <div class="role" contenteditable="true" id="trainer3_badge">СМБ, сабля</div>
-            </div>
-            <!-- Татьяна Грибанова -->
-            <div class="trainer-card">
-                <img src="img/tatyana-gribanova.jpg" alt="Татьяна Грибанова" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer4_name">Татьяна Грибанова</h3>
-                <p contenteditable="true" id="trainer4_role_main">Тренер</p>
-                <div class="role" contenteditable="true" id="trainer4_badge">Ушу, арт-фехтование</div>
-            </div>
-            <!-- Стася Евсеева -->
-            <div class="trainer-card">
-                <img src="img/stasya-evseeva.jpg" alt="Стася Евсеева" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer5_name">Стася Евсеева</h3>
-                <p contenteditable="true" id="trainer5_role_main">Тренер</p>
-                <div class="role" contenteditable="true" id="trainer5_badge">Мастер спорта</div>
-            </div>
-            <!-- Андрей Егоров -->
-            <div class="trainer-card">
-                <img src="img/andrey-egorov.jpg" alt="Андрей Егоров" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer6_name">Андрей Егоров</h3>
-                <p contenteditable="true" id="trainer6_role_main">Тренер-преподаватель</p>
-                <div class="role" contenteditable="true" id="trainer6_badge">Мастер спорта</div>
-            </div>
-            <!-- Станислав Иванов -->
-            <div class="trainer-card">
-                <img src="img/stanislav-ivanov.jpg" alt="Станислав Иванов" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer7_name">Станислав Иванов</h3>
-                <p contenteditable="true" id="trainer7_role_main">Инструктор</p>
-                <div class="role" contenteditable="true" id="trainer7_badge">Иберийский меч</div>
-            </div>
-            <!-- Алексей Кабанов -->
-            <div class="trainer-card">
-                <img src="img/alexey-kabanov.jpg" alt="Алексей Кабанов" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer8_name">Алексей Кабанов</h3>
-                <p contenteditable="true" id="trainer8_role_main">Инструктор</p>
-                <div class="role" contenteditable="true" id="trainer8_badge">Фланкировка</div>
-            </div>
-            <!-- Сергей Казаков -->
-            <div class="trainer-card">
-                <img src="img/sergey-kazakov.jpg" alt="Сергей Казаков" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer9_name">Сергей Казаков</h3>
-                <p contenteditable="true" id="trainer9_role_main">Инструктор</p>
-                <div class="role" contenteditable="true" id="trainer9_badge">Постановочное фехтование</div>
-            </div>
-            <!-- Макс Киселев -->
-            <div class="trainer-card">
-                <img src="img/max-kiselev.jpg" alt="Макс Киселев" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer10_name">Макс Киселев</h3>
-                <p contenteditable="true" id="trainer10_role_main">Ведущий педагог</p>
-                <div class="role" contenteditable="true" id="trainer10_badge">Методолог HEMA</div>
-            </div>
-            <!-- Константин Козлов -->
-            <div class="trainer-card">
-                <img src="img/konstantin-kozlov.jpg" alt="Константин Козлов" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer11_name">Константин Козлов</h3>
-                <p contenteditable="true" id="trainer11_role_main">Тренер</p>
-                <div class="role" contenteditable="true" id="trainer11_badge">Рапира и дага</div>
-            </div>
-            <!-- Валерий Кочнев -->
-            <div class="trainer-card">
-                <img src="img/valery-kochnev.jpg" alt="Валерий Кочнев" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer12_name">Валерий Кочнев</h3>
-                <p contenteditable="true" id="trainer12_role_main">Инструктор</p>
-                <div class="role" contenteditable="true" id="trainer12_badge">Саберфайтинг</div>
-            </div>
-            <!-- Александр Леонов -->
-            <div class="trainer-card">
-                <img src="img/alexander-leonov.jpg" alt="Александр Леонов" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer13_name">Александр Леонов</h3>
-                <p contenteditable="true" id="trainer13_role_main">Тренер</p>
-                <div class="role" contenteditable="true" id="trainer13_badge">Двуручный меч</div>
-            </div>
-            <!-- Николай Лобаев -->
-            <div class="trainer-card">
-                <img src="img/nikolay-lobaev.jpg" alt="Николай Лобаев" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer14_name">Николай Лобаев</h3>
-                <p contenteditable="true" id="trainer14_role_main">Младший инструктор</p>
-                <div class="role" contenteditable="true" id="trainer14_badge">Итальянская рапира</div>
-            </div>
-            <!-- Иван Лопан -->
-            <div class="trainer-card">
-                <img src="img/ivan-lopan.jpg" alt="Иван Лопан" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer15_name">Иван Лопан</h3>
-                <p contenteditable="true" id="trainer15_role_main">Тренер-преподаватель</p>
-                <div class="role" contenteditable="true" id="trainer15_badge">Саберфайтинг</div>
-            </div>
-            <!-- Мария Лукацкая -->
-            <div class="trainer-card">
-                <img src="img/maria-lukatskaya.jpg" alt="Мария Лукацкая" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer16_name">Мария Лукацкая</h3>
-                <p contenteditable="true" id="trainer16_role_main">Преподаватель</p>
-                <div class="role" contenteditable="true" id="trainer16_badge">Дизайн костюма</div>
-            </div>
-            <!-- Андрей Макашов -->
-            <div class="trainer-card">
-                <img src="img/andrey-makashov.jpg" alt="Андрей Макашов" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer17_name">Андрей Макашов</h3>
-                <p contenteditable="true" id="trainer17_role_main">Преподаватель</p>
-                <div class="role" contenteditable="true" id="trainer17_badge">Постановочное фехтование</div>
-            </div>
-            <!-- Денис Марков -->
-            <div class="trainer-card">
-                <img src="img/denis-markov.jpg" alt="Денис Марков" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer18_name">Денис Марков</h3>
-                <p contenteditable="true" id="trainer18_role_main">Инструктор</p>
-                <div class="role" contenteditable="true" id="trainer18_badge">Фланкировка</div>
-            </div>
-            <!-- Гагик Оганесян -->
-            <div class="trainer-card">
-                <img src="img/gagik-oganesyan.jpg" alt="Гагик Оганесян" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer19_name">Гагик Оганесян</h3>
-                <p contenteditable="true" id="trainer19_role_main">Ведущий тренер</p>
-                <div class="role" contenteditable="true" id="trainer19_badge">Мастер спорта СССР</div>
-            </div>
-            <!-- Ольга Петлицкая -->
-            <div class="trainer-card">
-                <img src="img/olga-petlitskaya.jpg" alt="Ольга Петлицкая" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer20_name">Ольга Петлицкая</h3>
-                <p contenteditable="true" id="trainer20_role_main">Тренер-преподаватель</p>
-                <div class="role" contenteditable="true" id="trainer20_badge">Саберфайтинг</div>
-            </div>
-            <!-- Евгений Петровский -->
-            <div class="trainer-card">
-                <img src="img/evgeny-petrovsky.jpg" alt="Евгений Петровский" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer21_name">Евгений Петровский</h3>
-                <p contenteditable="true" id="trainer21_role_main">Тренер-реабилитолог</p>
-                <div class="role" contenteditable="true" id="trainer21_badge">Арт-фехтование</div>
-            </div>
-            <!-- Вадим Сеничев -->
-            <div class="trainer-card">
-                <img src="img/vadim-senichev.jpg" alt="Вадим Сеничев" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer22_name">Вадим Сеничев</h3>
-                <p contenteditable="true" id="trainer22_role_main">Преподаватель</p>
-                <div class="role" contenteditable="true" id="trainer22_badge">Длинный меч</div>
-            </div>
-            <!-- Егор Симанков -->
-            <div class="trainer-card">
-                <img src="img/egor-simankov.jpg" alt="Егор Симанков" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer23_name">Егор Симанков</h3>
-                <p contenteditable="true" id="trainer23_role_main">Инструктор</p>
-                <div class="role" contenteditable="true" id="trainer23_badge">Сабля, лук</div>
-            </div>
-            <!-- Владимир Сорокин -->
-            <div class="trainer-card">
-                <img src="img/vladimir-sorokin.jpg" alt="Владимир Сорокин" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer24_name">Владимир Сорокин</h3>
-                <p contenteditable="true" id="trainer24_role_main">Преподаватель</p>
-                <div class="role" contenteditable="true" id="trainer24_badge">Арт-фехтование</div>
-            </div>
-            <!-- Александр Ушаков -->
-            <div class="trainer-card">
-                <img src="img/alexander-ushakov.jpg" alt="Александр Ушаков" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer25_name">Александр Ушаков</h3>
-                <p contenteditable="true" id="trainer25_role_main">Инструктор</p>
-                <div class="role" contenteditable="true" id="trainer25_badge">Ролевое фехтование</div>
-            </div>
-            <!-- Александр Черников -->
-            <div class="trainer-card">
-                <img src="img/alexander-chernikov.jpg" alt="Александр Черников" onclick="changePhoto(this)">
-                <h3 contenteditable="true" id="trainer26_name">Александр Черников</h3>
-                <p contenteditable="true" id="trainer26_role_main">Инструктор</p>
-                <div class="role" contenteditable="true" id="trainer26_badge">Школа самураев</div>
-            </div>
-        </div>
-    </div>
-    <footer><div class="container"><p>© 2025 Wild Cards Fencing | Все права защищены</p></div></footer>
-    <script>
-        function changePhoto(imgElement) {
-            const newUrl = prompt('Введите URL новой фотографии (ссылка на изображение):', imgElement.src);
-            if (newUrl && newUrl.trim() !== '') {
-                imgElement.src = newUrl;
-            }
+        body {
+            background: #000000;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            color: #fff;
+            line-height: 1.5;
         }
-        document.getElementById('saveBtn').addEventListener('click', () => {
-            const statusSpan = document.getElementById('statusMsg');
-            const fields = ['logo_accent','logo_text','trainers_title_main',
-                'trainer1_name','trainer1_role_main','trainer1_badge',
-                'trainer2_name','trainer2_role_main','trainer2_badge',
-                'trainer3_name','trainer3_role_main','trainer3_badge',
-                'trainer4_name','trainer4_role_main','trainer4_badge',
-                'trainer5_name','trainer5_role_main','trainer5_badge',
-                'trainer6_name','trainer6_role_main','trainer6_badge',
-                'trainer7_name','trainer7_role_main','trainer7_badge',
-                'trainer8_name','trainer8_role_main','trainer8_badge',
-                'trainer9_name','trainer9_role_main','trainer9_badge',
-                'trainer10_name','trainer10_role_main','trainer10_badge',
-                'trainer11_name','trainer11_role_main','trainer11_badge',
-                'trainer12_name','trainer12_role_main','trainer12_badge',
-                'trainer13_name','trainer13_role_main','trainer13_badge',
-                'trainer14_name','trainer14_role_main','trainer14_badge',
-                'trainer15_name','trainer15_role_main','trainer15_badge',
-                'trainer16_name','trainer16_role_main','trainer16_badge',
-                'trainer17_name','trainer17_role_main','trainer17_badge',
-                'trainer18_name','trainer18_role_main','trainer18_badge',
-                'trainer19_name','trainer19_role_main','trainer19_badge',
-                'trainer20_name','trainer20_role_main','trainer20_badge',
-                'trainer21_name','trainer21_role_main','trainer21_badge',
-                'trainer22_name','trainer22_role_main','trainer22_badge',
-                'trainer23_name','trainer23_role_main','trainer23_badge',
-                'trainer24_name','trainer24_role_main','trainer24_badge',
-                'trainer25_name','trainer25_role_main','trainer25_badge',
-                'trainer26_name','trainer26_role_main','trainer26_badge'
-            ];
-            const data = {};
-            fields.forEach(id => { const el = document.getElementById(id); if (el) data[id] = el.innerText; });
-            // Сохраняем фото
-            const photos = [];
-            document.querySelectorAll('.trainer-card img').forEach((img, idx) => { photos[`trainer${idx+1}_photo`] = img.src; });
-            for (let key in photos) localStorage.setItem(key, photos[key]);
-            for (let key in data) localStorage.setItem(key, data[key]);
-            statusSpan.textContent = '✅ Сохранено локально!';
-            statusSpan.style.color = '#8bc34a';
-            setTimeout(() => { statusSpan.textContent = ''; }, 3000);
-        });
-        function loadSaved() {
-            const fields = ['logo_accent','logo_text','trainers_title_main',
-                'trainer1_name','trainer1_role_main','trainer1_badge',
-                'trainer2_name','trainer2_role_main','trainer2_badge',
-                'trainer3_name','trainer3_role_main','trainer3_badge',
-                'trainer4_name','trainer4_role_main','trainer4_badge',
-                'trainer5_name','trainer5_role_main','trainer5_badge',
-                'trainer6_name','trainer6_role_main','trainer6_badge',
-                'trainer7_name','trainer7_role_main','trainer7_badge',
-                'trainer8_name','trainer8_role_main','trainer8_badge',
-                'trainer9_name','trainer9_role_main','trainer9_badge',
-                'trainer10_name','trainer10_role_main','trainer10_badge',
-                'trainer11_name','trainer11_role_main','trainer11_badge',
-                'trainer12_name','trainer12_role_main','trainer12_badge',
-                'trainer13_name','trainer13_role_main','trainer13_badge',
-                'trainer14_name','trainer14_role_main','trainer14_badge',
-                'trainer15_name','trainer15_role_main','trainer15_badge',
-                'trainer16_name','trainer16_role_main','trainer16_badge',
-                'trainer17_name','trainer17_role_main','trainer17_badge',
-                'trainer18_name','trainer18_role_main','trainer18_badge',
-                'trainer19_name','trainer19_role_main','trainer19_badge',
-                'trainer20_name','trainer20_role_main','trainer20_badge',
-                'trainer21_name','trainer21_role_main','trainer21_badge',
-                'trainer22_name','trainer22_role_main','trainer22_badge',
-                'trainer23_name','trainer23_role_main','trainer23_badge',
-                'trainer24_name','trainer24_role_main','trainer24_badge',
-                'trainer25_name','trainer25_role_main','trainer25_badge',
-                'trainer26_name','trainer26_role_main','trainer26_badge'
-            ];
-            fields.forEach(id => { const saved = localStorage.getItem(id); if (saved) { const el = document.getElementById(id); if (el) el.innerText = saved; } });
-            for (let i = 1; i <= 26; i++) {
-                const savedPhoto = localStorage.getItem(`trainer${i}_photo`);
-                if (savedPhoto) {
-                    const img = document.querySelector(`.trainer-card:nth-child(${i}) img`);
-                    if (img) img.src = savedPhoto;
-                }
-            }
+        .admin-bar {
+            position: sticky;
+            top: 0;
+            background: #0a0a0a;
+            border-bottom: 2px solid #d32f2f;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            z-index: 1000;
         }
-        loadSaved();
-    </script>
-</body>
-</html>
+        .admin-bar button {
+            background: #d32f2f;
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .admin-bar button:hover {
+            background: #b71c1c;
+        }
+        .admin-bar .status {
+            color: #8bc34a;
+            font-size: 14px;
+        }
+        [contenteditable="true"] {
+            outline: none;
+            transition: 0.1s;
+            padding: 4px;
+            border-radius: 8px;
+            display: inline-block;
+            min-width: 50px;
+        }
+        [contenteditable="true"]:hover {
+            background: rgba(211, 47, 47, 0.15);
+            box-shadow: 0 0 0 1px #d32f2f;
+        }
+        [contenteditable="true"]:focus {
+            background: rgba(211, 47, 47, 0.25);
+            box-shadow: 0 0 0 2px #d32f2f;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #222;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        .logo img {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+        .logo-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        .logo-text span {
+            color: #d32f2f;
+        }
+        nav a {
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+        nav a:first-child {
+            margin-left: 0;
+        }
+        nav a:hover {
+            color: #d32f2f;
+        }
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin: 60px 0 40px;
+            text-transform: uppercase;
+        }
+        h1 span {
+            color: #d32f2f;
+        }
+        .trainers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+            justify-items: center;
+        }
+        .trainer-card {
+            background: #111;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #222;
+            transition: 0.2s;
+            width: 100%;
+            max-width: 220px;
+        }
+        .trainer-card:hover {
+            border-color: #d32f2f;
+        }
+        .trainer-card img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 0.2s;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .trainer-card img:hover {
+            border-color: #d32f2f;
+            opacity: 0.8;
+        }
+        .trainer-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            display: block;
+            text-align: center;
+        }
+        .trainer-card p {
+            color: #aaa;
+            font-size: 12px;
+            margin-bottom: 8px;
+            display: block;
+            text-align: center;
+        }
+        .trainer-card .role {
+            color: #d32f2f;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: block;
+            text-align: center;
+        }
