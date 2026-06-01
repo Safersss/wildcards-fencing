@@ -8,13 +8,16 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: #000000; font-family: 'Inter', 'Segoe UI', sans-serif; color: #fff; line-height: 1.5; }
-        .admin-bar { position: sticky; top: 0; background: #0a0a0a; border-bottom: 2px solid #d32f2f; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; z-index: 1000; }
+        
+        .admin-bar { position: sticky; top: 0; background: #0a0a0a; border-bottom: 2px solid #d32f2f; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; z-index: 1000; }
         .admin-bar button { background: #d32f2f; color: #fff; border: none; padding: 10px 24px; font-family: 'Oswald', sans-serif; font-size: 16px; cursor: pointer; border-radius: 5px; }
         .admin-bar button:hover { background: #b71c1c; }
         .admin-bar .status { color: #8bc34a; font-size: 14px; }
+        
         [contenteditable="true"] { outline: none; transition: 0.1s; padding: 4px; border-radius: 8px; display: inline-block; min-width: 50px; }
         [contenteditable="true"]:hover { background: rgba(211, 47, 47, 0.15); box-shadow: 0 0 0 1px #d32f2f; }
         [contenteditable="true"]:focus { background: rgba(211, 47, 47, 0.25); box-shadow: 0 0 0 2px #d32f2f; }
+        
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         header { padding: 20px 0; border-bottom: 1px solid #222; }
         .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
@@ -25,25 +28,30 @@
         nav a { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: #fff; text-decoration: none; margin-left: 30px; transition: 0.2s; text-transform: uppercase; }
         nav a:first-child { margin-left: 0; }
         nav a:hover { color: #d32f2f; }
+        
         .hero { text-align: center; padding: 100px 0 120px; }
         .hero h1 { font-family: 'Oswald', sans-serif; font-size: 80px; font-weight: 700; letter-spacing: 4px; margin-bottom: 20px; text-transform: uppercase; }
         .hero h1 span { color: #d32f2f; }
         .hero p { font-size: 20px; color: #aaa; max-width: 600px; margin: 0 auto 30px; }
-        .btn { background: #d32f2f; color: #fff; border: none; padding: 14px 36px; font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: 0.2s; display: inline-block; margin-top: 10px; }
+        .btn { background: #d32f2f; color: #fff; border: none; padding: 14px 36px; font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: 0.2s; display: inline-block; }
         .btn:hover { background: #b71c1c; }
+        
         .section { padding: 80px 0; border-top: 1px solid #222; }
         .section h2 { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; letter-spacing: 2px; text-align: center; margin-bottom: 50px; text-transform: uppercase; }
+        
         .directions-grid, .trainers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; justify-items: center; margin-bottom: 40px; }
         .direction-card, .trainer-card { background: #111; padding: 30px 20px; text-align: center; border: 1px solid #222; width: 100%; max-width: 280px; }
         .direction-card h3 { font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 600; margin: 15px 0 10px; text-transform: uppercase; }
         .direction-card p { color: #aaa; font-size: 16px; }
-        .trainer-card { position: relative; }
         .trainer-card img { width: 180px; height: 180px; object-fit: cover; margin-bottom: 20px; cursor: pointer; border: 2px solid transparent; transition: 0.2s; }
         .trainer-card img:hover { border-color: #d32f2f; opacity: 0.8; }
         .trainer-card h3 { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; }
         .trainer-card p { color: #aaa; margin-top: 5px; font-size: 14px; }
-        .change-photo-btn { background: #d32f2f; color: #fff; border: none; padding: 4px 8px; font-size: 10px; border-radius: 4px; cursor: pointer; margin-top: 5px; display: inline-block; }
+        
+        .center-btn { text-align: center; margin-top: 20px; }
+        
         footer { border-top: 1px solid #222; padding: 40px 0; text-align: center; color: #555; }
+        
         @media (max-width: 900px) { .directions-grid, .trainers-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 700px) {
             .header-inner { flex-direction: column; gap: 15px; }
@@ -53,13 +61,13 @@
             .section h2 { font-size: 32px; }
             .logo img { height: 40px; }
             .logo-text { font-size: 18px; }
-            .directions-grid, .trainers-grid { grid-template-columns: 1fr; }
+            .directions-grid, .trainers-grid { grid-template-columns: 1fr; justify-items: center; }
         }
     </style>
 </head>
 <body>
     <div class="admin-bar">
-        <div>🔧 <strong>Редактор главной страницы</strong> — кликни на текст, измени его, потом нажми «Сохранить». Для смены фото тренера — кликни на фото и вставь ссылку.</div>
+        <div>🔧 <strong>Редактор главной страницы</strong> — кликни на текст, измени его, потом нажми «Сохранить». Для смены фото — кликни на фото и вставь ссылку.</div>
         <div><button id="saveBtn">💾 Сохранить изменения</button> <span id="statusMsg" class="status"></span></div>
     </div>
     <div class="container">
@@ -69,11 +77,13 @@
                 <nav><a href="index.html">Главная</a><a href="about.html">О школе</a><a href="directions.html">Направления</a><a href="trainers.html">Тренеры</a><a href="schedule.html">Расписание</a><a href="prices.html">Цены</a><a href="contacts.html">Контакты</a><a href="faq.html">FAQ</a></nav>
             </div>
         </header>
+        
         <section class="hero">
             <h1>WILD <span contenteditable="true" id="hero_accent">CARDS</span><br><span contenteditable="true" id="hero_title">FENCING</span></h1>
             <p contenteditable="true" id="hero_text">Школа фехтования для детей и взрослых. От Средневековья до современности.</p>
-            <button class="btn">Записаться на пробное занятие</button>
+            <div class="center-btn"><button class="btn">Записаться на пробное занятие</button></div>
         </section>
+        
         <section class="section">
             <h2 contenteditable="true" id="directions_title">Направления</h2>
             <div class="directions-grid">
@@ -84,8 +94,9 @@
                 <div class="direction-card"><h3 contenteditable="true" id="dir5_title">СМБ</h3><p contenteditable="true" id="dir5_desc">Современный мечевой бой</p></div>
                 <div class="direction-card"><h3 contenteditable="true" id="dir6_title">Лук</h3><p contenteditable="true" id="dir6_desc">Стрельба из традиционного лука</p></div>
             </div>
-            <div style="text-align: center;"><a href="directions.html" class="btn" style="display: inline-block; text-decoration: none;">📋 Все направления →</a></div>
+            <div class="center-btn"><a href="directions.html" class="btn" style="display: inline-block; text-decoration: none;">📋 Все направления →</a></div>
         </section>
+        
         <section class="section">
             <h2 contenteditable="true" id="trainers_title">Тренеры</h2>
             <div class="trainers-grid">
@@ -96,30 +107,26 @@
                 <div class="trainer-card"><img src="img/gagik-oganesyan.jpg" alt="Гагик" onclick="changePhoto(this)"><h3 contenteditable="true" id="trainer5_title">Гагик</h3><p contenteditable="true" id="trainer5_role">Шпага</p></div>
                 <div class="trainer-card"><img src="img/max-kiselev.jpg" alt="Макс" onclick="changePhoto(this)"><h3 contenteditable="true" id="trainer6_title">Макс</h3><p contenteditable="true" id="trainer6_role">Методолог</p></div>
             </div>
-            <div style="text-align: center;"><a href="trainers.html" class="btn" style="display: inline-block; text-decoration: none;">👥 Все тренеры →</a></div>
+            <div class="center-btn"><a href="trainers.html" class="btn" style="display: inline-block; text-decoration: none;">👥 Все тренеры →</a></div>
         </section>
     </div>
     <footer><div class="container"><p>© 2025 Wild Cards Fencing | Все права защищены</p></div></footer>
     <script>
         function changePhoto(imgElement) {
             const newUrl = prompt('Введите URL новой фотографии (ссылка на изображение):', imgElement.src);
-            if (newUrl && newUrl.trim() !== '') {
-                imgElement.src = newUrl;
-            }
+            if (newUrl && newUrl.trim() !== '') imgElement.src = newUrl;
         }
         document.getElementById('saveBtn').addEventListener('click', () => {
             const statusSpan = document.getElementById('statusMsg');
             const fields = ['logo_accent','logo_text','hero_accent','hero_title','hero_text','directions_title','trainers_title','dir1_title','dir1_desc','dir2_title','dir2_desc','dir3_title','dir3_desc','dir4_title','dir4_desc','dir5_title','dir5_desc','dir6_title','dir6_desc','trainer1_title','trainer1_role','trainer2_title','trainer2_role','trainer3_title','trainer3_role','trainer4_title','trainer4_role','trainer5_title','trainer5_role','trainer6_title','trainer6_role'];
-            const data = {};
-            fields.forEach(id => { const el = document.getElementById(id); if (el) data[id] = el.innerText; });
-            // Сохраняем ссылки на фото
-            const photos = [];
-            document.querySelectorAll('.trainer-card img').forEach((img, idx) => { photos[`trainer${idx+1}_photo`] = img.src; });
-            for (let key in photos) localStorage.setItem(key, photos[key]);
-            for (let key in data) localStorage.setItem(key, data[key]);
+            fields.forEach(id => { const el = document.getElementById(id); if (el) localStorage.setItem(id, el.innerText); });
+            for (let i = 1; i <= 6; i++) {
+                const img = document.querySelector(`.trainer-card:nth-child(${i}) img`);
+                if (img) localStorage.setItem(`trainer${i}_photo`, img.src);
+            }
             statusSpan.textContent = '✅ Сохранено локально!';
             statusSpan.style.color = '#8bc34a';
-            setTimeout(() => { statusSpan.textContent = ''; }, 3000);
+            setTimeout(() => { statusSpan.textContent = ''; }, 2000);
         });
         function loadSaved() {
             const fields = ['logo_accent','logo_text','hero_accent','hero_title','hero_text','directions_title','trainers_title','dir1_title','dir1_desc','dir2_title','dir2_desc','dir3_title','dir3_desc','dir4_title','dir4_desc','dir5_title','dir5_desc','dir6_title','dir6_desc','trainer1_title','trainer1_role','trainer2_title','trainer2_role','trainer3_title','trainer3_role','trainer4_title','trainer4_role','trainer5_title','trainer5_role','trainer6_title','trainer6_role'];
