@@ -34,7 +34,8 @@
         .tab-content { display: none; background: #111; border: 1px solid #222; padding: 30px; margin-bottom: 60px; }
         .tab-content.active { display: block; }
         .location-name { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 600; margin-bottom: 20px; color: #d32f2f; text-transform: uppercase; }
-        .info-text p { margin-bottom: 15px; color: #ccc; }
+        .info-text p { margin-bottom: 15px; color: #ccc; display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
+        .info-text strong { min-width: 60px; }
         .phone { margin-top: 20px; padding-top: 20px; border-top: 1px solid #222; text-align: center; font-size: 20px; }
         .phone a { color: #d32f2f; text-decoration: none; font-weight: bold; }
         footer { border-top: 1px solid #222; padding: 40px 0; text-align: center; color: #555; }
@@ -44,6 +45,7 @@
             h1 { font-size: 32px; }
             .logo img { height: 40px; }
             .logo-text { font-size: 18px; }
+            .info-text p { flex-direction: column; gap: 4px; }
         }
     </style>
 </head>
@@ -60,44 +62,79 @@
             </div>
         </header>
         <h1>Контакты и <span contenteditable="true" id="contacts_span">как добраться</span></h1>
-        <div class="sub">📍 Два филиала — выбирай удобный</div>
-        <div class="tabs"><button class="tab-btn active" data-tab="sg">Соколиная Гора</button><button class="tab-btn" data-tab="dds">ДДС (Рабочая ул.)</button></div>
+        <div class="sub">📍 Три филиала — выбирай удобный</div>
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="sg">Соколиная Гора</button>
+            <button class="tab-btn" data-tab="dds">ДДС (Рабочая ул.)</button>
+            <button class="tab-btn" data-tab="vid">Видное</button>
+        </div>
+        <!-- Соколиная Гора -->
         <div id="sg" class="tab-content active">
             <div class="location-name">⚔️ Основной зал — <span contenteditable="true" id="sg_address">9-я ул. Соколиной горы, д.6, 4 этаж</span></div>
             <div class="info-text">
-                <p contenteditable="true" id="sg_metro"><strong>🚇 Метро:</strong> МЦД «Соколиная Гора» — 7–12 мин пешком. м. Семёновская — 20–25 мин пешком или 15 мин на трамвае.</p>
-                <p contenteditable="true" id="sg_parking"><strong>🚗 Парковка:</strong> Городские парковки до 40 ₽/ч, во дворах — бесплатно.</p>
-                <p contenteditable="true" id="sg_entry"><strong>🚪 Вход:</strong> С северной стороны, с 9-й улицы Соколиной горы. Дальний от входа подъезд, лифт на 4 этаж.</p>
+                <p><strong>🚇 Метро:</strong> <span contenteditable="true" id="sg_metro">МЦД «Соколиная Гора» — 7–12 мин пешком. м. Семёновская — 20–25 мин пешком или 15 мин на трамвае.</span></p>
+                <p><strong>🚗 Парковка:</strong> <span contenteditable="true" id="sg_parking">Городские парковки до 40 ₽/ч, во дворах — бесплатно.</span></p>
+                <p><strong>🚪 Вход:</strong> <span contenteditable="true" id="sg_entry">С северной стороны, с 9-й улицы Соколиной горы. Дальний от входа подъезд, лифт на 4 этаж.</span></p>
             </div>
         </div>
+        <!-- ДДС -->
         <div id="dds" class="tab-content">
             <div class="location-name">🏛️ Дворец Детского Спорта — <span contenteditable="true" id="dds_address">Рабочая ул., 53, стр. 1</span></div>
             <div class="info-text">
-                <p contenteditable="true" id="dds_metro"><strong>🚇 Метро:</strong> Площадь Ильича / Римская — далее пешком 15 мин или автобус.</p>
-                <p contenteditable="true" id="dds_floors"><strong>📍 Этажи:</strong> Раздевалки — 7 этаж, зал — 2 этаж.</p>
-                <p contenteditable="true" id="dds_groups"><strong>⚔️ Здесь проходят:</strong> группы «Ведьмак», Монтанте, Клинки Востока.</p>
+                <p><strong>🚇 Метро:</strong> <span contenteditable="true" id="dds_metro">Площадь Ильича / Римская — далее пешком 15 мин или автобус.</span></p>
+                <p><strong>📍 Этажи:</strong> <span contenteditable="true" id="dds_floors">Раздевалки — 7 этаж, зал — 2 этаж.</span></p>
+                <p><strong>⚔️ Здесь проходят:</strong> <span contenteditable="true" id="dds_groups">группы «Ведьмак», Монтанте, Клинки Востока.</span></p>
+            </div>
+        </div>
+        <!-- Видное -->
+        <div id="vid" class="tab-content">
+            <div class="location-name">🌲 Wild Cards Fencing (Видное) — <span contenteditable="true" id="vid_address">г. Видное, ул. Советская, д. 19</span></div>
+            <div class="info-text">
+                <p><strong>🚇 Транспорт:</strong> <span contenteditable="true" id="vid_transport">Остановка «АТС». Вход слева от магазина «Пятерочка».</span></p>
+                <p><strong>🚪 Вход:</strong> <span contenteditable="true" id="vid_entry">Вход слева от магазина «Пятерочка», далее поднимаемся на 3 этаж.</span></p>
             </div>
         </div>
         <div class="phone">
-            📞 Единый телефон: <span contenteditable="true" id="phone_main">+7 906 068 88 45</span><br>
-            ✉️ Почта: <span contenteditable="true" id="email_main">info@wildcardsfencing.ru</span>
+            📞 <span contenteditable="true" id="phone_label">Единый телефон для записи и вопросов:</span> <a href="tel:+79060688845" id="phone_link"><span contenteditable="true" id="phone_number">+7 906 068 88 45</span></a><br>
+            ✉️ Почта: <a href="mailto:info@wildcardsfencing.ru" id="email_link"><span contenteditable="true" id="email_main">info@wildcardsfencing.ru</span></a>
         </div>
     </div>
     <footer><div class="container"><p>© 2025 Wild Cards Fencing | Все права защищены</p></div></footer>
     <script>
         document.getElementById('saveBtn').addEventListener('click', () => {
             const statusSpan = document.getElementById('statusMsg');
-            const fields = ['logo_accent','logo_text','contacts_span','sg_address','sg_metro','sg_parking','sg_entry','dds_address','dds_metro','dds_floors','dds_groups','phone_main','email_main'];
+            const fields = ['logo_accent','logo_text','contacts_span','sg_address','sg_metro','sg_parking','sg_entry','dds_address','dds_metro','dds_floors','dds_groups','vid_address','vid_transport','vid_entry','phone_label','phone_number','email_main'];
             const data = {};
             fields.forEach(id => { const el = document.getElementById(id); if (el) data[id] = el.innerText; });
             for (let key in data) localStorage.setItem(key, data[key]);
-            statusSpan.textContent = '✅ Сохранено локально! Скоро добавим сохранение на GitHub.';
+            // Обновляем ссылки в телефонах и почте
+            const phoneSpan = document.getElementById('phone_number');
+            if (phoneSpan) {
+                const phoneLink = document.getElementById('phone_link');
+                if (phoneLink) phoneLink.href = `tel:${phoneSpan.innerText.replace(/\s/g, '')}`;
+            }
+            const emailSpan = document.getElementById('email_main');
+            if (emailSpan) {
+                const emailLink = document.getElementById('email_link');
+                if (emailLink) emailLink.href = `mailto:${emailSpan.innerText}`;
+            }
+            statusSpan.textContent = '✅ Сохранено локально!';
             statusSpan.style.color = '#8bc34a';
             setTimeout(() => { statusSpan.textContent = ''; }, 3000);
         });
         function loadSaved() {
-            const fields = ['logo_accent','logo_text','contacts_span','sg_address','sg_metro','sg_parking','sg_entry','dds_address','dds_metro','dds_floors','dds_groups','phone_main','email_main'];
+            const fields = ['logo_accent','logo_text','contacts_span','sg_address','sg_metro','sg_parking','sg_entry','dds_address','dds_metro','dds_floors','dds_groups','vid_address','vid_transport','vid_entry','phone_label','phone_number','email_main'];
             fields.forEach(id => { const saved = localStorage.getItem(id); if (saved) { const el = document.getElementById(id); if (el) el.innerText = saved; } });
+            const phoneSpan = document.getElementById('phone_number');
+            if (phoneSpan) {
+                const phoneLink = document.getElementById('phone_link');
+                if (phoneLink) phoneLink.href = `tel:${phoneSpan.innerText.replace(/\s/g, '')}`;
+            }
+            const emailSpan = document.getElementById('email_main');
+            if (emailSpan) {
+                const emailLink = document.getElementById('email_link');
+                if (emailLink) emailLink.href = `mailto:${emailSpan.innerText}`;
+            }
         }
         loadSaved();
         // Переключение вкладок
