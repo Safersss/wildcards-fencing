@@ -1,37 +1,27 @@
-# CloudCannon конфигурация для сайта Wild Cards Fencing
-
-# Путь к папке с файлами сайта (корень)
-source: "."
-
-# Папка для выходных файлов (та же, что и исходная)
-output: "."
-
-# Отключаем все сборщики, потому что сайт статический
+source: .
+editor:
+  default_path:
+timezone: Etc/UTC
+output: .
 build:
-  install_command: null
-  build_command: null
-
-# Настройки редактора
+  install_command:
+  build_command:
 editing:
   visual_editor:
     enabled: true
     open_links_in_new_window: false
   source_editor:
     enabled: true
-
-# Коллекции страниц (какие файлы можно редактировать)
 collections:
   pages:
-    name: "Страницы"
-    path: "/"
+    name: Страницы
+    path: /
     output: true
-    filter: "**/*.html"
-    exclude: "**/admin/**"
+    filter: '**/*.html'
+    exclude: '**/admin/**'
     _enabled_editors:
       - visual
       - content
-
-# Автоматическое определение редактируемых полей
 automatic_editing:
   enabled: true
   default_attributes:
