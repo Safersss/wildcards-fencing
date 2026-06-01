@@ -18,7 +18,7 @@
             line-height: 1.5;
         }
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -45,6 +45,7 @@
             border: 1px solid #222;
             padding: 40px;
             text-align: center;
+            border-radius: 15px;
         }
         .password-section h2 {
             font-family: 'Oswald', sans-serif;
@@ -58,6 +59,7 @@
             color: #fff;
             font-size: 16px;
             margin-bottom: 20px;
+            border-radius: 8px;
         }
         .password-section button {
             background: #d32f2f;
@@ -67,74 +69,36 @@
             font-family: 'Oswald', sans-serif;
             font-size: 18px;
             cursor: pointer;
+            border-radius: 8px;
         }
-        .admin-panel {
+        .pages-section {
             display: none;
+            text-align: center;
         }
-        .section-card {
+        .pages-section h2 {
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 30px;
+        }
+        .page-card {
             background: #111;
             border: 1px solid #222;
-            padding: 25px;
-            margin-bottom: 30px;
-            border-radius: 10px;
-        }
-        .section-card h3 {
-            font-family: 'Oswald', sans-serif;
-            color: #d32f2f;
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
-        .section-card label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        .section-card input, .section-card textarea {
-            width: 100%;
-            padding: 12px;
-            background: #000;
-            border: 1px solid #333;
-            color: #fff;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            font-family: inherit;
-        }
-        .section-card textarea {
-            min-height: 120px;
-        }
-        .save-btn {
-            background: #d32f2f;
-            color: #fff;
-            border: none;
-            padding: 10px 24px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
             cursor: pointer;
-            border-radius: 5px;
+            transition: 0.2s;
+            border-radius: 15px;
         }
-        .save-btn:hover {
-            background: #b71c1c;
+        .page-card:hover {
+            border-color: #d32f2f;
+            transform: translateY(-3px);
         }
-        .status {
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 15px;
-            display: none;
+        .page-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            margin-bottom: 10px;
         }
-        .status.success {
-            background: #1e4620;
-            color: #8bc34a;
-        }
-        .status.error {
-            background: #5c1e1e;
-            color: #ff8a80;
-        }
-        footer {
-            text-align: center;
-            color: #555;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #222;
+        .page-card p {
+            color: #aaa;
         }
         .btn-logout {
             background: #222;
@@ -143,154 +107,59 @@
             padding: 8px 20px;
             cursor: pointer;
             margin-bottom: 20px;
+            border-radius: 8px;
         }
-        @media (max-width: 700px) {
-            .container { padding: 20px; }
-            h1 { font-size: 32px; }
+        footer {
+            text-align: center;
+            color: #555;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #222;
         }
     </style>
 </head>
 <body>
-    <!-- Страница входа -->
-    <div id="passwordSection" class="password-section">
-        <h2>⚔️ WILD CARDS FENCING</h2>
-        <p style="margin-bottom: 20px; color: #aaa;">Введите пароль для входа в админ-панель</p>
-        <input type="password" id="adminPassword" placeholder="Пароль">
-        <button onclick="checkPassword()">Войти</button>
-    </div>
-
-    <!-- Админ-панель (скрыта до входа) -->
-    <div id="adminPanel" class="admin-panel">
-        <div class="container">
-            <h1>Админ-панель <span>WCF</span></h1>
-            <div class="sub">📝 Редактируй текст — нажимай «Сохранить» — сайт обновится</div>
-            
-            <button class="btn-logout" onclick="logout()">🚪 Выйти из админки</button>
-
-            <!-- Формы для редактирования главной страницы -->
-            <div class="section-card">
-                <h3>🏠 Главная — заголовок (WILD CARDS FENCING)</h3>
-                <label>Слово CARDS</label>
-                <input type="text" id="hero_accent" placeholder="CARDS">
-                <label>Слово FENCING</label>
-                <input type="text" id="hero_title" placeholder="FENCING">
-            </div>
-
-            <div class="section-card">
-                <h3>🏠 Главная — текст под заголовком</h3>
-                <textarea id="hero_text"></textarea>
-            </div>
-
-            <div class="section-card">
-                <h3>🏠 Главная — заголовки блоков «Направления» и «Тренеры»</h3>
-                <label>Заголовок «Направления»</label>
-                <input type="text" id="directions_title" placeholder="Направления">
-                <label>Заголовок «Тренеры»</label>
-                <input type="text" id="trainers_title" placeholder="Тренеры">
-            </div>
-
-            <div class="section-card">
-                <h3>🏠 Главная — текст в карточках направлений (6 штук)</h3>
-                <label>⚔️ Рапира — заголовок</label>
-                <input type="text" id="dir1_title" placeholder="Рапира">
-                <label>⚔️ Рапира — описание</label>
-                <input type="text" id="dir1_desc" placeholder="Спортивное и историческое">
-                
-                <label>🗡️ Шпага — заголовок</label>
-                <input type="text" id="dir2_title" placeholder="Шпага">
-                <label>🗡️ Шпага — описание</label>
-                <input type="text" id="dir2_desc" placeholder="Классическое фехтование">
-                
-                <label>🏹 Сабля — заголовок</label>
-                <input type="text" id="dir3_title" placeholder="Сабля">
-                <label>🏹 Сабля — описание</label>
-                <input type="text" id="dir3_desc" placeholder="Рубяще-колющее оружие">
-                
-                <label>🛡️ HEMA — заголовок</label>
-                <input type="text" id="dir4_title" placeholder="HEMA">
-                <label>🛡️ HEMA — описание</label>
-                <input type="text" id="dir4_desc" placeholder="Историческое фехтование">
-                
-                <label>⭐ СМБ — заголовок</label>
-                <input type="text" id="dir5_title" placeholder="СМБ">
-                <label>⭐ СМБ — описание</label>
-                <input type="text" id="dir5_desc" placeholder="Современный мечевой бой">
-                
-                <label>🏹 Лук — заголовок</label>
-                <input type="text" id="dir6_title" placeholder="Лук">
-                <label>🏹 Лук — описание</label>
-                <input type="text" id="dir6_desc" placeholder="Стрельба из традиционного лука">
-            </div>
-
-            <div class="section-card">
-                <h3>🏠 Главная — карточки тренеров (6 штук)</h3>
-                <label>Алексей — подпись под фото</label>
-                <input type="text" id="trainer1_title" placeholder="Алексей">
-                <label>Алексей — роль</label>
-                <input type="text" id="trainer1_role" placeholder="Основатель">
-                
-                <label>Иван — подпись</label>
-                <input type="text" id="trainer2_title" placeholder="Иван">
-                <label>Иван — роль</label>
-                <input type="text" id="trainer2_role" placeholder="Инструктор">
-                
-                <label>Татьяна — подпись</label>
-                <input type="text" id="trainer3_title" placeholder="Татьяна">
-                <label>Татьяна — роль</label>
-                <input type="text" id="trainer3_role" placeholder="Тренер">
-                
-                <label>Стася — подпись</label>
-                <input type="text" id="trainer4_title" placeholder="Стася">
-                <label>Стася — роль</label>
-                <input type="text" id="trainer4_role" placeholder="Тренер">
-                
-                <label>Гагик — подпись</label>
-                <input type="text" id="trainer5_title" placeholder="Гагик">
-                <label>Гагик — роль</label>
-                <input type="text" id="trainer5_role" placeholder="Шпага">
-                
-                <label>Макс — подпись</label>
-                <input type="text" id="trainer6_title" placeholder="Макс">
-                <label>Макс — роль</label>
-                <input type="text" id="trainer6_role" placeholder="Методолог">
-            </div>
-
-            <div class="section-card">
-                <h3>📄 О школе — текст</h3>
-                <label>Абзац 1</label>
-                <textarea id="about_text1"></textarea>
-                <label>Абзац 2</label>
-                <textarea id="about_text2"></textarea>
-                <label>Абзац 3</label>
-                <textarea id="about_text3"></textarea>
-            </div>
-
-            <div class="section-card">
-                <h3>📞 Контакты — основной телефон и почта</h3>
-                <label>Телефон</label>
-                <input type="text" id="phone_main" placeholder="+7 906 068 88 45">
-                <label>Почта</label>
-                <input type="text" id="email_main" placeholder="info@wildcardsfencing.ru">
-            </div>
-
-            <button class="save-btn" onclick="saveAllData()">💾 СОХРАНИТЬ ВСЕ ИЗМЕНЕНИЯ</button>
-            <div id="statusMessage" class="status"></div>
+    <div class="container">
+        <!-- Страница входа -->
+        <div id="passwordSection" class="password-section">
+            <h2>⚔️ WILD CARDS FENCING</h2>
+            <p style="margin-bottom: 20px; color: #aaa;">Введите пароль для входа в админ-панель</p>
+            <input type="password" id="adminPassword" placeholder="Пароль">
+            <button onclick="checkPassword()">Войти</button>
         </div>
-        <footer>
-            <div class="container">
-                <p>© 2025 Wild Cards Fencing | Админ-панель</p>
+
+        <!-- Выбор страницы для редактирования -->
+        <div id="pagesSection" class="pages-section">
+            <h1>Админ-панель <span>WCF</span></h1>
+            <div class="sub">📝 Выбери страницу для редактирования</div>
+            <button class="btn-logout" onclick="logout()">🚪 Выйти</button>
+
+            <div class="page-card" onclick="openEditor('index')">
+                <h3>🏠 Главная</h3>
+                <p>Редактировать заголовки, направления, тренеров</p>
             </div>
-        </footer>
+            <div class="page-card" onclick="openEditor('about')">
+                <h3>📖 О школе</h3>
+                <p>Редактировать текст о школе</p>
+            </div>
+            <div class="page-card" onclick="openEditor('contacts')">
+                <h3>📞 Контакты</h3>
+                <p>Редактировать телефоны, адреса, почту</p>
+            </div>
+        </div>
     </div>
+    <footer>
+        <div class="container">
+            <p>© 2025 Wild Cards Fencing | Админ-панель</p>
+        </div>
+    </footer>
 
     <script>
-        // Пароль
         function checkPassword() {
             const pwd = document.getElementById('adminPassword').value;
             if (pwd === 'WCF2025') {
                 document.getElementById('passwordSection').style.display = 'none';
-                document.getElementById('adminPanel').style.display = 'block';
-                loadCurrentData();
+                document.getElementById('pagesSection').style.display = 'block';
             } else {
                 alert('❌ Неверный пароль');
             }
@@ -298,76 +167,13 @@
         
         function logout() {
             document.getElementById('passwordSection').style.display = 'block';
-            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('pagesSection').style.display = 'none';
             document.getElementById('adminPassword').value = '';
         }
         
-        // Загрузить текущие значения (из localStorage или по умолчанию)
-        function loadCurrentData() {
-            document.getElementById('hero_accent').value = localStorage.getItem('hero_accent') || 'CARDS';
-            document.getElementById('hero_title').value = localStorage.getItem('hero_title') || 'FENCING';
-            document.getElementById('hero_text').value = localStorage.getItem('hero_text') || 'Школа фехтования для детей и взрослых. От Средневековья до современности.';
-            document.getElementById('directions_title').value = localStorage.getItem('directions_title') || 'Направления';
-            document.getElementById('trainers_title').value = localStorage.getItem('trainers_title') || 'Тренеры';
-            
-            // Направления
-            document.getElementById('dir1_title').value = localStorage.getItem('dir1_title') || 'Рапира';
-            document.getElementById('dir1_desc').value = localStorage.getItem('dir1_desc') || 'Спортивное и историческое';
-            document.getElementById('dir2_title').value = localStorage.getItem('dir2_title') || 'Шпага';
-            document.getElementById('dir2_desc').value = localStorage.getItem('dir2_desc') || 'Классическое фехтование';
-            document.getElementById('dir3_title').value = localStorage.getItem('dir3_title') || 'Сабля';
-            document.getElementById('dir3_desc').value = localStorage.getItem('dir3_desc') || 'Рубяще-колющее оружие';
-            document.getElementById('dir4_title').value = localStorage.getItem('dir4_title') || 'HEMA';
-            document.getElementById('dir4_desc').value = localStorage.getItem('dir4_desc') || 'Историческое фехтование';
-            document.getElementById('dir5_title').value = localStorage.getItem('dir5_title') || 'СМБ';
-            document.getElementById('dir5_desc').value = localStorage.getItem('dir5_desc') || 'Современный мечевой бой';
-            document.getElementById('dir6_title').value = localStorage.getItem('dir6_title') || 'Лук';
-            document.getElementById('dir6_desc').value = localStorage.getItem('dir6_desc') || 'Стрельба из традиционного лука';
-            
-            // Тренеры
-            for (let i = 1; i <= 6; i++) {
-                document.getElementById(`trainer${i}_title`).value = localStorage.getItem(`trainer${i}_title`) || (['Алексей','Иван','Татьяна','Стася','Гагик','Макс'][i-1]);
-                document.getElementById(`trainer${i}_role`).value = localStorage.getItem(`trainer${i}_role`) || (['Основатель','Инструктор','Тренер','Тренер','Шпага','Методолог'][i-1]);
-            }
-            
-            // О школе
-            document.getElementById('about_text1').value = localStorage.getItem('about_text1') || 'Wild Cards Fencing — первая многопрофильная школа фехтования в Москве. Мы объединяем традиции и современность, Европу и Восток. Наши тренеры — чемпионы России и мира, специалисты с огромным опытом.';
-            document.getElementById('about_text2').value = localStorage.getItem('about_text2') || 'Мы не привязываем учеников к одному клубу. Главное для нас — научить побеждать. В наших залах более 30 направлений: от спортивной шпаги до исторического фехтования и стрельбы из лука.';
-            document.getElementById('about_text3').value = localStorage.getItem('about_text3') || 'Наши залы находятся в 10 минутах от метро Соколиная Гора и Римская. Мы — спортивная организация, входящая в Федерацию Фехтования Москвы.';
-            
-            // Контакты
-            document.getElementById('phone_main').value = localStorage.getItem('phone_main') || '+7 906 068 88 45';
-            document.getElementById('email_main').value = localStorage.getItem('email_main') || 'info@wildcardsfencing.ru';
-        }
-        
-        function showStatus(msg, type) {
-            const statusDiv = document.getElementById('statusMessage');
-            statusDiv.textContent = msg;
-            statusDiv.className = `status ${type}`;
-            statusDiv.style.display = 'block';
-            setTimeout(() => {
-                statusDiv.style.display = 'none';
-            }, 3000);
-        }
-        
-        function saveAllData() {
-            // Сохраняем всё в localStorage
-            const fields = [
-                'hero_accent', 'hero_title', 'hero_text', 'directions_title', 'trainers_title',
-                'dir1_title', 'dir1_desc', 'dir2_title', 'dir2_desc', 'dir3_title', 'dir3_desc',
-                'dir4_title', 'dir4_desc', 'dir5_title', 'dir5_desc', 'dir6_title', 'dir6_desc',
-                'trainer1_title', 'trainer1_role', 'trainer2_title', 'trainer2_role', 'trainer3_title', 'trainer3_role',
-                'trainer4_title', 'trainer4_role', 'trainer5_title', 'trainer5_role', 'trainer6_title', 'trainer6_role',
-                'about_text1', 'about_text2', 'about_text3', 'phone_main', 'email_main'
-            ];
-            fields.forEach(field => {
-                const el = document.getElementById(field);
-                if (el) localStorage.setItem(field, el.value);
-            });
-            
-            // Здесь будет генерация HTML-файлов и отправка на GitHub
-            // Пока показываем сообщение
-            showStatus('✅ Данные сохранены локально. Скоро добавим сохранение на GitHub!', 'success');
+        function openEditor(page) {
+            // Открываем редактор для выбранной страницы в новом окне
+            window.location.href = `edit-${page}.html`;
         }
     </script>
 </body>
