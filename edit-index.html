@@ -30,9 +30,9 @@
         nav a:hover { color: #d32f2f; }
         
         .hero { text-align: center; padding: 100px 0 120px; }
-        .hero h1 { font-family: 'Oswald', sans-serif; font-size: 80px; font-weight: 700; letter-spacing: 4px; margin-bottom: 20px; text-transform: uppercase; }
+        .hero h1 { font-family: 'Oswald', sans-serif; font-size: 80px; font-weight: 700; letter-spacing: 4px; margin-bottom: 20px; text-transform: uppercase; text-align: center; }
         .hero h1 span { color: #d32f2f; }
-        .hero p { font-size: 20px; color: #aaa; max-width: 600px; margin: 0 auto 30px; }
+        .hero p { font-size: 20px; color: #aaa; max-width: 600px; margin: 0 auto 30px; text-align: center; }
         .btn { background: #d32f2f; color: #fff; border: none; padding: 14px 36px; font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: 0.2s; display: inline-block; }
         .btn:hover { background: #b71c1c; }
         
@@ -43,10 +43,9 @@
         .direction-card, .trainer-card { background: #111; padding: 30px 20px; text-align: center; border: 1px solid #222; width: 100%; max-width: 280px; }
         .direction-card h3 { font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 600; margin: 15px 0 10px; text-transform: uppercase; }
         .direction-card p { color: #aaa; font-size: 16px; }
-        .trainer-card img { width: 180px; height: 180px; object-fit: cover; margin-bottom: 20px; cursor: pointer; border: 2px solid transparent; transition: 0.2s; }
-        .trainer-card img:hover { border-color: #d32f2f; opacity: 0.8; }
-        .trainer-card h3 { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; }
-        .trainer-card p { color: #aaa; margin-top: 5px; font-size: 14px; }
+        .trainer-card img { width: 180px; height: 180px; object-fit: cover; margin-bottom: 20px; cursor: pointer; border: 2px solid transparent; transition: 0.2s; display: block; margin-left: auto; margin-right: auto; }
+        .trainer-card h3 { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; display: block; text-align: center; }
+        .trainer-card p { color: #aaa; margin-top: 8px; font-size: 14px; display: block; text-align: center; }
         
         .center-btn { text-align: center; margin-top: 20px; }
         
@@ -62,6 +61,7 @@
             .logo img { height: 40px; }
             .logo-text { font-size: 18px; }
             .directions-grid, .trainers-grid { grid-template-columns: 1fr; justify-items: center; }
+            .trainer-card img { width: 140px; height: 140px; }
         }
     </style>
 </head>
