@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // ВСТАВЬТЕ СЮДА ВАШ URL ИЗ ШАГА 6.3
+        // URL 
         const SCRIPT_URL = 'https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbydZeI95VJG3QRCFCrTn8HUuvJrmgmcjCk5qRZJ5UEOnXfkStPQTVZQW5BJIe-XdVeJ/exec/exec';
 
         try {
