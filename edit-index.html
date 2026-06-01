@@ -69,9 +69,13 @@
 </head>
 <body>
     <div class="admin-bar">
-        <div>🔧 <strong>Редактор главной страницы</strong> — кликни на текст, измени его, потом нажми «Сохранить». Для смены фото — кликни на фото и вставь ссылку.</div>
-        <div><button id="saveBtn">💾 Сохранить изменения</button> <span id="statusMsg" class="status"></span></div>
+        <div>🔧 <strong>Редактор главной страницы</strong> — кликни на текст, измени его.</div>
+        <div>
+            <button id="publishBtn">🚀 Опубликовать на GitHub</button>
+            <span id="statusMsg" class="status"></span>
+        </div>
     </div>
+    
     <div class="container">
         <header>
             <div class="header-inner">
@@ -113,23 +117,93 @@
         </section>
     </div>
     <footer><div class="container"><p>© 2025 Wild Cards Fencing | Все права защищены</p></div></footer>
+    
     <script>
+        let githubToken = localStorage.getItem('github_token') || '';
+        
         function changePhoto(imgElement) {
             const newUrl = prompt('Введите URL новой фотографии (ссылка на изображение):', imgElement.src);
             if (newUrl && newUrl.trim() !== '') imgElement.src = newUrl;
         }
-        document.getElementById('saveBtn').addEventListener('click', () => {
+        
+        function getCurrentHTML() {
+            return document.documentElement.outerHTML;
+        }
+        
+        async function publishToGitHub() {
             const statusSpan = document.getElementById('statusMsg');
-            const fields = ['logo_accent','logo_text','hero_accent','hero_title','hero_text','directions_title','trainers_title','dir1_title','dir1_desc','dir2_title','dir2_desc','dir3_title','dir3_desc','dir4_title','dir4_desc','dir5_title','dir5_desc','dir6_title','dir6_desc','trainer1_title','trainer1_role','trainer2_title','trainer2_role','trainer3_title','trainer3_role','trainer4_title','trainer4_role','trainer5_title','trainer5_role','trainer6_title','trainer6_role'];
-            fields.forEach(id => { const el = document.getElementById(id); if (el) localStorage.setItem(id, el.innerText); });
-            for (let i = 1; i <= 6; i++) {
-                const img = document.querySelector(`.trainer-card:nth-child(${i}) img`);
-                if (img) localStorage.setItem(`trainer${i}_photo`, img.src);
+            
+            // Если токена нет — запрашиваем
+            if (!githubToken) {
+                const token = prompt('🔑 Введите ваш GitHub токен (получить можно на github.com/settings/tokens). Токен сохранится в браузере.', 'ghp_');
+                if (token && token.trim() !== '') {
+                    githubToken = token.trim();
+                    localStorage.setItem('github_token', githubToken);
+                } else {
+                    statusSpan.textContent = '❌ Токен не введён';
+                    statusSpan.style.color = '#ff8a80';
+                    setTimeout(() => { statusSpan.textContent = ''; }, 3000);
+                    return;
+                }
             }
-            statusSpan.textContent = '✅ Сохранено локально!';
-            statusSpan.style.color = '#8bc34a';
-            setTimeout(() => { statusSpan.textContent = ''; }, 2000);
-        });
+            
+            statusSpan.textContent = '⏳ Публикация на GitHub...';
+            statusSpan.style.color = '#ffaa00';
+            
+            const html = getCurrentHTML();
+            const repo = 'safersss/wildcards-fencing';
+            const filepath = 'index.html';
+            const url = `https://api.github.com/repos/${repo}/contents/${filepath}`;
+            
+            try {
+                // Получаем текущую версию файла (нужен sha)
+                let sha = null;
+                const getRes = await fetch(url, {
+                    headers: { 'Authorization': `token ${githubToken}` }
+                });
+                if (getRes.ok) {
+                    const data = await getRes.json();
+                    sha = data.sha;
+                }
+                
+                // Отправляем обновление
+                const response = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${githubToken}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: 'Обновление главной страницы из редактора',
+                        content: btoa(unescape(encodeURIComponent(html))),
+                        sha: sha
+                    })
+                });
+                
+                if (response.ok) {
+                    statusSpan.textContent = '✅ Сайт обновлён! Через 1-2 минуты изменения появятся.';
+                    statusSpan.style.color = '#8bc34a';
+                } else {
+                    const error = await response.json();
+                    if (error.message === 'Bad credentials') {
+                        statusSpan.textContent = '❌ Неверный токен. Удалите его и введите заново.';
+                        localStorage.removeItem('github_token');
+                        githubToken = '';
+                    } else {
+                        statusSpan.textContent = '❌ Ошибка: ' + error.message;
+                    }
+                    statusSpan.style.color = '#ff8a80';
+                }
+            } catch (error) {
+                statusSpan.textContent = '❌ Ошибка соединения: ' + error.message;
+                statusSpan.style.color = '#ff8a80';
+            }
+            setTimeout(() => { statusSpan.textContent = ''; }, 5000);
+        }
+        
+        document.getElementById('publishBtn').addEventListener('click', publishToGitHub);
+        
+        // Загружаем сохранённые данные из localStorage
         function loadSaved() {
             const fields = ['logo_accent','logo_text','hero_accent','hero_title','hero_text','directions_title','trainers_title','dir1_title','dir1_desc','dir2_title','dir2_desc','dir3_title','dir3_desc','dir4_title','dir4_desc','dir5_title','dir5_desc','dir6_title','dir6_desc','trainer1_title','trainer1_role','trainer2_title','trainer2_role','trainer3_title','trainer3_role','trainer4_title','trainer4_role','trainer5_title','trainer5_role','trainer6_title','trainer6_role'];
             fields.forEach(id => { const saved = localStorage.getItem(id); if (saved) { const el = document.getElementById(id); if (el) el.innerText = saved; } });
