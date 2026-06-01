@@ -101,4 +101,51 @@
         <div id="vid" class="tab-content">
             <div class="location-name">🌲 Wild Cards Fencing (Видное) — <span contenteditable="true" id="vid_address">г. Видное, ул. Советская, д. 19</span></div>
             <div class="info-text">
-                <p><strong>🚇 Транспорт:</strong> <span contenteditable="true" id="vid_transport">Остановка «АТС». Вход слева от магазина
+                <p><strong>🚇 Транспорт:</strong> <span contenteditable="true" id="vid_transport">Остановка «АТС». Вход слева от магазина «Пятерочка».</span></p>
+                <p><strong>🚪 Вход:</strong> <span contenteditable="true" id="vid_entry">Вход слева от магазина «Пятерочка», далее поднимаемся на 3 этаж.</span></p>
+            </div>
+        </div>
+        
+        <div class="phone">
+            📞 <span contenteditable="true" id="phone_label">Единый телефон для записи и вопросов:</span> <a href="tel:+79060688845" id="phone_link"><span contenteditable="true" id="phone_number">+7 906 068 88 45</span></a><br>
+            ✉️ Почта: <a href="mailto:info@wildcardsfencing.ru" id="email_link"><span contenteditable="true" id="email_main">info@wildcardsfencing.ru</span></a>
+        </div>
+    </div>
+    <footer><div class="container"><p>© 2025 Wild Cards Fencing | Все права защищены</p></div></footer>
+    <script>
+        document.getElementById('saveBtn').addEventListener('click', () => {
+            const statusSpan = document.getElementById('statusMsg');
+            const fields = ['logo_accent','logo_text','contacts_span','sg_address','sg_metro','sg_parking','sg_entry','dds_address','dds_metro','dds_floors','dds_groups','vid_address','vid_transport','vid_entry','phone_label','phone_number','email_main'];
+            fields.forEach(id => { const el = document.getElementById(id); if (el) localStorage.setItem(id, el.innerText); });
+            const phoneSpan = document.getElementById('phone_number');
+            if (phoneSpan) { const phoneLink = document.getElementById('phone_link'); if (phoneLink) phoneLink.href = `tel:${phoneSpan.innerText.replace(/\s/g, '')}`; }
+            const emailSpan = document.getElementById('email_main');
+            if (emailSpan) { const emailLink = document.getElementById('email_link'); if (emailLink) emailLink.href = `mailto:${emailSpan.innerText}`; }
+            statusSpan.textContent = '✅ Сохранено локально!';
+            statusSpan.style.color = '#8bc34a';
+            setTimeout(() => { statusSpan.textContent = ''; }, 2000);
+        });
+        function loadSaved() {
+            const fields = ['logo_accent','logo_text','contacts_span','sg_address','sg_metro','sg_parking','sg_entry','dds_address','dds_metro','dds_floors','dds_groups','vid_address','vid_transport','vid_entry','phone_label','phone_number','email_main'];
+            fields.forEach(id => { const saved = localStorage.getItem(id); if (saved) { const el = document.getElementById(id); if (el) el.innerText = saved; } });
+            const phoneSpan = document.getElementById('phone_number');
+            if (phoneSpan) { const phoneLink = document.getElementById('phone_link'); if (phoneLink) phoneLink.href = `tel:${phoneSpan.innerText.replace(/\s/g, '')}`; }
+            const emailSpan = document.getElementById('email_main');
+            if (emailSpan) { const emailLink = document.getElementById('email_link'); if (emailLink) emailLink.href = `mailto:${emailSpan.innerText}`; }
+        }
+        loadSaved();
+        
+        const tabs = document.querySelectorAll('.tab-btn');
+        const contents = document.querySelectorAll('.tab-content');
+        tabs.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                tabs.forEach(b => b.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
