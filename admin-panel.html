@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wild Cards Fencing — Админ-панель</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0a; font-family: 'Inter', sans-serif; color: #fff; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; display: flex; gap: 30px; flex-wrap: wrap; }
+        .editor { flex: 1; background: #111; border: 1px solid #333; padding: 25px; border-radius: 15px; }
+        .preview { flex: 1; background: #000; border: 1px solid #333; padding: 25px; border-radius: 15px; position: sticky; top: 20px; max-height: 90vh; overflow: auto; }
+        h2 { font-family: 'Oswald', sans-serif; color: #d32f2f; margin-bottom: 20px; }
+        .field { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #ccc; }
+        input, textarea { width: 100%; padding: 10px; background: #000; border: 1px solid #333; color: #fff; border-radius: 8px; font-family: inherit; }
+        textarea { min-height: 100px; }
+        button { background: #d32f2f; color: #fff; border: none; padding: 12px 24px; cursor: pointer; border-radius: 8px; font-size: 16px; margin-top: 10px; margin-right: 10px; }
+        .btn-secondary { background: #222; border: 1px solid #d32f2f; }
+        .status { margin-top: 15px; padding: 10px; border-radius: 8px; display: none; }
+        .status.success { background: #1e4620; color: #8bc34a; display: block; }
+        .preview-box { background: #000; padding: 20px; border-radius: 10px; margin-top: 20px; }
+        .preview h3 { color: #d32f2f; margin-bottom: 15px; }
+        .code-output { background: #1a1a1a; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 12px; white-space: pre-wrap; word-break: break-all; max-height: 300px; overflow: auto; display: none; }
+        hr { border-color: #333; margin: 20px 0; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="editor">
+        <h2>⚔️ Редактор главной страницы</h2>
+        
+        <div class="field">
+            <label>🏷️ Логотип — слово CARDS</label>
+            <input type="text" id="logo_accent" placeholder="CARDS">
+        </div>
+        <div class="field">
+            <label>🏷️ Логотип — слово FENCING</label>
+            <input type="text" id="logo_text" placeholder="FENCING">
+        </div>
+        <div class="field">
+            <label>📢 Заголовок — слово CARDS</label>
+            <input type="text" id="hero_accent" placeholder="CARDS">
+        </div>
+        <div class="field">
+            <label>📢 Заголовок — слово FENCING</label>
+            <input type="text" id="hero_title" placeholder="FENCING">
+        </div>
+        <div class="field">
+            <label>📝 Текст под заголовком</label>
+            <textarea id="hero_text">Школа фехтования для детей и взрослых. От Средневековья до современности.</textarea>
+        </div>
+        <div class="field">
+            <label>📞 Телефон</label>
+            <input type="text" id="phone" placeholder="+7 906 068 88 45">
+        </div>
+        <div class="field">
+            <label>✉️ Email</label>
+            <input type="text" id="email" placeholder="info@wildcardsfencing.ru">
+        </div>
+
+        <button id="saveBtn">💾 Сохранить (локально)</button>
+        <button id="generateBtn" class="btn-secondary">🔧 Сгенерировать HTML</button>
+        <button id="copyBtn" class="btn-secondary" style="display:none;">📋 Скопировать код</button>
+        
+        <div id="status" class="status"></div>
+        
+        <div id="codeOutput" class="code-output"></div>
+    </div>
+
+    <div class="preview">
+        <h2>👁️ Предпросмотр</h2>
+        <div id="previewContent">
+            <div style="background:#000; padding:20px; border-radius:10px; border:1px solid #333;">
+                <div style="text-align:center; margin-bottom:20px;">
+                    <div style="font-family:'Oswald',sans-serif; font-size:28px; font-weight:700;">WILD <span style="color:#d32f2f;" id="preview_accent">CARDS</span><br><span id="preview_logo">FENCING</span></div>
+                </div>
+                <div style="text-align:center;">
+                    <div style="font-family:'Oswald',sans-serif; font-size:48px;">WILD <span style="color:#d32f2f;" id="preview_hero_accent">CARDS</span><br><span id="preview_hero_title">FENCING</span></div>
+                    <div style="color:#aaa; margin:20px 0;" id="preview_text">Школа фехтования для детей и взрослых. От Средневековья до современности.</div>
+                    <div style="background:#d32f2f; display:inline-block; padding:10px 20px; border-radius:30px; color:#fff;">Записаться на пробное занятие</div>
+                </div>
+                <hr>
+                <div style="text-align:center;">
+                    <div>📞 <span id="preview_phone">+7 906 068 88 45</span></div>
+                    <div>✉️ <span id="preview_email">info@wildcardsfencing.ru</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Загрузка сохранённых данных
+    function loadFromLocalStorage() {
+        document.getElementById('logo_accent').value = localStorage.getItem('logo_accent') || 'CARDS';
+        document.getElementById('logo_text').value = localStorage.getItem('logo_text') || 'FENCING';
+        document.getElementById('hero_accent').value = localStorage.getItem('hero_accent') || 'CARDS';
+        document.getElementById('hero_title').value = localStorage.getItem('hero_title') || 'FENCING';
+        document.getElementById('hero_text').value = localStorage.getItem('hero_text') || 'Школа фехтования для детей и взрослых. От Средневековья до современности.';
+        document.getElementById('phone').value = localStorage.getItem('phone') || '+7 906 068 88 45';
+        document.getElementById('email').value = localStorage.getItem('email') || 'info@wildcardsfencing.ru';
+        updatePreview();
+    }
+
+    // Обновление предпросмотра
+    function updatePreview() {
+        document.getElementById('preview_accent').textContent = document.getElementById('logo_accent').value;
+        document.getElementById('preview_logo').textContent = document.getElementById('logo_text').value;
+        document.getElementById('preview_hero_accent').textContent = document.getElementById('hero_accent').value;
+        document.getElementById('preview_hero_title').textContent = document.getElementById('hero_title').value;
+        document.getElementById('preview_text').textContent = document.getElementById('hero_text').value;
+        document.getElementById('preview_phone').textContent = document.getElementById('phone').value;
+        document.getElementById('preview_email').textContent = document.getElementById('email').value;
+    }
+
+    // Сохранение
+    document.getElementById('saveBtn').addEventListener('click', () => {
+        localStorage.setItem('logo_accent', document.getElementById('logo_accent').value);
+        localStorage.setItem('logo_text', document.getElementById('logo_text').value);
+        localStorage.setItem('hero_accent', document.getElementById('hero_accent').value);
+        localStorage.setItem('hero_title', document.getElementById('hero_title').value);
+        localStorage.setItem('hero_text', document.getElementById('hero_text').value);
+        localStorage.setItem('phone', document.getElementById('phone').value);
+        localStorage.setItem('email', document.getElementById('email').value);
+        updatePreview();
+        const status = document.getElementById('status');
+        status.className = 'status success';
+        status.textContent = '✅ Сохранено локально! Нажми «Сгенерировать HTML», чтобы получить код для сайта.';
+        setTimeout(() => status.style.display = 'none', 3000);
+    });
+
+    // Генерация HTML
+    document.getElementById('generateBtn').addEventListener('click', () => {
+        const logoAccent = document.getElementById('logo_accent').value;
+        const logoText = document.getElementById('logo_text').value;
+        const heroAccent = document.getElementById('hero_accent').value;
+        const heroTitle = document.getElementById('hero_title').value;
+        const heroText = document.getElementById('hero_text').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value;
+        
+        // Загружаем текущий index.html с GitHub и заменяем только нужные места
+        fetch('index.html')
+            .then(res => res.text())
+            .then(originalHtml => {
+                // Заменяем текст в нужных местах
+                let newHtml = originalHtml;
+                newHtml = newHtml.replace(/WILD <span>CARDS<\/span><br>FENCING/, `WILD <span>${logoAccent}</span><br>${logoText}`);
+                newHtml = newHtml.replace(/WILD <span>CARDS<\/span><br>FENCING/g, `WILD <span>${heroAccent}</span><br>${heroTitle}`);
+                newHtml = newHtml.replace(/<p>Школа фехтования для детей и взрослых. От Средневековья до современности.<\/p>/, `<p>${heroText}</p>`);
+                newHtml = newHtml.replace(/\+7 906 068 88 45/g, phone);
+                newHtml = newHtml.replace(/info@wildcardsfencing.ru/g, email);
+                
+                const codeOutput = document.getElementById('codeOutput');
+                codeOutput.style.display = 'block';
+                codeOutput.textContent = newHtml;
+                document.getElementById('copyBtn').style.display = 'inline-block';
+                
+                const status = document.getElementById('status');
+                status.className = 'status success';
+                status.textContent = '✅ HTML сгенерирован! Нажми «Копировать код», затем замени файл index.html на GitHub.';
+                status.style.display = 'block';
+                setTimeout(() => status.style.display = 'none', 5000);
+            })
+            .catch(err => {
+                const status = document.getElementById('status');
+                status.className = 'status success';
+                status.textContent = '⚠️ Не удалось загрузить текущий index.html. Используй резервный вариант.';
+                status.style.display = 'block';
+                // Резервный вариант — простой HTML
+                const backupHtml = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Wild Cards Fencing</title><style>body{background:#000;color:#fff;font-family:Arial;text-align:center;padding:50px;}h1{color:#d32f2f;}</style></head><body><h1>WILD <span style="color:#d32f2f">${heroAccent}</span><br>${heroTitle}</h1><p>${heroText}</p><p>Телефон: ${phone}<br>Email: ${email}</p></body></html>`;
+                codeOutput.style.display = 'block';
+                codeOutput.textContent = backupHtml;
+                document.getElementById('copyBtn').style.display = 'inline-block';
+            });
+    });
+
+    // Копирование кода
+    document.getElementById('copyBtn').addEventListener('click', () => {
+        const code = document.getElementById('codeOutput').textContent;
+        navigator.clipboard.writeText(code);
+        const status = document.getElementById('status');
+        status.className = 'status success';
+        status.textContent = '✅ Код скопирован! Теперь зайди на GitHub → index.html → Edit → вставь → Commit changes';
+        status.style.display = 'block';
+        setTimeout(() => status.style.display = 'none', 4000);
+    });
+
+    // Привязываем обновление предпросмотра к полям
+    const inputs = ['logo_accent', 'logo_text', 'hero_accent', 'hero_title', 'hero_text', 'phone', 'email'];
+    inputs.forEach(id => {
+        document.getElementById(id).addEventListener('input', updatePreview);
+    });
+
+    loadFromLocalStorage();
+</script>
+</body>
+</html>
