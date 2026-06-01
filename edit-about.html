@@ -180,7 +180,6 @@
         <div>🔧 <strong>Редактор страницы «О школе»</strong> — кликни на текст, измени его.</div>
         <div>
             <button id="copyBtn">📋 Копировать HTML</button>
-            <button id="publishBtn">🚀 Опубликовать на GitHub</button>
             <span id="statusMsg" class="status"></span>
         </div>
     </div>
@@ -221,89 +220,14 @@
     </footer>
 
     <script>
-        let githubToken = localStorage.getItem('github_token') || '';
-
-        function getCurrentHTML() {
-            return document.documentElement.outerHTML;
-        }
-
         document.getElementById('copyBtn').addEventListener('click', () => {
-            const html = getCurrentHTML();
+            const html = document.documentElement.outerHTML;
             navigator.clipboard.writeText(html);
             const statusSpan = document.getElementById('statusMsg');
-            statusSpan.textContent = '✅ HTML скопирован! Вставь его в save-to-github.html или нажми «Опубликовать».';
+            statusSpan.textContent = '✅ HTML скопирован! Вставь его в save-to-github.html';
             statusSpan.style.color = '#8bc34a';
             setTimeout(() => { statusSpan.textContent = ''; }, 3000);
         });
-
-        async function publishToGitHub() {
-            const statusSpan = document.getElementById('statusMsg');
-            if (!githubToken) {
-                const token = prompt('🔑 Введите ваш GitHub токен (ghp_...). Токен сохранится в браузере.', 'ghp_');
-                if (token && token.trim() !== '') {
-                    githubToken = token.trim();
-                    localStorage.setItem('github_token', githubToken);
-                } else {
-                    statusSpan.textContent = '❌ Токен не введён';
-                    statusSpan.style.color = '#ff8a80';
-                    setTimeout(() => { statusSpan.textContent = ''; }, 3000);
-                    return;
-                }
-            }
-
-            statusSpan.textContent = '⏳ Публикация на GitHub...';
-            statusSpan.style.color = '#ffaa00';
-
-            const html = getCurrentHTML();
-            const repo = 'safersss/wildcards-fencing';
-            const filepath = 'about.html';
-            const url = `https://api.github.com/repos/${repo}/contents/${filepath}`;
-
-            try {
-                let sha = null;
-                const getRes = await fetch(url, {
-                    headers: { 'Authorization': `token ${githubToken}` }
-                });
-                if (getRes.ok) {
-                    const data = await getRes.json();
-                    sha = data.sha;
-                }
-
-                const response = await fetch(url, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${githubToken}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: 'Обновление страницы "О школе" из редактора',
-                        content: btoa(unescape(encodeURIComponent(html))),
-                        sha: sha
-                    })
-                });
-
-                if (response.ok) {
-                    statusSpan.textContent = '✅ Сайт обновлён! Через 1-2 минуты изменения появятся.';
-                    statusSpan.style.color = '#8bc34a';
-                } else {
-                    const error = await response.json();
-                    if (error.message === 'Bad credentials') {
-                        statusSpan.textContent = '❌ Неверный токен. Удалите его и введите заново.';
-                        localStorage.removeItem('github_token');
-                        githubToken = '';
-                    } else {
-                        statusSpan.textContent = '❌ Ошибка: ' + error.message;
-                    }
-                    statusSpan.style.color = '#ff8a80';
-                }
-            } catch (error) {
-                statusSpan.textContent = '❌ Ошибка соединения: ' + error.message;
-                statusSpan.style.color = '#ff8a80';
-            }
-            setTimeout(() => { statusSpan.textContent = ''; }, 5000);
-        }
-
-        document.getElementById('publishBtn').addEventListener('click', publishToGitHub);
 
         function loadSaved() {
             const fields = ['logo_accent','logo_text','about_span','about_text1','about_text2','about_text3'];
