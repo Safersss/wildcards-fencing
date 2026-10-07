@@ -3,58 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wild Cards Fencing — Вопросы и ответы</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Wild Cards Fencing — FAQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #000000; font-family: 'Inter', 'Segoe UI', sans-serif; color: #fff; line-height: 1.5; }
+        body { background: #fff; font-family: 'Inter', sans-serif; color: #111; line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        header { padding: 20px 0; border-bottom: 1px solid #222; }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .logo img { height: 50px; width: auto; display: block; }
-        .logo-text { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 2px; color: #fff; text-transform: uppercase; line-height: 1.2; }
-        .logo-text span { color: #d32f2f; }
-        nav a { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: #fff; text-decoration: none; margin-left: 30px; transition: 0.2s; text-transform: uppercase; }
+        header { background: #fff; padding: 12px 0; box-shadow: 0 2px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 20px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+        .logo img { height: 65px; width: auto; object-fit: contain; }
+        .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 2px; color: #111; text-transform: uppercase; line-height: 1; }
+        .logo-text span { color: #7a0c0c; }
+        nav { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+        nav a { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; color: #111; text-decoration: none; margin-left: 22px; text-transform: uppercase; transition: 0.3s; white-space: nowrap; }
         nav a:first-child { margin-left: 0; }
-        nav a:hover { color: #d32f2f; }
-        h1 { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; text-align: center; margin: 60px 0 20px; text-transform: uppercase; }
-        h1 span { color: #d32f2f; }
-        .sub { text-align: center; color: #aaa; margin-bottom: 50px; }
-        .faq-section { margin-bottom: 30px; border: 1px solid #222; background: #111; }
-        .faq-section-header { background: #1a1a1a; padding: 18px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .faq-section-header:hover { background: #222; }
-        .faq-section-header h2 { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 600; color: #fff; text-transform: uppercase; }
-        .faq-section-header .toggle-icon { font-size: 28px; color: #d32f2f; }
-        .faq-items-wrapper { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
-        .faq-section.active .faq-items-wrapper { max-height: 2000px; }
-        .faq-item { border-top: 1px solid #222; }
-        .faq-question { padding: 16px 25px; font-size: 18px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #111; }
-        .faq-question:hover { background: #1a1a1a; }
-        .faq-question .q-icon { font-size: 22px; color: #d32f2f; }
-        .faq-answer { padding: 0 25px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; color: #ccc; background: #0a0a0a; }
-        .faq-item.active .faq-answer { padding: 20px 25px; max-height: 500px; border-top: 1px solid #222; }
-        .faq-answer p { margin-bottom: 10px; }
-        .faq-answer a { color: #d32f2f; text-decoration: none; }
-        footer { border-top: 1px solid #222; padding: 40px 0; text-align: center; color: #555; margin-top: 60px; }
+        nav a:hover { color: #7a0c0c; }
+
+        h1 { font-family: 'Bebas Neue', sans-serif; font-size: 56px; text-align: center; margin: 50px 0 20px; letter-spacing: 3px; }
+        .sub { text-align: center; color: #777; margin-bottom: 50px; }
+
+        .faq-section { max-width: 900px; margin: 0 auto 30px; border: 1px solid #eee; border-radius: 12px; overflow: hidden; background: #fafafa; }
+        .faq-header { padding: 20px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s; }
+        .faq-header:hover { background: #f0f0f0; }
+        .faq-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: #7a0c0c; letter-spacing: 1px; }
+        .faq-toggle { font-size: 28px; color: #7a0c0c; font-weight: bold; }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .faq-section.active .faq-content { max-height: 1000px; padding: 20px 25px; }
+        .faq-content p { margin-bottom: 15px; color: #333; }
+        .faq-content ul { margin: 15px 0 15px 25px; }
+        .faq-content li { margin-bottom: 8px; color: #555; }
+
+        footer { background: #111; color: #888; text-align: center; padding: 40px 0; font-size: 14px; margin-top: 60px; }
+        footer a { color: #7a0c0c; text-decoration: none; }
+
+        @media (max-width: 1000px) { nav a { font-size: 16px; margin-left: 15px; } }
         @media (max-width: 700px) {
-            .header-inner { flex-direction: column; gap: 15px; }
-            nav a { margin: 0 12px; font-size: 14px; }
-            nav a:first-child { margin-left: 12px; }
-            h1 { font-size: 32px; }
-            .logo img { height: 40px; }
-            .logo-text { font-size: 18px; }
-            .faq-section-header h2 { font-size: 18px; }
-            .faq-question { font-size: 15px; padding: 12px 18px; }
+            .header-inner { flex-direction: column; gap: 10px; }
+            nav { justify-content: center; }
+            nav a { margin: 0 8px; font-size: 14px; }
+            h1 { font-size: 36px; }
+            .logo img { height: 50px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
+    <header>
+        <div class="container">
             <div class="header-inner">
                 <a href="index.html" class="logo">
-                    <img src="logo.jpg" alt="Wild Cards Fencing">
+                    <img src="img/logo/Montazhnaya_oblast_2_kopia_2.png" alt="Wild Cards Fencing">
                     <div class="logo-text">WILD <span>CARDS</span><br>FENCING</div>
                 </a>
                 <nav>
@@ -68,80 +66,103 @@
                     <a href="faq.html">FAQ</a>
                 </nav>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <h1>Вопросы <span>и ответы</span></h1>
-        <div class="sub">📌 Нажмите на раздел — ответы откроются ниже</div>
+    <div class="container">
+        <h1>Вопросы и ответы</h1>
+        <div class="sub">Нажмите на раздел, чтобы раскрыть ответы</div>
 
         <div class="faq-section">
-            <div class="faq-section-header"><h2>📍 Локации и удобства</h2><span class="toggle-icon">+</span></div>
-            <div class="faq-items-wrapper">
-                <div class="faq-item"><div class="faq-question">Где находятся залы?<span class="q-icon">+</span></div><div class="faq-answer"><p><strong>Москва:</strong><br>• 9-я ул. Соколиной горы, д. 6 — основной зал.<br>• Рабочая ул., 53, стр. 1 (Детский Дворец Спорта).</p><p><strong>Филиал:</strong><br>• г. Видное, ул. Советская, д. 19.</p></div></div>
-                <div class="faq-item"><div class="faq-question">Какой график работы?<span class="q-icon">+</span></div><div class="faq-answer"><p>• Зал на Соколиной горе: 8:00–23:00.<br>• Администраторы: будни 17:00–22:00, выходные 12:00–17:00.</p></div></div>
-                <div class="faq-item"><div class="faq-question">Есть ли парковка?<span class="q-icon">+</span></div><div class="faq-answer"><p>Собственной нет, рядом городская парковка (40 ₽/ч) и дворы.</p></div></div>
+            <div class="faq-header">
+                <h2>📍 Локации и удобства</h2>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-content">
+                <p><strong>Где находятся залы?</strong></p>
+                <ul>
+                    <li>9-я ул. Соколиной горы, д. 6 — основной зал</li>
+                    <li>Рабочая ул., 53, стр. 1 (Детский Дворец Спорта)</li>
+                    <li>г. Видное, ул. Советская, д. 19</li>
+                </ul>
+                <p><strong>Какой график работы?</strong> Зал на Соколиной горе работает с 8:00 до 23:00. Администраторы — будни 17:00–22:00, выходные 12:00–17:00.</p>
+                <p><strong>Есть ли парковка?</strong> Собственной нет, рядом городская парковка (40 ₽/час) и дворы.</p>
             </div>
         </div>
 
         <div class="faq-section">
-            <div class="faq-section-header"><h2>⚔️ Выбор направления</h2><span class="toggle-icon">+</span></div>
-            <div class="faq-items-wrapper">
-                <div class="faq-item"><div class="faq-question">Какое направление выбрать?<span class="q-icon">+</span></div><div class="faq-answer"><p>В школе более 19 направлений. Полный список — на странице <a href="directions.html">«Направления»</a>. Если сомневаетесь — напишите, мы подскажем.</p></div></div>
-                <div class="faq-item"><div class="faq-question">Чем отличается контактное фехтование от бесконтактного?<span class="q-icon">+</span></div><div class="faq-answer"><p>Контактное — спарринги с целью победить. Бесконтактное — изучение техники и/или красивый поединок по хореографии.</p></div></div>
+            <div class="faq-header">
+                <h2>⚔️ Выбор направления</h2>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-content">
+                <p><strong>Какое направление выбрать?</strong> В школе более 30 направлений. Полный список — на странице «Направления». Если сомневаетесь — напишите нам, мы подскажем.</p>
+                <p><strong>Чем отличается контактное фехтование от бесконтактного?</strong> Контактное — спарринги с целью победить. Бесконтактное — изучение техники и постановочные бои.</p>
             </div>
         </div>
 
         <div class="faq-section">
-            <div class="faq-section-header"><h2>📝 Пробное занятие и запись</h2><span class="toggle-icon">+</span></div>
-            <div class="faq-items-wrapper">
-                <div class="faq-item"><div class="faq-question">Хочу прийти на пробное занятие. Что делать?<span class="q-icon">+</span></div><div class="faq-answer"><p>Напишите нам направление, ФИО и возраст — мы подберём дату.</p></div></div>
-                <div class="faq-item"><div class="faq-question">С какого возраста можно заниматься?<span class="q-icon">+</span></div><div class="faq-answer"><p>• Спортивная шпага — с 7 лет.<br>• Остальные детские группы — с 10 лет.</p></div></div>
+            <div class="faq-header">
+                <h2>📝 Пробное занятие и запись</h2>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-content">
+                <p><strong>Хочу прийти на пробное занятие. Что делать?</strong> Напишите нам во ВКонтакте — мы подберём удобную дату и время.</p>
+                <p><strong>С какого возраста можно заниматься?</strong> Спортивная шпага — с 7 лет. Остальные детские группы — с 10 лет. Подростки 14–16 лет могут посещать взрослые группы по согласованию с тренером.</p>
             </div>
         </div>
 
         <div class="faq-section">
-            <div class="faq-section-header"><h2>💰 Стоимость</h2><span class="toggle-icon">+</span></div>
-            <div class="faq-items-wrapper">
-                <div class="faq-item"><div class="faq-question">Сколько стоит пробное занятие?<span class="q-icon">+</span></div><div class="faq-answer"><p>От 0 до 2350 ₽ в зависимости от направления.</p></div></div>
-                <div class="faq-item"><div class="faq-question">Сколько стоят абонементы?<span class="q-icon">+</span></div><div class="faq-answer"><p>4 занятия — от 2000 ₽, 8 занятий — от 5500 ₽, 12 занятий — от 7500 ₽. Есть безлимитные и долгосрочные абонементы.</p></div></div>
-                <div class="faq-item"><div class="faq-question">Есть ли скидки?<span class="q-icon">+</span></div><div class="faq-answer"><p>Акция «Приведи друга»: 50% скидка на следующий абонемент.</p></div></div>
+            <div class="faq-header">
+                <h2>💰 Стоимость</h2>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-content">
+                <p><strong>Сколько стоит пробное занятие?</strong> От 0 до 2350 ₽ в зависимости от направления.</p>
+                <p><strong>Сколько стоят абонементы?</strong> 4 занятия — 3500–8000 ₽, 8 занятий — 5500–12000 ₽, 12 занятий — 7500–12000 ₽.</p>
+                <p><strong>Есть ли скидки?</strong> Акция «Приведи друга»: 50% от меньшего по стоимости абонемента. Скидки для студентов по студенческому билету.</p>
             </div>
         </div>
 
         <div class="faq-section">
-            <div class="faq-section-header"><h2>🥋 Подготовка к первому занятию</h2><span class="toggle-icon">+</span></div>
-            <div class="faq-items-wrapper">
-                <div class="faq-item"><div class="faq-question">Что взять с собой?<span class="q-icon">+</span></div><div class="faq-answer"><p>Спортивную форму, сменную обувь, воду.</p></div></div>
-                <div class="faq-item"><div class="faq-question">Нужно ли снаряжение?<span class="q-icon">+</span></div><div class="faq-answer"><p>На начальном этапе выдаётся бесплатно. После 2–3 месяцев рекомендуется приобретать своё.</p></div></div>
-                <div class="faq-item"><div class="faq-question">Подходит ли фехтование новичкам?<span class="q-icon">+</span></div><div class="faq-answer"><p>Да. Тренеры объясняют базу с нуля.</p></div></div>
+            <div class="faq-header">
+                <h2>🥋 Подготовка к первому занятию</h2>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-content">
+                <p><strong>Что взять с собой?</strong> Спортивную форму, сменную обувь, воду.</p>
+                <p><strong>Нужно ли снаряжение?</strong> На начальном этапе выдаётся бесплатно. После 2–3 месяцев рекомендуется приобретать своё.</p>
+                <p><strong>Подходит ли фехтование новичкам?</strong> Да. Тренеры объясняют базу с нуля.</p>
             </div>
         </div>
 
         <div class="faq-section">
-            <div class="faq-section-header"><h2>🔄 Абонементы и посещения</h2><span class="toggle-icon">+</span></div>
-            <div class="faq-items-wrapper">
-                <div class="faq-item"><div class="faq-question">Можно ли заморозить абонемент?<span class="q-icon">+</span></div><div class="faq-answer"><p>Только в исключительных случаях (отпуск от 2 недель, больничный).</p></div></div>
-                <div class="faq-item"><div class="faq-question">Что делать, если пропустил тренировку?<span class="q-icon">+</span></div><div class="faq-answer"><p>По согласованию с тренером можно прийти в другой день. Пропуски не компенсируются.</p></div></div>
-                <div class="faq-item"><div class="faq-question">Что делать, если забыл вещи?<span class="q-icon">+</span></div><div class="faq-answer"><p>Свяжитесь с администрацией. Вещи хранятся 7 дней.</p></div></div>
+            <div class="faq-header">
+                <h2>🔄 Абонементы и посещения</h2>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-content">
+                <p><strong>Можно ли заморозить абонемент?</strong> Только в исключительных случаях (отпуск от 2 недель, больничный).</p>
+                <p><strong>Что делать, если пропустил тренировку?</strong> По согласованию с тренером можно прийти в другой день. Пропуски не компенсируются.</p>
+                <p><strong>Что делать, если забыл вещи?</strong> Свяжитесь с администрацией. Вещи хранятся 7 дней.</p>
             </div>
         </div>
     </div>
-    <footer><div class="container"><p>© 2025 Wild Cards Fencing | Все права защищены</p></div></footer>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Wild Cards Fencing | Все права защищены</p>
+            <p style="margin-top:10px;"><a href="https://vk.com/wildcardsfencing" target="_blank">Мы во ВКонтакте</a></p>
+        </div>
+    </footer>
+
     <script>
-        document.querySelectorAll('.faq-section').forEach(section => {
-            const header = section.querySelector('.faq-section-header');
-            const icon = header.querySelector('.toggle-icon');
+        document.querySelectorAll('.faq-header').forEach(header => {
             header.addEventListener('click', () => {
+                const section = header.parentElement;
                 section.classList.toggle('active');
-                icon.textContent = section.classList.contains('active') ? '−' : '+';
-            });
-        });
-        document.querySelectorAll('.faq-item').forEach(item => {
-            const question = item.querySelector('.faq-question');
-            const qIcon = question.querySelector('.q-icon');
-            question.addEventListener('click', (e) => {
-                e.stopPropagation();
-                item.classList.toggle('active');
-                qIcon.textContent = item.classList.contains('active') ? '−' : '+';
+                const toggle = header.querySelector('.faq-toggle');
+                toggle.textContent = section.classList.contains('active') ? '−' : '+';
             });
         });
     </script>
