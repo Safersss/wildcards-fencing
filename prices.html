@@ -36,6 +36,58 @@
         .card li::before { content: "✓"; position: absolute; left: 0; color: #7a0c0c; font-weight: bold; }
         .card p { color: #555; font-size: 15px; }
 
+        /* Широкий блок для пробного занятия */
+        .trial-card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: #fff;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            align-items: center;
+            transition: 0.3s;
+        }
+        .trial-card:hover {
+            border-color: #7a0c0c;
+            box-shadow: 0 10px 30px rgba(122,12,12,0.1);
+        }
+        .trial-left {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+        .trial-left h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 30px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .trial-right {
+            flex: 1.5;
+            min-width: 250px;
+        }
+        .trial-right ul {
+            list-style: none;
+            padding: 0;
+        }
+        .trial-right li {
+            margin-bottom: 12px;
+            color: #555;
+            position: relative;
+            padding-left: 25px;
+            font-size: 16px;
+        }
+        .trial-right li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #7a0c0c;
+            font-weight: bold;
+        }
+
         footer { background: #111; color: #888; text-align: center; padding: 40px 0; font-size: 14px; margin-top: 60px; }
         footer a { color: #7a0c0c; text-decoration: none; }
 
@@ -46,6 +98,7 @@
             nav a { margin: 0 8px; font-size: 14px; }
             h1 { font-size: 36px; }
             .logo img { height: 50px; }
+            .trial-card { padding: 25px; }
         }
     </style>
 </head>
@@ -76,15 +129,18 @@
         <div class="sub">Вся экипировка предоставляется бесплатно</div>
 
         <div class="section-title">Пробное занятие</div>
-        <div class="grid">
-            <div class="card">
+        <div class="trial-card">
+            <div class="trial-left">
                 <h3>Пробное занятие</h3>
                 <div class="price">от 0 ₽ <small>до 2350 ₽</small></div>
+                <p>В зависимости от направления</p>
+            </div>
+            <div class="trial-right">
                 <ul>
-                    <li>В зависимости от направления</li>
                     <li>Экипировка предоставляется бесплатно</li>
                     <li>Знакомство с тренером и школой</li>
                     <li>Продолжительность: 1.5–2 часа</li>
+                    <li>Поможем выбрать направление</li>
                 </ul>
             </div>
         </div>
