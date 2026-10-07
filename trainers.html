@@ -10,34 +10,46 @@
         body { background: #fff; font-family: 'Inter', sans-serif; color: #111; line-height: 1.5; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        header { background: #fff; padding: 15px 0; box-shadow: 0 2px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .logo img { height: 60px; }
+        header { background: #fff; padding: 12px 0; box-shadow: 0 2px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 20px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+        .logo img { height: 65px; width: auto; object-fit: contain; }
         .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 2px; color: #111; text-transform: uppercase; line-height: 1; }
         .logo-text span { color: #7a0c0c; }
-        nav a { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; color: #111; text-decoration: none; margin-left: 22px; text-transform: uppercase; transition: 0.3s; }
+        nav { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+        nav a { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; color: #111; text-decoration: none; margin-left: 22px; text-transform: uppercase; transition: 0.3s; white-space: nowrap; }
         nav a:first-child { margin-left: 0; }
         nav a:hover { color: #7a0c0c; }
 
         h1 { font-family: 'Bebas Neue', sans-serif; font-size: 56px; text-align: center; margin: 50px 0 40px; letter-spacing: 3px; }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 30px; margin-bottom: 60px; }
-        .card { background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: 0.3s; }
+        .card { background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: 0.3s; cursor: pointer; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
         .card img { width: 100%; height: 280px; object-fit: cover; display: block; }
         .card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; padding: 15px 10px 5px; }
         .card .role { color: #7a0c0c; font-size: 13px; font-weight: 600; padding: 0 10px 5px; }
         .card p { color: #777; font-size: 13px; padding: 0 10px 20px; }
 
+        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 30px; width: 90%; max-width: 500px; z-index: 1000; border-radius: 15px; max-height: 85vh; overflow-y: auto; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 999; }
+        .modal img { width: 100%; height: 300px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }
+        .modal h3 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; margin-bottom: 10px; letter-spacing: 1px; }
+        .modal .role { color: #7a0c0c; font-weight: 600; margin-bottom: 15px; }
+        .modal .desc { color: #555; font-size: 15px; margin-bottom: 15px; }
+        .modal .details { color: #777; font-size: 14px; margin-bottom: 20px; padding-top: 15px; border-top: 1px solid #eee; }
+        .close-modal { background: #eee; color: #111; border: none; padding: 12px; border-radius: 8px; cursor: pointer; width: 100%; margin-top: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; }
+
         footer { background: #111; color: #888; text-align: center; padding: 40px 0; font-size: 14px; }
         footer a { color: #7a0c0c; text-decoration: none; }
 
+        @media (max-width: 1000px) { nav a { font-size: 16px; margin-left: 15px; } }
         @media (max-width: 700px) {
-            .header-inner { flex-direction: column; }
-            nav a { margin: 0 8px; font-size: 15px; }
+            .header-inner { flex-direction: column; gap: 10px; }
+            nav { justify-content: center; }
+            nav a { margin: 0 8px; font-size: 14px; }
             h1 { font-size: 36px; }
-            .logo img { height: 45px; }
+            .logo img { height: 50px; }
         }
     </style>
 </head>
@@ -66,169 +78,179 @@
     <div class="container">
         <h1>Наши тренеры</h1>
         <div class="grid">
-            <div class="card">
+            <div class="card" data-name="Бесфамильный Алексей" data-img="img/trainers/alexey-besfamilny.jpg" data-role="Руководитель школы, тренер" data-desc="Мастер спорта России по фехтованию, магистр педагогики. Многократный чемпион России и четырёхкратный чемпион мира по артистическому фехтованию. Каскадёр, постановщик боевых сцен в кино." data-details="Стаж в фехтовании — с 2008 года. Ведёт: артистическое фехтование, HEMA длинный меч, HEMA-smallsword, меч-кинжал.">
                 <img src="img/trainers/alexey-besfamilny.jpg" alt="Бесфамильный Алексей">
                 <h3>Бесфамильный Алексей</h3>
                 <p class="role">Руководитель школы, тренер</p>
-                <p>Артистическое фехтование, HEMA длинный меч, меч-кинжал</p>
+                <p>Артистическое фехтование, HEMA длинный меч</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Бобровский Иван" data-img="img/trainers/ivan-bobrovsky.jpg" data-role="Инструктор" data-desc="Инженер-конструктор. Специализируется на испанской и португальской боевых традициях XVI–XVII веков." data-details="Ведёт: иберийский двуручный меч монтанте, испанская рапира (La Destreza Comun), два меча, испанский нож наваха.">
                 <img src="img/trainers/ivan-bobrovsky.jpg" alt="Бобровский Иван">
                 <h3>Бобровский Иван</h3>
                 <p class="role">Инструктор</p>
-                <p>Монтанте, испанская рапира, два меча, наваха</p>
+                <p>Монтанте, испанская рапира, наваха</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Гершкович Сергей" data-img="img/trainers/sergy-gershkovich.jpg" data-role="Инструктор" data-desc="Психолог, серебряный призёр чемпионата России и бронзовый призёр чемпионата мира по СМБ." data-details="Ведёт: СМБ сабля и сабля-баклер (взрослые), СМБ (дети), меч и баклер, СМБ криг-мессер.">
                 <img src="img/trainers/sergy-gershkovich.jpg" alt="Гершкович Сергей">
                 <h3>Гершкович Сергей</h3>
                 <p class="role">Инструктор</p>
-                <p>СМБ сабля и сабля-баклер, меч-баклер, криг-мессер</p>
+                <p>СМБ, меч-баклер, криг-мессер</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Грибанова Татьяна" data-img="img/trainers/tatyana-gribanova.jpg" data-role="Инструктор" data-desc="КМС, двукратная чемпионка Москвы, чемпионка России по артистическому фехтованию. Среди учеников — призёры межрегиональных турниров." data-details="Ведёт: детское арт-фехтование.">
                 <img src="img/trainers/tatyana-gribanova.jpg" alt="Грибанова Татьяна">
                 <h3>Грибанова Татьяна</h3>
                 <p class="role">Инструктор</p>
                 <p>Детское арт-фехтование</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Евсеева Анастасия" data-img="img/trainers/stasya-evseeva.jpg" data-role="Тренер" data-desc="Мастер спорта России по фехтованию. Чемпион Москвы, победитель Кубка России по арт-фехтованию." data-details="Ведёт: Girl Power, HEMA длинный меч.">
                 <img src="img/trainers/stasya-evseeva.jpg" alt="Евсеева Анастасия">
                 <h3>Евсеева Анастасия</h3>
                 <p class="role">Тренер</p>
                 <p>Girl Power, HEMA длинный меч</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Егоров Андрей" data-img="img/trainers/andrey-egorov.jpg" data-role="Тренер-преподаватель" data-desc="Мастер спорта по фехтованию. Чемпион России по артистическому фехтованию. Каскадёр. Тренерский стаж с 2016 года." data-details="Ведёт: артистическое фехтование.">
                 <img src="img/trainers/andrey-egorov.jpg" alt="Егоров Андрей">
                 <h3>Егоров Андрей</h3>
                 <p class="role">Тренер-преподаватель</p>
                 <p>Артистическое фехтование</p>
             </div>
-            <div class="card">
-                <img src="img/trainers/roman-zhdanov.jpg" alt="Жданов Роман">
+            <div class="card" data-name="Жданов Роман" data-img="" data-role="Преподаватель" data-desc="Преподаватель школы. Ведёт саберфайтинг и работу с кнутом." data-details="Ведёт: саберфайтинг, кнут.">
+                <img src="img/trainers/placeholder.jpg" alt="Жданов Роман" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22240%22 height=%22280%22><rect fill=%22%23eee%22 width=%22240%22 height=%22280%22/><text x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22>Нет фото</text></svg>'">
                 <h3>Жданов Роман</h3>
                 <p class="role">Преподаватель</p>
                 <p>Саберфайтинг, кнут</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Иванов Станислав" data-img="img/trainers/stanislav-ivanov.jpg" data-role="Инструктор" data-desc="Кандидат в мастера спорта по артистическому фехтованию. Призёр чемпионатов Москвы и России." data-details="Ведёт: монтанте, иберийский цеп.">
                 <img src="img/trainers/stanislav-ivanov.jpg" alt="Иванов Станислав">
                 <h3>Иванов Станислав</h3>
                 <p class="role">Инструктор</p>
                 <p>Монтанте, иберийский цеп</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Казаков Сергей" data-img="img/trainers/sergey-kazakov.jpg" data-role="Инструктор" data-desc="Чемпион России по артистическому фехтованию. Участник и постановщик боев для мюзиклов и кино." data-details="Ведёт: постановочное фехтование.">
                 <img src="img/trainers/sergey-kazakov.jpg" alt="Казаков Сергей">
                 <h3>Казаков Сергей</h3>
                 <p class="role">Инструктор</p>
                 <p>Постановочное фехтование</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Киселев Максим" data-img="img/trainers/max-kiselev.jpg" data-role="Ведущий преподаватель-методолог" data-desc="Лингвист, специалист по итальянской боевой традиции XV–XVI веков. В военно-историческом движении с 1999 года." data-details="Ведёт: Ведьмак, боевые искусства Ренессанса, древковое оружие, Viking HEMA.">
                 <img src="img/trainers/max-kiselev.jpg" alt="Киселев Максим">
                 <h3>Киселев Максим</h3>
                 <p class="role">Ведущий преподаватель-методолог</p>
-                <p>Ведьмак</p>
+                <p>Ведьмак, методолог</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Козлов Константин" data-img="img/trainers/konstantin-kozlov.jpg" data-role="Тренер" data-desc="Профессиональный тренер по фитнесу. Исследует фехтование рапирой и дагой начала XVII века." data-details="Ведёт: фехтование рапирой, рапирой и дагой.">
                 <img src="img/trainers/konstantin-kozlov.jpg" alt="Козлов Константин">
                 <h3>Козлов Константин</h3>
                 <p class="role">Тренер</p>
-                <p>Рапира, рапира и дага XVII века</p>
+                <p>Рапира, рапира и дага</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Кочнев Валерий" data-img="img/trainers/valery-kochnev.jpg" data-role="Инструктор" data-desc="Чемпион России по арт-фехтованию. Ведёт саберфайтинг." data-details="Ведёт: саберфайтинг.">
                 <img src="img/trainers/valery-kochnev.jpg" alt="Кочнев Валерий">
                 <h3>Кочнев Валерий</h3>
                 <p class="role">Инструктор</p>
                 <p>Саберфайтинг</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Леонов Александр" data-img="img/trainers/alexander-leonov.jpg" data-role="Тренер" data-desc="Специалист по итальянской боевой традиции. Ведёт итальянский двуручный меч по трактату Акилле Мароццо." data-details="Ведёт: итальянский двуручный меч.">
                 <img src="img/trainers/alexander-leonov.jpg" alt="Леонов Александр">
                 <h3>Леонов Александр</h3>
                 <p class="role">Тренер</p>
-                <p>Итальянский двуручный меч (Мароццо)</p>
+                <p>Итальянский двуручный меч</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Лобаев Николай" data-img="img/trainers/nikolay-lobaev.jpg" data-role="Инструктор" data-desc="Чемпион Москвы и победитель Кубка России по арт-фехтованию. Ведёт Ведьмака." data-details="Ведёт: Ведьмак.">
                 <img src="img/trainers/nikolay-lobaev.jpg" alt="Лобаев Николай">
                 <h3>Лобаев Николай</h3>
                 <p class="role">Инструктор</p>
                 <p>Ведьмак</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Лопан Иван" data-img="img/trainers/ivan-lopan.jpg" data-role="Инструктор" data-desc="Кандидат в мастера спорта. Ведёт световую глефу." data-details="Ведёт: световая глефа.">
                 <img src="img/trainers/ivan-lopan.jpg" alt="Лопан Иван">
                 <h3>Лопан Иван</h3>
                 <p class="role">Инструктор</p>
                 <p>Световая глефа</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Лукацкая Мария" data-img="img/trainers/maria-lukatskaya.jpg" data-role="Преподаватель" data-desc="Педагог, дизайнер костюма. Руководитель ателье сценического костюма." data-details="Ведёт: базовый курс по шитью.">
                 <img src="img/trainers/maria-lukatskaya.jpg" alt="Лукацкая Мария">
                 <h3>Лукацкая Мария</h3>
                 <p class="role">Преподаватель</p>
                 <p>Базовый курс по шитью</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Макашов Андрей" data-img="img/trainers/andrey-makashov.jpg" data-role="Инструктор" data-desc="Чемпион России по артистическому фехтованию. Постановщик боев для мюзиклов и кино." data-details="Ведёт: постановочное фехтование.">
                 <img src="img/trainers/andrey-makashov.jpg" alt="Макашов Андрей">
                 <h3>Макашов Андрей</h3>
                 <p class="role">Инструктор</p>
                 <p>Постановочное фехтование</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Марков Денис" data-img="img/trainers/denis-markov.jpg" data-role="Преподаватель" data-desc="Кандидат в мастера спорта по военному четырёхборью. Ведёт фланкировку." data-details="Ведёт: фланкировка.">
                 <img src="img/trainers/denis-markov.jpg" alt="Марков Денис">
                 <h3>Марков Денис</h3>
                 <p class="role">Преподаватель</p>
                 <p>Фланкировка</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Оганесян Гагик" data-img="img/trainers/gagik-oganesyan.jpg" data-role="Ведущий тренер" data-desc="Мастер спорта СССР по фехтованию на шпагах. Стаж преподавания — с 1984 года." data-details="Ведёт: спортивная шпага (взрослые), спортивная шпага (дети), индивидуальная подготовка.">
                 <img src="img/trainers/gagik-oganesyan.jpg" alt="Оганесян Гагик">
                 <h3>Оганесян Гагик</h3>
                 <p class="role">Ведущий тренер</p>
-                <p>Спортивная шпага (взрослые и дети), индивидуальная подготовка</p>
+                <p>Спортивная шпага</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Петлицкая Ольга" data-img="img/trainers/olga-petlitskaya.jpg" data-role="Инструктор" data-desc="Кандидат в мастера спорта. Ведёт световую глефу." data-details="Ведёт: световая глефа.">
                 <img src="img/trainers/olga-petlitskaya.jpg" alt="Петлицкая Ольга">
                 <h3>Петлицкая Ольга</h3>
                 <p class="role">Инструктор</p>
                 <p>Световая глефа</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Петровский Евгений" data-img="img/trainers/evgeny-petrovsky.jpg" data-role="Тренер-реабилитолог" data-desc="КМС по рукопашному бою. Тренер сборной России по арт-фехтованию." data-details="Ведёт: артистическое фехтование (техника), реабилитация спортсменов.">
                 <img src="img/trainers/evgeny-petrovsky.jpg" alt="Петровский Евгений">
                 <h3>Петровский Евгений</h3>
                 <p class="role">Тренер-реабилитолог</p>
-                <p>Артистическое фехтование, реабилитация</p>
+                <p>Арт-фехтование, реабилитация</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Сеничев Вадим" data-img="img/trainers/vadim-senichev.jpg" data-role="Преподаватель" data-desc="Историк, автор научных статей. Исследует итальянский длинный меч. Организатор турниров по HEMA." data-details="Ведёт: длинный меч в традиции Фиоре деи Либери.">
                 <img src="img/trainers/vadim-senichev.jpg" alt="Сеничев Вадим">
                 <h3>Сеничев Вадим</h3>
                 <p class="role">Преподаватель</p>
-                <p>Длинный меч в традиции Фиоре</p>
+                <p>Длинный меч Фиоре</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Симанков Егор" data-img="img/trainers/egor-simankov.jpg" data-role="Инструктор" data-desc="В реконструкции с 1991 года. Ведёт саблю/палаш и стрельбу из лука." data-details="Ведёт: сабля/палаш, стрельба из лука.">
                 <img src="img/trainers/egor-simankov.jpg" alt="Симанков Егор">
                 <h3>Симанков Егор</h3>
                 <p class="role">Инструктор</p>
-                <p>Сабля/палаш, стрельба из лука</p>
+                <p>Сабля/палаш, лук</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Сорокин Владимир" data-img="img/trainers/vladimir-sorokin.jpg" data-role="Преподаватель" data-desc="Мастер спорта по фехтованию, бронзовый призёр чемпионата мира. Педагог-психолог." data-details="Ведёт: артистическое фехтование.">
                 <img src="img/trainers/vladimir-sorokin.jpg" alt="Сорокин Владимир">
                 <h3>Сорокин Владимир</h3>
                 <p class="role">Преподаватель</p>
                 <p>Артистическое фехтование</p>
             </div>
-            <div class="card">
+            <div class="card" data-name="Ушаков Александр" data-img="img/trainers/alexander-ushakov.jpg" data-role="Инструктор" data-desc="Специалист по ОФП. Ведёт ролевое фехтование и копья." data-details="Ведёт: ролевое фехтование, фехтование на копьях.">
                 <img src="img/trainers/alexander-ushakov.jpg" alt="Ушаков Александр">
                 <h3>Ушаков Александр</h3>
                 <p class="role">Инструктор</p>
                 <p>Ролевое фехтование, копья</p>
             </div>
-            <div class="card">
-                <img src="img/trainers/kirill-fedotov.jpg" alt="Федотов Кирилл">
+            <div class="card" data-name="Федотов Кирилл" data-img="" data-role="Инструктор" data-desc="Инструктор школы. Ведёт Бата Ри Окт и самооборону с тростью." data-details="Ведёт: Бата Ри Окт, самооборона с тростью.">
+                <img src="img/trainers/placeholder.jpg" alt="Федотов Кирилл" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22240%22 height=%22280%22><rect fill=%22%23eee%22 width=%22240%22 height=%22280%22/><text x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22>Нет фото</text></svg>'">
                 <h3>Федотов Кирилл</h3>
                 <p class="role">Инструктор</p>
-                <p>Бата Ри Окт, самооборона с тростью</p>
+                <p>Бата Ри Окт, трость</p>
             </div>
-            <div class="card">
-                <img src="img/trainers/denis-shcheglov.jpg" alt="Щеглов Денис">
+            <div class="card" data-name="Щеглов Денис" data-img="" data-role="Инструктор" data-desc="Инструктор школы. Ведёт метание предметов." data-details="Ведёт: метание предметов.">
+                <img src="img/trainers/placeholder.jpg" alt="Щеглов Денис" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22240%22 height=%22280%22><rect fill=%22%23eee%22 width=%22240%22 height=%22280%22/><text x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 fill=%22%23999%22 text-anchor=%22middle%22>Нет фото</text></svg>'">
                 <h3>Щеглов Денис</h3>
                 <p class="role">Инструктор</p>
-                <p>Метание предметов</p>
+                <p>Метание</p>
             </div>
         </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="modal">
+        <img id="modal-img" src="" alt="">
+        <h3 id="modal-name"></h3>
+        <div class="role" id="modal-role"></div>
+        <div class="desc" id="modal-desc"></div>
+        <div class="details" id="modal-details"></div>
+        <button class="close-modal" id="closeModal">Закрыть</button>
     </div>
 
     <footer>
@@ -237,5 +259,37 @@
             <p style="margin-top:10px;"><a href="https://vk.com/wildcardsfencing" target="_blank">Мы во ВКонтакте</a></p>
         </div>
     </footer>
+
+    <script>
+        const cards = document.querySelectorAll('.card');
+        const modal = document.getElementById('modal');
+        const overlay = document.getElementById('overlay');
+        const modalImg = document.getElementById('modal-img');
+        const modalName = document.getElementById('modal-name');
+        const modalRole = document.getElementById('modal-role');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalDetails = document.getElementById('modal-details');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                modalImg.src = card.getAttribute('data-img');
+                modalName.textContent = card.getAttribute('data-name');
+                modalRole.textContent = card.getAttribute('data-role');
+                modalDesc.textContent = card.getAttribute('data-desc');
+                modalDetails.textContent = card.getAttribute('data-details');
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
+            });
+        });
+
+        document.getElementById('closeModal').onclick = () => {
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        };
+        overlay.onclick = () => {
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        };
+    </script>
 </body>
 </html>
