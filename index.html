@@ -4,66 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Cards Fencing — школа фехтования</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #000000; font-family: 'Inter', 'Segoe UI', sans-serif; color: #fff; line-height: 1.5; }
+        body { background: #ffffff; font-family: 'Inter', sans-serif; color: #111; line-height: 1.5; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        header { padding: 20px 0; border-bottom: 1px solid #222; }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+
+        header { position: fixed; top: 0; left: 0; right: 0; padding: 15px 0; z-index: 100; transition: 0.3s; }
+        header.scrolled { background: #fff; box-shadow: 0 2px 15px rgba(0,0,0,0.08); }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .logo img { height: 50px; width: auto; display: block; }
-        .logo-text { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 2px; color: #fff; text-transform: uppercase; line-height: 1.2; }
-        .logo-text span { color: #d32f2f; }
-        nav a { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: #fff; text-decoration: none; margin-left: 30px; transition: 0.2s; text-transform: uppercase; }
+        .logo img { height: 70px; width: auto; display: block; }
+        .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px; color: #fff; text-transform: uppercase; line-height: 1; transition: 0.3s; }
+        .logo-text span { color: #7a0c0c; }
+        header.scrolled .logo-text { color: #111; }
+        nav a { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; color: #fff; text-decoration: none; margin-left: 25px; text-transform: uppercase; transition: 0.3s; }
         nav a:first-child { margin-left: 0; }
-        nav a:hover { color: #d32f2f; }
-        .hero { text-align: center; padding: 100px 0 120px; }
-        .hero h1 { font-family: 'Oswald', sans-serif; font-size: 80px; font-weight: 700; letter-spacing: 4px; margin-bottom: 20px; text-transform: uppercase; }
-        .hero h1 span { color: #d32f2f; }
-        .hero p { font-size: 20px; color: #aaa; max-width: 600px; margin: 0 auto 30px; }
-        .btn { background: #d32f2f; color: #fff; border: none; padding: 14px 36px; font-family: 'Oswald', sans-serif; font-size: 20px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: 0.2s; display: inline-block; }
-        .btn:hover { background: #b71c1c; }
-        .section { padding: 80px 0; border-top: 1px solid #222; }
-        .section h2 { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; letter-spacing: 2px; text-align: center; margin-bottom: 50px; text-transform: uppercase; }
-        .directions-grid, .trainers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; justify-items: center; margin-bottom: 40px; }
-        .direction-card, .trainer-card { background: #111; padding: 30px 20px; text-align: center; border: 1px solid #222; width: 100%; max-width: 280px; }
-        .direction-card h3 { font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 600; margin: 15px 0 10px; text-transform: uppercase; }
-        .direction-card p { color: #aaa; font-size: 16px; }
-        .trainer-card img { width: 180px; height: 180px; object-fit: cover; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }
-        .trainer-card h3 { font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; text-align: center; }
-        .trainer-card p { color: #aaa; margin-top: 8px; font-size: 14px; text-align: center; }
-        footer { border-top: 1px solid #222; padding: 40px 0; text-align: center; color: #555; }
-        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #111; padding: 30px; width: 90%; max-width: 400px; z-index: 1000; border: 1px solid #333; border-radius: 15px; }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 999; }
-        .modal input, .modal select { width: 100%; padding: 12px; margin: 10px 0; background: #000; border: 1px solid #333; color: #fff; border-radius: 8px; }
-        .modal select { height: auto; }
-        .modal label { display: flex; align-items: center; gap: 10px; margin: 15px 0; cursor: pointer; }
-        .modal input[type="checkbox"] { width: 18px; height: 18px; margin: 0; cursor: pointer; }
-        .modal label span { color: #ccc; }
-        .modal .btn { width: 100%; margin-bottom: 10px; }
-        #closeModal { width: 100%; background: #333; color: #fff; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-size: 16px; }
-        #closeModal:hover { background: #555; }
+        nav a:hover { color: #7a0c0c; }
+        header.scrolled nav a { color: #111; }
+        header.scrolled nav a:hover { color: #7a0c0c; }
+
+        .hero { position: relative; height: 100vh; min-height: 600px; overflow: hidden; }
+        .hero-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease-in-out; }
+        .hero-slide.active { opacity: 1; }
+        .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: #fff; padding: 0 20px; }
+        .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: 110px; letter-spacing: 6px; line-height: 0.95; margin-bottom: 20px; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .hero h1 span { color: #7a0c0c; }
+        .hero p { font-size: 20px; color: #eee; max-width: 600px; margin-bottom: 30px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .btn { background: #7a0c0c; color: #fff; border: none; padding: 16px 40px; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: 0.2s; text-decoration: none; display: inline-block; }
+        .btn:hover { background: #5a0808; }
+
+        .section { padding: 80px 0; }
+        .section h2 { font-family: 'Bebas Neue', sans-serif; font-size: 54px; text-align: center; margin-bottom: 50px; letter-spacing: 3px; color: #111; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; justify-items: center; margin-bottom: 40px; }
+        .card { background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; width: 100%; max-width: 320px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: 0.3s; cursor: pointer; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+        .card img { width: 100%; height: 220px; object-fit: cover; display: block; }
+        .card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; padding: 20px 15px 10px; color: #111; }
+        .card p { color: #777; font-size: 14px; padding: 0 15px 20px; }
         .center-btn { text-align: center; margin-top: 20px; }
-        @media (max-width: 900px) { .directions-grid, .trainers-grid { grid-template-columns: repeat(2, 1fr); } }
+
+        footer { background: #111; color: #888; text-align: center; padding: 40px 0; font-size: 14px; }
+        footer a { color: #7a0c0c; text-decoration: none; }
+
+        @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 700px) {
-            .header-inner { flex-direction: column; gap: 15px; }
-            nav a { margin: 0 12px; font-size: 14px; }
-            nav a:first-child { margin-left: 12px; }
-            .hero h1 { font-size: 48px; }
-            .section h2 { font-size: 32px; }
-            .logo img { height: 40px; }
-            .logo-text { font-size: 18px; }
-            .directions-grid, .trainers-grid { grid-template-columns: 1fr; justify-items: center; }
+            .header-inner { flex-direction: column; }
+            nav a { margin: 0 10px; font-size: 16px; }
+            .hero h1 { font-size: 60px; }
+            .section h2 { font-size: 38px; }
+            .logo img { height: 50px; }
+            .logo-text { font-size: 20px; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
+    <header id="header">
+        <div class="container">
             <div class="header-inner">
                 <a href="index.html" class="logo">
-                    <img src="logo.jpg" alt="Wild Cards Fencing">
+                    <img src="img/logo/Montazhnaya_oblast_2_kopiya_2.png" alt="Wild Cards Fencing">
                     <div class="logo-text">WILD <span>CARDS</span><br>FENCING</div>
                 </a>
                 <nav>
@@ -77,94 +79,142 @@
                     <a href="faq.html">FAQ</a>
                 </nav>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <section class="hero">
+    <section class="hero" id="hero">
+        <div class="hero-slide active" style="background-image: url('img/main/1.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК1_164.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК1_241.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК1_324.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК1_347.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК1_352.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК1_375.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК1_469.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК1_497.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК1_539.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК1_691.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК1_702.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК1_742.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК2_18.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК2_188.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК2_212.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК2_382.jpg');"></div>
+        <div class="hero-slide" style="background-image: url('img/main/ДК2_46.jpg');"></div>
+
+        <div class="hero-content">
             <h1>WILD <span>CARDS</span><br>FENCING</h1>
             <p>Школа фехтования для детей и взрослых. От Средневековья до современности.</p>
-            <div class="center-btn"><button class="btn" id="openFormBtn">Записаться на пробное занятие</button></div>
-        </section>
+            <a href="https://vk.com/wildcardsfencing" target="_blank" class="btn">Записаться на пробное занятие</a>
+        </div>
+    </section>
 
-        <section class="section">
+    <section class="section">
+        <div class="container">
             <h2>Направления</h2>
-            <div class="directions-grid">
-                <div class="direction-card"><h3>⚔️ Рапира</h3><p>Спортивное и историческое</p></div>
-                <div class="direction-card"><h3>🗡️ Шпага</h3><p>Классическое фехтование</p></div>
-                <div class="direction-card"><h3>🏹 Сабля</h3><p>Рубяще-колющее оружие</p></div>
-                <div class="direction-card"><h3>🛡️ HEMA</h3><p>Историческое фехтование</p></div>
-                <div class="direction-card"><h3>⭐ СМБ</h3><p>Современный мечевой бой</p></div>
-                <div class="direction-card"><h3>🏹 Лук</h3><p>Стрельба из традиционного лука</p></div>
+            <div class="grid">
+                <a href="directions.html" class="card" style="text-decoration:none; color:inherit;">
+                    <img src="img/directions/ведьмак.jpg" alt="Ведьмак">
+                    <h3>Ведьмак</h3>
+                    <p>Школа Белого Волка</p>
+                </a>
+                <a href="directions.html" class="card" style="text-decoration:none; color:inherit;">
+                    <img src="img/directions/GP.jpg" alt="Girl Power">
+                    <h3>Girl Power</h3>
+                    <p>Фитнес с мечом для девушек</p>
+                </a>
+                <a href="directions.html" class="card" style="text-decoration:none; color:inherit;">
+                    <img src="img/directions/саберфайтинг.jpg" alt="Саберфайтинг">
+                    <h3>Саберфайтинг</h3>
+                    <p>Световые мечи</p>
+                </a>
+                <a href="directions.html" class="card" style="text-decoration:none; color:inherit;">
+                    <img src="img/directions/лук.jpg" alt="Стрельба из лука">
+                    <h3>Стрельба из лука</h3>
+                    <p>Традиционный лук</p>
+                </a>
+                <a href="directions.html" class="card" style="text-decoration:none; color:inherit;">
+                    <img src="img/directions/два меча.jpg" alt="Два меча">
+                    <h3>Два меча</h3>
+                    <p>Испанская традиция</p>
+                </a>
+                <a href="directions.html" class="card" style="text-decoration:none; color:inherit;">
+                    <img src="img/directions/сабля.jpg" alt="Сабля / Палаш">
+                    <h3>Сабля / Палаш</h3>
+                    <p>Рубящее оружие</p>
+                </a>
             </div>
-            <div class="center-btn"><a href="directions.html" class="btn" style="display: inline-block; text-decoration: none;">📋 Все направления →</a></div>
-        </section>
+            <div class="center-btn">
+                <a href="directions.html" class="btn">📋 Все направления →</a>
+            </div>
+        </div>
+    </section>
 
-        <section class="section">
+    <section class="section" style="background:#fafafa;">
+        <div class="container">
             <h2>Тренеры</h2>
-            <div class="trainers-grid">
-                <div class="trainer-card"><img src="img/alexey-besfamilny.jpg" alt="Алексей"><h3>Алексей</h3><p>Основатель</p></div>
-                <div class="trainer-card"><img src="img/ivan-bobrovsky.jpg" alt="Иван"><h3>Иван</h3><p>Инструктор</p></div>
-                <div class="trainer-card"><img src="img/tatyana-gribanova.jpg" alt="Татьяна"><h3>Татьяна</h3><p>Тренер</p></div>
-                <div class="trainer-card"><img src="img/stasya-evseeva.jpg" alt="Стася"><h3>Стася</h3><p>Тренер</p></div>
-                <div class="trainer-card"><img src="img/gagik-oganesyan.jpg" alt="Гагик"><h3>Гагик</h3><p>Шпага</p></div>
-                <div class="trainer-card"><img src="img/max-kiselev.jpg" alt="Макс"><h3>Макс</h3><p>Методолог</p></div>
+            <div class="grid">
+                <div class="card">
+                    <img src="img/trainers/alexey-besfamilny.jpg" alt="Алексей Бесфамильный">
+                    <h3>Алексей Бесфамильный</h3>
+                    <p>Арт-фехтование, HEMA длинный меч</p>
+                </div>
+                <div class="card">
+                    <img src="img/trainers/ivan-bobrovsky.jpg" alt="Иван Бобровский">
+                    <h3>Иван Бобровский</h3>
+                    <p>Монтанте, испанская рапира, наваха</p>
+                </div>
+                <div class="card">
+                    <img src="img/trainers/gagik-oganesyan.jpg" alt="Гагик Оганесян">
+                    <h3>Гагик Оганесян</h3>
+                    <p>Спортивная шпага (взрослые и дети)</p>
+                </div>
+                <div class="card">
+                    <img src="img/trainers/tatyana-gribanova.jpg" alt="Татьяна Грибанова">
+                    <h3>Татьяна Грибанова</h3>
+                    <p>Детское арт-фехтование</p>
+                </div>
+                <div class="card">
+                    <img src="img/trainers/stasya-evseeva.jpg" alt="Анастасия Евсеева">
+                    <h3>Анастасия Евсеева</h3>
+                    <p>Girl Power, HEMA длинный меч</p>
+                </div>
+                <div class="card">
+                    <img src="img/trainers/max-kiselev.jpg" alt="Максим Киселев">
+                    <h3>Максим Киселев</h3>
+                    <p>Ведьмак, методолог</p>
+                </div>
             </div>
-            <div class="center-btn"><a href="trainers.html" class="btn" style="display: inline-block; text-decoration: none;">👥 Все тренеры →</a></div>
-        </section>
-    </div>
+            <div class="center-btn">
+                <a href="trainers.html" class="btn">👥 Все тренеры →</a>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
-            <p>© 2025 Wild Cards Fencing | Все права защищены</p>
+            <p>© 2026 Wild Cards Fencing | Все права защищены</p>
+            <p style="margin-top:10px;"><a href="https://vk.com/wildcardsfencing" target="_blank">Мы во ВКонтакте</a></p>
         </div>
     </footer>
 
-    <div class="overlay" id="overlay"></div>
-    <div class="modal" id="modal">
-        <h3 style="color:#fff; text-align:center; margin-bottom:20px;">Запись на пробное занятие</h3>
-        <input type="text" id="name" placeholder="ФИО">
-        <input type="tel" id="phone" placeholder="Телефон">
-        <select id="direction" size="5" style="height:auto;">
-            <option>Рапира</option><option>Шпага</option><option>Сабля</option><option>HEMA</option>
-            <option>СМБ</option><option>Лук</option><option>Артистическое фехтование</option><option>Саберфайтинг</option>
-        </select>
-        <label><input type="checkbox" id="consent"><span>Я соглашаюсь на обработку персональных данных</span></label>
-        <button class="btn" id="submitForm">Отправить</button>
-        <button id="closeModal">Закрыть</button>
-    </div>
-
     <script>
-        // ⚠️ ВСТАВЬ СЮДА СВОЮ ССЫЛКУ НА GOOGLE APPS SCRIPT ⚠️
-        const SCRIPT_URL = 'https://script.google.com/macros/s/ТВОЙ_URL/exec';
-        
-        const modal = document.getElementById('modal');
-        const overlay = document.getElementById('overlay');
-        const openBtn = document.getElementById('openFormBtn');
-        const closeBtn = document.getElementById('closeModal');
-        const submitBtn = document.getElementById('submitForm');
+        const slides = document.querySelectorAll('.hero-slide');
+        let current = 0;
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 5000);
 
-        openBtn.onclick = () => { modal.style.display = 'block'; overlay.style.display = 'block'; };
-        closeBtn.onclick = () => { modal.style.display = 'none'; overlay.style.display = 'none'; };
-        overlay.onclick = () => { modal.style.display = 'none'; overlay.style.display = 'none'; };
-        
-        submitBtn.onclick = async () => {
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const direction = document.getElementById('direction').value;
-            const consent = document.getElementById('consent').checked;
-            if (!name || !phone || !consent) {
-                alert('Заполните все поля и дайте согласие');
-                return;
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
-            try {
-                await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ name, phone, direction }) });
-                alert('Заявка отправлена!');
-                modal.style.display = 'none';
-                overlay.style.display = 'none';
-                document.getElementById('name').value = '';
-                document.getElementById('phone').value = '';
-                document.getElementById('consent').checked = false;
-            } catch(e) { alert('Ошибка отправки'); }
-        };
+        });
     </script>
 </body>
 </html>
