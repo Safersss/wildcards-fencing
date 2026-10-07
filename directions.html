@@ -3,225 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wild Cards Fencing — Направления и услуги</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Wild Cards Fencing — Направления</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: #000000;
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-            color: #fff;
-            line-height: 1.5;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        header {
-            padding: 20px 0;
-            border-bottom: 1px solid #222;
-        }
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-        }
-        .logo img {
-            height: 50px;
-            width: auto;
-            display: block;
-        }
-        .logo-text {
-            font-family: 'Oswald', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #fff;
-            text-transform: uppercase;
-            line-height: 1.2;
-        }
-        .logo-text span {
-            color: #d32f2f;
-        }
-        nav a {
-            font-family: 'Oswald', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: #fff;
-            text-decoration: none;
-            margin-left: 30px;
-            transition: 0.2s;
-            text-transform: uppercase;
-        }
-        nav a:first-child {
-            margin-left: 0;
-        }
-        nav a:hover {
-            color: #d32f2f;
-        }
-        h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 48px;
-            font-weight: 700;
-            text-align: center;
-            margin: 60px 0 20px;
-            text-transform: uppercase;
-        }
-        h1 span {
-            color: #d32f2f;
-        }
-        .sub {
-            text-align: center;
-            color: #aaa;
-            margin-bottom: 50px;
-        }
-        .section-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: 36px;
-            text-align: center;
-            margin: 60px 0 30px;
-            color: #d32f2f;
-            text-transform: uppercase;
-        }
-        .directions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            justify-content: center;
-            margin-bottom: 40px;
-        }
-        .direction-card {
-            background: #111;
-            padding: 30px 20px;
-            text-align: center;
-            border: 1px solid #222;
-            transition: 0.2s;
-            cursor: pointer;
-            width: 100%;
-        }
-        .direction-card:hover {
-            border-color: #d32f2f;
-            transform: translateY(-3px);
-        }
-        .direction-card h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-        .direction-card p {
-            color: #aaa;
-            font-size: 14px;
-        }
-        .direction-card .icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-        footer {
-            border-top: 1px solid #222;
-            padding: 40px 0;
-            text-align: center;
-            color: #555;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #111;
-            border: 1px solid #d32f2f;
-            padding: 30px;
-            width: 90%;
-            max-width: 550px;
-            z-index: 1000;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.85);
-            z-index: 999;
-        }
-        .modal-content {
-            text-align: center;
-        }
-        .modal h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 28px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            color: #d32f2f;
-        }
-        .modal .icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-        .modal .desc {
-            color: #ccc;
-            font-size: 15px;
-            line-height: 1.5;
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        .modal .details {
-            color: #aaa;
-            font-size: 13px;
-            text-align: left;
-            border-top: 1px solid #222;
-            padding-top: 15px;
-            margin-top: 10px;
-        }
-        .close-modal {
-            background: #d32f2f;
-            color: #fff;
-            border: none;
-            padding: 10px 24px;
-            font-family: 'Oswald', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 15px;
-        }
-        .close-modal:hover {
-            background: #b71c1c;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fff; font-family: 'Inter', sans-serif; color: #111; line-height: 1.5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        header { background: #fff; padding: 15px 0; box-shadow: 0 2px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo img { height: 60px; width: auto; }
+        .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 2px; color: #111; text-transform: uppercase; line-height: 1; }
+        .logo-text span { color: #7a0c0c; }
+        nav a { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; color: #111; text-decoration: none; margin-left: 22px; text-transform: uppercase; transition: 0.3s; }
+        nav a:first-child { margin-left: 0; }
+        nav a:hover { color: #7a0c0c; }
+
+        h1 { font-family: 'Bebas Neue', sans-serif; font-size: 56px; text-align: center; margin: 50px 0 15px; letter-spacing: 3px; }
+        .sub { text-align: center; color: #777; margin-bottom: 40px; }
+
+        .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; text-align: center; margin: 50px 0 30px; color: #7a0c0c; letter-spacing: 2px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .card { background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: 0.3s; cursor: pointer; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+        .card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+        .card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1px; padding: 15px 15px 5px; }
+        .card p { color: #777; font-size: 13px; padding: 0 15px 15px; }
+
+        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 30px; width: 90%; max-width: 500px; z-index: 1000; border-radius: 15px; max-height: 85vh; overflow-y: auto; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 999; }
+        .modal img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }
+        .modal h3 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; margin-bottom: 15px; letter-spacing: 1px; }
+        .modal .desc { color: #555; font-size: 15px; margin-bottom: 15px; }
+        .modal .details { color: #777; font-size: 14px; margin-bottom: 20px; padding-top: 15px; border-top: 1px solid #eee; }
+        .modal .btn { display: block; text-align: center; }
+        .close-modal { background: #eee; color: #111; border: none; padding: 12px; border-radius: 8px; cursor: pointer; width: 100%; margin-top: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; }
+        .btn { background: #7a0c0c; color: #fff; border: none; padding: 14px 30px; font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: 0.2s; text-decoration: none; border-radius: 8px; }
+        .btn:hover { background: #5a0808; }
+
+        footer { background: #111; color: #888; text-align: center; padding: 40px 0; font-size: 14px; margin-top: 60px; }
+        footer a { color: #7a0c0c; text-decoration: none; }
+
         @media (max-width: 700px) {
-            .header-inner { flex-direction: column; gap: 15px; }
-            nav a { margin: 0 12px; font-size: 14px; }
-            nav a:first-child { margin-left: 12px; }
-            h1 { font-size: 32px; }
-            .logo img { height: 40px; }
-            .logo-text { font-size: 18px; }
-            .section-title { font-size: 28px; }
-            .modal h3 { font-size: 24px; }
+            .header-inner { flex-direction: column; }
+            nav a { margin: 0 8px; font-size: 15px; }
+            h1 { font-size: 36px; }
+            .logo img { height: 45px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
+    <header>
+        <div class="container">
             <div class="header-inner">
                 <a href="index.html" class="logo">
-                    <img src="logo.jpg" alt="Wild Cards Fencing">
+                    <img src="img/logo/Montazhnaya_oblast_2_kopiya_2.png" alt="Wild Cards Fencing">
                     <div class="logo-text">WILD <span>CARDS</span><br>FENCING</div>
                 </a>
                 <nav>
@@ -235,145 +73,251 @@
                     <a href="faq.html">FAQ</a>
                 </nav>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <h1>Наши <span>направления</span></h1>
-        <div class="sub">⚔️ Более 30 направлений фехтования, единоборств и творчества</div>
+    <div class="container">
+        <h1>Наши направления</h1>
+        <div class="sub">Более 30 направлений фехтования и не только</div>
 
-        <!-- БЛОК 1: КЛАССИЧЕСКОЕ И СПОРТИВНОЕ ФЕХТОВАНИЕ -->
-        <div class="section-title">⚡ Классическое и спортивное фехтование</div>
-        <div class="directions-grid">
-            <div class="direction-card" data-name="Спортивная шпага" data-icon="⚔️" data-desc="Олимпийская дисциплина. Уколы наносятся во все части тела. Развивает тактическое мышление, скорость реакции и выдержку. Группы для детей (с 7 лет) и взрослых." data-details="🏅 Тренер: Гагик Оганесян (Мастер спорта СССР). Участие в официальных соревнованиях. Группы любой подготовки."><div class="icon">⚔️</div><h3>Спортивная шпага</h3><p>Олимпийский вид</p></div>
-            <div class="direction-card" data-name="Детская группа (шпага)" data-icon="⚔️" data-desc="Спортивная шпага для детей от 7 лет. Постановка техники, развитие координации и дисциплины." data-details="🏅 Тренер: Гагик Оганесян. Группа для детей с любым уровнем подготовки."><div class="icon">⚔️</div><h3>Детская группа (шпага)</h3><p>Спорт с 7 лет</p></div>
-            <div class="direction-card" data-name="HEMA (Длинный меч)" data-icon="🛡️" data-desc="Историческое европейское боевое искусство по средневековым трактатам (Фиоре, Либери, Мароццо). Работа с длинным мечом." data-details="📜 Изучаем классические трактаты итальянской и немецкой школ. Проверка техник в спаррингах."><div class="icon">🛡️</div><h3>HEMA (Длинный меч)</h3><p>Итальянская и немецкая школы</p></div>
-            <div class="direction-card" data-name="Детский меч HEMA" data-icon="🗡️" data-desc="Адаптированная программа HEMA для детей. Изучение базовых техник работы с длинным мечом и мечом-баклером." data-details="🧒 Безопасная экипировка предоставляется. Развивает ответственность и командный дух."><div class="icon">🗡️</div><h3>Детский меч HEMA</h3><p>Европейские боевые искусства для детей</p></div>
+        <!-- СПОРТИВНЫЕ НАПРАВЛЕНИЯ -->
+        <div class="section-title">Спортивные направления</div>
+        <div class="grid">
+            <div class="card" data-name="Спортивная шпага (взрослые)" data-img="img/directions/спортшпага.jpg" data-desc="Классический олимпийский вид фехтования. Уколы во все части тела." data-link="https://vk.com/market/product/sportivnaya-shpaga-130125846-3426120">
+                <img src="img/directions/спортшпага.jpg" alt="Спортивная шпага">
+                <h3>Спортивная шпага</h3>
+                <p>Взрослые группы</p>
+            </div>
+            <div class="card" data-name="Спортивная шпага (дети)" data-img="img/directions/спортшпага дети.jpg" data-desc="Спортивная шпага для детей 8-13 лет." data-link="https://vk.com/market/product/detskaya-gruppa-po-fekhtovaniyu-sportivnoy-shpagoy-130125846-4614838">
+                <img src="img/directions/спортшпага дети.jpg" alt="Спортивная шпага дети">
+                <h3>Спортивная шпага (дети)</h3>
+                <p>8-13 лет</p>
+            </div>
+            <div class="card" data-name="Спортивная шпага (подростки)" data-img="img/directions/спортшпага.jpg" data-desc="Группа для подростков." data-link="https://vk.com/market/product/sportivnaya-shpaga-130125846-3426120">
+                <img src="img/directions/спортшпага.jpg" alt="Спортивная шпага подростки">
+                <h3>Спортивная шпага (подростки)</h3>
+                <p>Подростковые группы</p>
+            </div>
         </div>
 
-        <!-- БЛОК 2: ИСТОРИЧЕСКОЕ ФЕХТОВАНИЕ (HEMA) -->
-        <div class="section-title">🏰 Историческое фехтование (HEMA)</div>
-        <div class="directions-grid">
-            <div class="direction-card" data-name="Итальянская рапира" data-icon="🇮🇹" data-desc="Итальянская рапира XVII века – прямой предок современной спортивной шпаги. Изучение трактата Николетто Джиганти и параллельных источников." data-details="🎓 Команда профессионалов: тренеры по фехтованию, историки, фитнес-тренеры. Экипировка предоставляется."><div class="icon">🇮🇹</div><h3>Итальянская рапира</h3><p>На стыке истории и спорта</p></div>
-            <div class="direction-card" data-name="Студенческая группа (рапира)" data-icon="🎓" data-desc="Специальная группа для студентов по доступной цене. Изучение итальянской рапиры в интенсивном режиме." data-details="💪 Отличная рабочая обстановка, помощь в отработке техники с разными партнерами. Группа до 6 человек."><div class="icon">🎓</div><h3>Студенческая группа (рапира)</h3><p>Доступная цена</p></div>
-            <div class="direction-card" data-name="Испанская рапира (La Destreza)" data-icon="🇪🇸" data-desc="Испанская школа фехтования 'Destreza' (Искусство). Работа по окружностям, геометрия боя, философия поединка." data-details="📐 Редкое направление для ценителей. Изучение оригинальных манускриптов."><div class="icon">🇪🇸</div><h3>Испанская рапира (Destreza)</h3><p>Геометрия и философия боя</p></div>
-            <div class="direction-card" data-name="Два меча (Dos espadas)" data-icon="⚔️" data-desc="Курс основан на манускрипте Доминго Луиса Годиньо 1599 года. Владение двумя мечами в любой ситуации." data-details="📜 Изучение правил ведения боя: в узкой улице, против нескольких соперников, в окружении. Отработка на скорость."><div class="icon">⚔️</div><h3>Два меча (Dos espadas)</h3><p>Уникальная испанская традиция</p></div>
-            <div class="direction-card" data-name="Итальянский двуручный меч" data-icon="🗡️" data-desc="Итальянский двуручный меч по трактату Акилле Мароццо. Мощное и техничное направление." data-details="⚔️ Работа с большим мечом, развитие силы и выносливости. Группа для опытных фехтовальщиков."><div class="icon">🗡️</div><h3>Итальянский двуручный меч</h3><p>По трактату Мароццо</p></div>
-            <div class="direction-card" data-name="Иберийский двуручный меч (Монтанте)" data-icon="🗡️" data-desc="Иберийский двуручный меч. Работа с монтате по испанским и португальским трактатам." data-details="🇵🇹 Группа для опытных. Развивает силу и выносливость."><div class="icon">🗡️</div><h3>Монтанте</h3><p>Иберийский двуручный меч</p></div>
-            <div class="direction-card" data-name="Иберийский цеп (Mangual)" data-icon="⛓️" data-desc="Работа с иберийским цепом — грозным гибким оружием. Уникальная техника владения." data-details="⚔️ Развивает координацию и чувство дистанции. Группа для продвинутых."><div class="icon">⛓️</div><h3>Иберийский цеп (Mangual)</h3><p>Гибкое оружие</p></div>
-            <div class="direction-card" data-name="Испанский нож (Navaja)" data-icon="🔪" data-desc="Искусство владения испанским ножом навахой. Традиционная техника ближнего боя." data-details="🗡️ Изучение базовых стоек, ударов и защит. Группа для начинающих."><div class="icon">🔪</div><h3>Испанский нож (Navaja)</h3><p>Традиционная техника</p></div>
-            <div class="direction-card" data-name="HEMA (меч и баклер)" data-icon="🛡️" data-desc="Работа с мечом и небольшим щитом-баклером. Популярная и эффективная система." data-details="⚔️ Изучение защиты и атаки. Отработка связок в парах."><div class="icon">🛡️</div><h3>HEMA (меч и баклер)</h3><p>Щит и меч</p></div>
-            <div class="direction-card" data-name="HEMA smallsword" data-icon="⚜️" data-desc="Шпага-дворянка XVII-XVIII века. Изысканное и техничное фехтование. Изучение легкого и быстрого оружия." data-details="🤺 Тонкая работа клинком, уколы, защита. Освоение аристократического оружия."><div class="icon">⚜️</div><h3>HEMA smallsword</h3><p>Аристократическая шпага</p></div>
-            <div class="direction-card" data-name="Фехтование на копьях" data-icon="🔱" data-desc="Работа с древковым оружием: копьё, глефа, алебарда, протазан. Изучение техник по историческим трактатам." data-details="🏹 Группа для опытных. Развивает специфическую координацию."><div class="icon">🔱</div><h3>Фехтование на копьях</h3><p>Древковое оружие</p></div>
+        <!-- ИСТОРИЧЕСКОЕ ФЕХТОВАНИЕ -->
+        <div class="section-title">Историческое фехтование</div>
+        <div class="grid">
+            <div class="card" data-name="Длинный меч (HEMA)" data-img="img/directions/хема.jpg" data-desc="Историческое европейское боевое искусство." data-link="https://vk.com/market/product/hema-dlinny-mech-130125846-3426134">
+                <img src="img/directions/хема.jpg" alt="HEMA длинный меч">
+                <h3>Длинный меч (HEMA)</h3>
+                <p>Историческое фехтование</p>
+            </div>
+            <div class="card" data-name="Детский длинный меч" data-img="img/directions/хема дети.jpg" data-desc="Детская группа HEMA 11-15 лет." data-link="https://vk.com/market/product/detskiy-mech-hema-130125846-11960994">
+                <img src="img/directions/хема дети.jpg" alt="Детский длинный меч">
+                <h3>Детский длинный меч</h3>
+                <p>11-15 лет</p>
+            </div>
+            <div class="card" data-name="Фиоре Длинный меч" data-img="img/directions/фиоре 3.jpg" data-desc="Длинный меч в традиции Фиоре деи Либери." data-link="https://vk.com/market/product/dlinny-mech-v-traditsii-fiore-dei-liberi-130125846-5574130">
+                <img src="img/directions/фиоре 3.jpg" alt="Фиоре">
+                <h3>Фиоре Длинный меч</h3>
+                <p>Итальянская традиция</p>
+            </div>
+            <div class="card" data-name="Испанская рапира (Destreza)" data-img="img/directions/исп рапира 2.jpg" data-desc="Испанская школа фехтования La Destreza." data-link="https://vk.com/market/product/ispanskaya-rapira-la-destreza-130125846-5772524">
+                <img src="img/directions/исп рапира 2.jpg" alt="Испанская рапира">
+                <h3>Испанская рапира</h3>
+                <p>La Destreza</p>
+            </div>
+            <div class="card" data-name="Итальянская рапира" data-img="img/directions/ит рапира.jpg" data-desc="Итальянская рапира XVII века." data-link="https://vk.com/market/product/italyanskaya-rapira-130125846-5172496">
+                <img src="img/directions/ит рапира.jpg" alt="Итальянская рапира">
+                <h3>Итальянская рапира</h3>
+                <p>XVII век</p>
+            </div>
+            <div class="card" data-name="Итальянская рапира (студенты)" data-img="img/directions/ит рапира студенты.jpg" data-desc="Студенческая группа по итальянской рапире." data-link="https://vk.com/market/product/studencheskaya-gruppa-po-italyanskoy-rapire-130125846-12947278">
+                <img src="img/directions/ит рапира студенты.jpg" alt="Итальянская рапира студенты">
+                <h3>Итальянская рапира (студенты)</h3>
+                <p>Студенческая группа</p>
+            </div>
+            <div class="card" data-name="Наваха" data-img="img/directions/наваха.jpg" data-desc="Испанский нож наваха." data-link="https://vk.com/market/product/ispanskiy-nozh-navakha-130125846-9318679">
+                <img src="img/directions/наваха.jpg" alt="Наваха">
+                <h3>Наваха</h3>
+                <p>Испанский нож</p>
+            </div>
+            <div class="card" data-name="Два меча (Dos espadas)" data-img="img/directions/два меча.jpg" data-desc="Курс по манускрипту Годиньо 1599 года." data-link="https://vk.com/market/product/dva-mecha-dos-espadas-v-traditsii-domingo-luisa-godinio-130125846-12527484">
+                <img src="img/directions/два меча.jpg" alt="Два меча">
+                <h3>Два меча (Dos espadas)</h3>
+                <p>Испанская традиция</p>
+            </div>
+            <div class="card" data-name="Монтанте" data-img="img/directions/монтате.jpg" data-desc="Иберийский двуручный меч." data-link="https://vk.com/market/product/iberiyskiy-dvuruchny-mech-montante-130125846-5847967">
+                <img src="img/directions/монтате.jpg" alt="Монтанте">
+                <h3>Монтанте</h3>
+                <p>Иберийский двуручный меч</p>
+            </div>
+            <div class="card" data-name="Иберийский цеп (Mangual)" data-img="img/directions/иб цеп.jpg" data-desc="Работа с иберийским цепом." data-link="https://vk.com/market/product/iberiyskiy-tsep-mangual-130125846-11933621">
+                <img src="img/directions/иб цеп.jpg" alt="Иберийский цеп">
+                <h3>Иберийский цеп</h3>
+                <p>Гибкое оружие</p>
+            </div>
+            <div class="card" data-name="Меч-баклер" data-img="img/directions/меч-баклер.jpg" data-desc="Работа с мечом и баклером." data-link="https://vk.com/market/product/hema-mech-bakler-130125846-12020645">
+                <img src="img/directions/меч-баклер.jpg" alt="Меч-баклер">
+                <h3>Меч-баклер</h3>
+                <p>HEMA</p>
+            </div>
+            <div class="card" data-name="HEMA Smallsword" data-img="img/directions/смол.jpg" data-desc="Шпага-дворянка XVII-XVIII века." data-link="https://vk.com/market/product/hema-smallsword-130125846-7031744">
+                <img src="img/directions/смол.jpg" alt="Smallsword">
+                <h3>HEMA Smallsword</h3>
+                <p>Аристократическая шпага</p>
+            </div>
+            <div class="card" data-name="Сабля / Палаш" data-img="img/directions/сабля.jpg" data-desc="Рубяще-колющее оружие." data-link="https://vk.com/market/product/sablyapalash-130125846-7180652">
+                <img src="img/directions/сабля.jpg" alt="Сабля">
+                <h3>Сабля / Палаш</h3>
+                <p>Рубящее оружие</p>
+            </div>
+            <div class="card" data-name="Копьё" data-img="img/directions/копьё.jpg" data-desc="Фехтование на копьях." data-link="https://vk.com/market/product/fekhtovanie-na-kopyakh-130125846-7177811">
+                <img src="img/directions/копьё.jpg" alt="Копьё">
+                <h3>Копьё</h3>
+                <p>Древковое оружие</p>
+            </div>
+            <div class="card" data-name="Основы средневекового фехтования" data-img="img/directions/основы ср фехтования.jpg" data-desc="Базовый курс для начинающих." data-link="https://vk.com/market/product/osnovy-srednevekovogo-fekhtovania-130125846-5700754">
+                <img src="img/directions/основы ср фехтования.jpg" alt="Основы">
+                <h3>Основы средневекового фехтования</h3>
+                <p>Для начинающих</p>
+            </div>
+            <div class="card" data-name="Самооборона с тростью" data-img="img/directions/трость.jpg" data-desc="Бата Ри Окт — самооборона с ирландской тростью." data-link="https://vk.com/market/product/quotbata-ri-oktquot-samooborona-s-irlandskoy-trostyu-130125846-10147596">
+                <img src="img/directions/трость.jpg" alt="Трость">
+                <h3>Самооборона с тростью</h3>
+                <p>Бата Ри Окт</p>
+            </div>
         </div>
 
-        <!-- БЛОК 3: СОВРЕМЕННОЕ И ЗРЕЛИЩНОЕ -->
-        <div class="section-title">✨ Современное и зрелищное фехтование</div>
-        <div class="directions-grid">
-            <div class="direction-card" data-name="Артистическое фехтование" data-icon="🎭" data-desc="Постановочные бои и выступления. Сочетание актерского мастерства, хореографии и фехтовальной техники. Участие в турнирах и киносъемках." data-details="🔥 Есть детские и взрослые группы. Подготовка к выступлениям на фестивалях."><div class="icon">🎭</div><h3>Артистическое фехтование</h3><p>Красивые постановочные бои</p></div>
-            <div class="direction-card" data-name="Детское арт-фехтование" data-icon="🎭" data-desc="Артистическое фехтование для детей. Развитие координации, артистизма и уверенности в себе через постановочные бои." data-details="🧒 Всегда есть группы для детей. Участие в турнирах по арт-фехтованию."><div class="icon">🎭</div><h3>Детское арт-фехтование</h3><p>Развитие через игру</p></div>
-            <div class="direction-card" data-name="Постановочное фехтование" data-icon="🎬" data-desc="Подготовка боевых сцен для кино, театра и шоу. Работа с хореографом-постановщиком, постановка дуэлей." data-details="🎥 Для актеров, каскадеров и всех, кто хочет научиться красиво драться на сцене."><div class="icon">🎬</div><h3>Постановочное фехтование</h3><p>Для кино и театра</p></div>
-            <div class="direction-card" data-name="Артист театра боев. искусств" data-icon="🎭" data-desc="Профессиональная подготовка артистов для театра боевых искусств. Интенсив по фехтованию, акробатике и актерскому мастерству." data-details="🎬 Полное погружение в профессию. Подготовка номеров и шоу-программ."><div class="icon">🎭</div><h3>Артист театра боевых искусств</h3><p>Профессиональная подготовка</p></div>
-            <div class="direction-card" data-name="Современный мечевой бой (СМБ)" data-icon="⚔️" data-desc="Спортивные бои на безопасном холодном оружии. Дисциплины: меч-баклер, сабля-баклер, меч-кинжал." data-details="🥋 Есть детские и взрослые группы. Проводятся турниры по СМБ."><div class="icon">⚔️</div><h3>Современный мечевой бой (СМБ)</h3><p>Динамичные спортивные бои</p></div>
-            <div class="direction-card" data-name="Детский СМБ" data-icon="⚔️" data-desc="Детская группа по современному мечевому бою. Безопасная экипировка, адаптированные правила." data-details="🧒 Развитие координации, быстроты реакции и дисциплины."><div class="icon">⚔️</div><h3>Детский СМБ</h3><p>Безопасные спортивные бои для детей</p></div>
-            <div class="direction-card" data-name="Саберфайтинг" data-icon="⭐" data-desc="Бои на световых мечах в стилистике 'Звёздных войн'. Сочетает хореографию, акробатику и фехтовальные техники." data-details="🌌 Есть направления: классический саберфайтинг, парный световой меч."><div class="icon">⭐</div><h3>Саберфайтинг</h3><p>Световые мечи</p></div>
-            <div class="direction-card" data-name="Саберфайтинг (глефа)" data-icon="⭐" data-desc="Бои на световом посохе (глефе). Техника работы с древковым оружием в мире 'Звёздных войн'." data-details="🌌 Зрелищные и динамичные поединки."><div class="icon">⭐</div><h3>Саберфайтинг (глефа)</h3><p>Световой посох</p></div>
-            <div class="direction-card" data-name="Самооборона с ирландской тростью" data-icon="🤺" data-desc="Эффективная система самообороны с использованием обычной трости. Техники из ирландского бокса и фехтования." data-details="🥋 Изучение ударной техники, блоков и обезоруживания. Подходит для всех возрастов."><div class="icon">🤺</div><h3>Самооборона с ирландской тростью</h3><p>Эффективная защита</p></div>
-            <div class="direction-card" data-name="Ушу / Клинки Востока" data-icon="🐉" data-desc="Изучение традиционного китайского оружия: меч цзянь, сабля дао. Развитие гибкости, пластики и внутренней энергии." data-details="🇨🇳 Группа для начинающих и продолжающих."><div class="icon">🐉</div><h3>Ушу / Клинки Востока</h3><p>Традиционное китайское оружие</p></div>
-            <div class="direction-card" data-name="Основы средневекового фехтования" data-icon="🏰" data-desc="Базовый курс для начинающих. Изучение основных принципов работы с оружием: стойки, удары, защита, передвижения." data-details="🔰 Идеально для тех, кто хочет попробовать фехтование с нуля. Экипировка предоставляется."><div class="icon">🏰</div><h3>Основы средневекового фехтования</h3><p>Для начинающих</p></div>
+        <!-- СОВРЕМЕННЫЕ И ПОСТАНОВОЧНЫЕ -->
+        <div class="section-title">Современные и постановочные</div>
+        <div class="grid">
+            <div class="card" data-name="СМБ сабля и сабля-баклер" data-img="img/directions/смб.jpg" data-desc="Современный мечевой бой." data-link="https://vk.com/market/product/smb-sablya-i-sablya-bakler-130125846-3768595">
+                <img src="img/directions/смб.jpg" alt="СМБ">
+                <h3>СМБ сабля и сабля-баклер</h3>
+                <p>Взрослые</p>
+            </div>
+            <div class="card" data-name="СМБ (дети)" data-img="img/directions/смб дети.jpg" data-desc="СМБ для детей 9-13 лет." data-link="https://vk.com/market/product/sovremenny-mechevoy-boy-detskaya-gruppa-130125846-7513494">
+                <img src="img/directions/смб дети.jpg" alt="СМБ дети">
+                <h3>СМБ (дети)</h3>
+                <p>9-13 лет</p>
+            </div>
+            <div class="card" data-name="Саберфайтинг" data-img="img/directions/саберфайтинг.jpg" data-desc="Бои на световых мечах." data-link="https://vk.com/market/product/saberfayting-130125846-3426116">
+                <img src="img/directions/саберфайтинг.jpg" alt="Саберфайтинг">
+                <h3>Саберфайтинг</h3>
+                <p>Световые мечи</p>
+            </div>
+            <div class="card" data-name="Световая глефа" data-img="img/directions/глефа.jpg" data-desc="Бои на световом посохе." data-link="https://vk.com/market/product/saberfayting-glefa-130125846-12007684">
+                <img src="img/directions/глефа.jpg" alt="Глефа">
+                <h3>Световая глефа</h3>
+                <p>Световой посох</p>
+            </div>
+            <div class="card" data-name="Артистическое фехтование" data-img="img/directions/артфехтование.jpg" data-desc="Постановочные бои и выступления." data-link="https://vk.com/market/product/art-fekhtovanie-130125846-3426127">
+                <img src="img/directions/артфехтование.jpg" alt="Арт-фехтование">
+                <h3>Артистическое фехтование</h3>
+                <p>Постановочные бои</p>
+            </div>
+            <div class="card" data-name="Арт-фехтование (дети)" data-img="img/directions/артфехтование дети.jpg" data-desc="Детское артистическое фехтование 9-14 лет." data-link="https://vk.com/market/product/detskoe-artisticheskoe-fekhtovanie-130125846-11976948">
+                <img src="img/directions/артфехтование дети.jpg" alt="Арт-фехтование дети">
+                <h3>Арт-фехтование (дети)</h3>
+                <p>9-14 лет</p>
+            </div>
+            <div class="card" data-name="Постановочное фехтование" data-img="img/directions/постановочное.jpg" data-desc="Подготовка боевых сцен для кино и театра." data-link="https://vk.com/market/product/postanovochnoe-fekhtovanie-130125846-7768030">
+                <img src="img/directions/постановочное.jpg" alt="Постановочное">
+                <h3>Постановочное фехтование</h3>
+                <p>Для кино и театра</p>
+            </div>
+            <div class="card" data-name="GIRL POWER" data-img="img/directions/GP.jpg" data-desc="Фитнес с мечом для девушек." data-link="https://vk.com/market/product/girl-power-130125846-6979382">
+                <img src="img/directions/GP.jpg" alt="Girl Power">
+                <h3>GIRL POWER</h3>
+                <p>Фитнес с мечом</p>
+            </div>
+            <div class="card" data-name="Фланкировка" data-img="img/directions/фланкировка.jpg" data-desc="Вращение казачьей шашкой." data-link="https://vk.com/market/product/flankirovka-shashkoy-130125846-8882579">
+                <img src="img/directions/фланкировка.jpg" alt="Фланкировка">
+                <h3>Фланкировка</h3>
+                <p>Казачья шашка</p>
+            </div>
+            <div class="card" data-name="Ведьмак" data-img="img/directions/ведьмак.jpg" data-desc="Фехтование в стиле 'Ведьмак'." data-link="https://vk.com/market/product/quotvedmakquot-130125846-7697034">
+                <img src="img/directions/ведьмак.jpg" alt="Ведьмак">
+                <h3>Ведьмак</h3>
+                <p>Школа Белого Волка</p>
+            </div>
         </div>
 
-        <!-- БЛОК 4: ВОСТОЧНЫЕ ЕДИНОБОРСТВА И ТРАДИЦИИ -->
-        <div class="section-title">🌸 Восточные единоборства и традиции</div>
-        <div class="directions-grid">
-            <div class="direction-card" data-name="Школа самураев" data-icon="⚔️" data-desc="Изучение японских боевых искусств с оружием: катана, боккен, иайдо. Философия и дух Будо." data-details="🇯🇵 Традиции японского фехтования. Работа с катаной, медитация."><div class="icon">⚔️</div><h3>Школа самураев</h3><p>Путь воина</p></div>
-            <div class="direction-card" data-name="Стрельба из лука" data-icon="🏹" data-desc="Традиционная стрельба из классического и исторического лука. Развитие концентрации, координации и спокойствия." data-details="🎯 Группы для начинающих и продолжающих. Участие в турнирах."><div class="icon">🏹</div><h3>Стрельба из лука</h3><p>Меткость и концентрация</p></div>
-            <div class="direction-card" data-name="Фланкировка шашкой" data-icon="🌀" data-desc="Вращение казачьей шашкой, нагайкой. Зрелищные техники без контакта. Развивает координацию, гибкость кистей." data-details="💨 Традиционная казачья культура. Участие в показательных выступлениях."><div class="icon">🌀</div><h3>Фланкировка шашкой</h3><p>Казачья шашка</p></div>
-            <div class="direction-card" data-name="«Ведьмак» (Школа Белого Волка)" data-icon="🐺" data-desc="Фехтование в стиле 'Ведьмак' по мотивам игр и книг. Техники одноручного и двуручного меча. Изучение стиля Белого Волка." data-details="🐺 Группы для начинающих и продолжающих."><div class="icon">🐺</div><h3>«Ведьмак» (Школа Белого Волка)</h3><p>По мотивам саги</p></div>
+        <!-- НЕ ТОЛЬКО ФЕХТОВАНИЕ -->
+        <div class="section-title">Не только фехтование</div>
+        <div class="grid">
+            <div class="card" data-name="Стрельба из лука" data-img="img/directions/лук.jpg" data-desc="Традиционная стрельба из лука." data-link="https://vk.com/market/product/strelba-iz-luka-130125846-5868840">
+                <img src="img/directions/лук.jpg" alt="Лук">
+                <h3>Стрельба из лука</h3>
+                <p>Традиционный лук</p>
+            </div>
+            <div class="card" data-name="Метание" data-img="img/directions/метание.jpg" data-desc="Метательные практики." data-link="https://vk.com/market/product/samopodgotovka-130125846-12187832">
+                <img src="img/directions/метание.jpg" alt="Метание">
+                <h3>Метание</h3>
+                <p>Метательные практики</p>
+            </div>
+            <div class="card" data-name="Клинки Востока" data-img="img/directions/клинки востока.jpg" data-desc="Ушу и восточное оружие." data-link="https://vk.com/market/product/u-shu-klinki-vostoka-130125846-8387359">
+                <img src="img/directions/клинки востока.jpg" alt="Клинки Востока">
+                <h3>Клинки Востока</h3>
+                <p>Ушу</p>
+            </div>
+            <div class="card" data-name="Школа самураев" data-img="img/directions/школа самураев.jpg" data-desc="Японское фехтование с катаной." data-link="https://vk.com/market/product/u-shu-klinki-vostoka-130125846-8387359">
+                <img src="img/directions/школа самураев.jpg" alt="Самураи">
+                <h3>Школа самураев</h3>
+                <p>Катана</p>
+            </div>
+            <div class="card" data-name="Базовый курс по шитью" data-img="img/directions/шитьё.jpg" data-desc="Создание исторических костюмов." data-link="https://vk.com/market/product/bazovy-kurs-po-shityu-130125846-6930805">
+                <img src="img/directions/шитьё.jpg" alt="Шитьё">
+                <h3>Базовый курс по шитью</h3>
+                <p>Дизайн костюма</p>
+            </div>
         </div>
+    </div>
 
-        <!-- БЛОК 5: ФИТНЕС И ТВОРЧЕСТВО -->
-        <div class="section-title">💪 Фитнес и творчество</div>
-        <div class="directions-grid">
-            <div class="direction-card" data-name="GIRL POWER" data-icon="💪" data-desc="Фитнес с оружием для девушек. Поддержание тонуса тела через фехтовальные техники и работу с длинным мечом." data-details="👩 Только женские группы. Развивает гибкость, координацию, снимает стресс."><div class="icon">💪</div><h3>GIRL POWER</h3><p>Workout с мечом для девушек</p></div>
-            <div class="direction-card" data-name="Базовый курс по шитью" data-icon="🪡" data-desc="Создание исторических и сценических костюмов. Работа с тканями, выкройками, аксессуарами." data-details="👗 Руководитель — Мария Лукацкая. Групповые и индивидуальные занятия. Ателье сценического костюма 'Мару'."><div class="icon">🪡</div><h3>Базовый курс по шитью</h3><p>Дизайн костюма</p></div>
-            <div class="direction-card" data-name="Хранение снаряжения" data-icon="🔒" data-desc="Услуга по хранению личного фехтовального снаряжения в школе." data-details="⚔️ Не носите тяжелое снаряжение с собой. Оставляйте его в надежном месте."><div class="icon">🔒</div><h3>Хранение снаряжения</h3><p>Удобное хранение</p></div>
-        </div>
-
-        <!-- БЛОК 6: ДРУГИЕ УСЛУГИ (14 штук) -->
-        <div class="section-title">📌 Другие услуги</div>
-        <div class="directions-grid">
-            <div class="direction-card" data-name="Индивидуальные тренировки" data-icon="🎯" data-desc="Персональные занятия с тренером для быстрого прогресса, подготовки к турнирам или отработки конкретных техник." data-details="🤺 Любое направление. Гибкий график. Опытные тренеры — мастера спорта."><div class="icon">🎯</div><h3>Индивидуальные тренировки</h3><p>Персональный подход</p></div>
-            <div class="direction-card" data-name="Онлайн-занятия" data-icon="💻" data-desc="Для желающих начать свой путь в фехтовании, но проживающих не в Москве, а так же для опытных фехтовальщиков, желающих продолжать занятия фехтованием из дома." data-details="🏠 Для начинающих: базовые стойки, перемещения, защиты и атаки. Для продолжающих: углубленное изучение приемов. Тренер: Алексей Бесфамильный."><div class="icon">💻</div><h3>Онлайн-занятия</h3><p>Фехтование из любой точки мира</p></div>
-            <div class="direction-card" data-name="Организация детских праздников" data-icon="🎂" data-desc="Проведение детских дней рождения с мастер-классом по фехтованию, игровой программой и шоу от профессионалов." data-details="🎈 Подарите ребенку незабываемый праздник с мечами, рыцарями и настоящими приключениями."><div class="icon">🎂</div><h3>Детские праздники</h3><p>Мечты сбываются</p></div>
-            <div class="direction-card" data-name="Организация праздников для взрослых" data-icon="🥂" data-desc="Организация корпоративов, дней рождения и тимбилдинга с программой по фехтованию." data-details="🤝 Сделайте ваш праздник незабываемым: турниры, мастер-классы, шоу-поединки."><div class="icon">🥂</div><h3>Взрослые праздники</h3><p>Необычный тимбилдинг</p></div>
-            <div class="direction-card" data-name="Аренда зала (80 м2)" data-icon="🏢" data-desc="Аренда просторного зала 80 м2 для тренировок, репетиций, мастер-классов и мероприятий." data-details="📍 Зал на Соколиной горе (4 этаж). Амортизирующее покрытие, раздевалки."><div class="icon">🏢</div><h3>Аренда зала (80 м2)</h3><p>Для тренировок и мероприятий</p></div>
-            <div class="direction-card" data-name="Аренда зала (120 м2)" data-icon="🏢" data-desc="Аренда просторного зала 120 м2. Идеально для больших групп и спаррингов." data-details="📍 Зал на Соколиной горе (4 этаж). Амортизирующее покрытие."><div class="icon">🏢</div><h3>Аренда зала (120 м2)</h3><p>Для больших групп</p></div>
-            <div class="direction-card" data-name="Аренда зала (160 м2)" data-icon="🏢" data-desc="Аренда самого большого зала 160 м2. Подходит для проведения турниров, крупных мероприятий и шоу." data-details="📍 Зал на Соколиной горе (4 этаж). Полный комплект оборудования."><div class="icon">🏢</div><h3>Аренда зала (160 м2)</h3><p>Для турниров и шоу</p></div>
-            <div class="direction-card" data-name="Аренда зала (400 м2)" data-icon="🏢" data-desc="Аренда зала 400 м2. Подходит для проведения крупных корпоративов, фестивалей и съемок." data-details="📍 Зал на Соколиной горе. Максимальное пространство для ваших идей."><div class="icon">🏢</div><h3>Аренда зала (400 м2)</h3><p>Грандиозные мероприятия</p></div>
-            <div class="direction-card" data-name="Репетиции номеров" data-icon="🎪" data-desc="Аренда зала для репетиций театральных, цирковых и танцевальных номеров. Гибкая система оплаты." data-details="🎭 Зеркала, музыкальное оборудование, нужная атмосфера."><div class="icon">🎪</div><h3>Репетиции номеров</h3><p>Пространство для творчества</p></div>
-            <div class="direction-card" data-name="Запись с камер видеонаблюдения" data-icon="🎥" data-desc="Если вы хотели бы получить запись ваших боёв или отследить судьбу утерянных вещей." data-details="📹 Стоимость услуги: 1750 р/час (435 р/15 минут). Пожалуйста, не теряйте свои вещи!"><div class="icon">🎥</div><h3>Запись с камер видеонаблюдения</h3><p>Видео ваших поединков</p></div>
-            <div class="direction-card" data-name="Подарочный сертификат" data-icon="🎁" data-desc="Подарочный сертификат на пробное занятие, абонемент или индивидуальную тренировку. Идеальный подарок для друзей и близких." data-details="🎁 Дарите эмоции и незабываемые впечатления!"><div class="icon">🎁</div><h3>Подарочные сертификаты</h3><p>Лучший подарок</p></div>
-            <div class="direction-card" data-name="Реабилитация" data-icon="🩺" data-desc="Тренер-реабилитолог сборной команды России по артистическому фехтованию. Восстановление после травм и нагрузок." data-details="🤸‍♂️ Индивидуальная программа под ваш запрос."><div class="icon">🩺</div><h3>Реабилитация</h3><p>Восстановление после травм</p></div>
-            <div class="direction-card" data-name="Самподготовка" data-icon="📖" data-desc="Самостоятельная подготовка в зале без тренера. Для опытных фехтовальщиков." data-details="⚔️ Доступ в зал в свободное время."><div class="icon">📖</div><h3>Самподготовка</h3><p>Самостоятельные тренировки</p></div>
-            <div class="direction-card" data-name="Открытые бои" data-icon="⚔️" data-desc="Регулярные турниры и спарринги в различных дисциплинах (СМБ, HEMA, сабля). Проверьте свои силы в честном бою." data-details="🏆 Открытые площадки для спаррингов, обмен опытом."><div class="icon">⚔️</div><h3>Открытые бои</h3><p>Турниры и спарринги</p></div>
-            <div class="direction-card" data-name="Турниры" data-icon="🏆" data-desc="Участие в российских и международных турнирах по фехтованию. Подготовка и сопровождение спортсменов." data-details="🥇 Участие в соревнованиях различного уровня."><div class="icon">🏆</div><h3>Турниры</h3><p>Соревнования</p></div>
-        </div>
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="modal">
+        <img id="modal-img" src="" alt="">
+        <h3 id="modal-name"></h3>
+        <div class="desc" id="modal-desc"></div>
+        <div class="details" id="modal-details"></div>
+        <a href="#" target="_blank" class="btn" id="modal-link">Перейти к товару в ВК</a>
+        <button class="close-modal" id="closeModal">Закрыть</button>
     </div>
 
     <footer>
         <div class="container">
-            <p>© 2025 Wild Cards Fencing | Все права защищены</p>
+            <p>© 2026 Wild Cards Fencing | Все права защищены</p>
+            <p style="margin-top:10px;"><a href="https://vk.com/wildcardsfencing" target="_blank">Мы во ВКонтакте</a></p>
         </div>
     </footer>
 
-    <!-- Модальное окно -->
-    <div class="overlay" id="overlay"></div>
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <div class="icon" id="modal-icon"></div>
-            <h3 id="modal-name"></h3>
-            <div class="desc" id="modal-desc"></div>
-            <div class="details" id="modal-details"></div>
-            <button class="close-modal" id="closeModal">Закрыть</button>
-        </div>
-    </div>
-
     <script>
-        const cards = document.querySelectorAll('.direction-card');
+        const cards = document.querySelectorAll('.card');
         const modal = document.getElementById('modal');
         const overlay = document.getElementById('overlay');
-        const modalIcon = document.getElementById('modal-icon');
+        const modalImg = document.getElementById('modal-img');
         const modalName = document.getElementById('modal-name');
         const modalDesc = document.getElementById('modal-desc');
         const modalDetails = document.getElementById('modal-details');
-        const closeModal = document.getElementById('closeModal');
-
-        function openModal(name, icon, desc, details) {
-            modalIcon.textContent = icon;
-            modalName.textContent = name;
-            modalDesc.textContent = desc;
-            modalDetails.innerHTML = details.replace(/\n/g, '<br>');
-            modal.style.display = 'block';
-            overlay.style.display = 'block';
-        }
+        const modalLink = document.getElementById('modal-link');
 
         cards.forEach(card => {
             card.addEventListener('click', () => {
-                const name = card.getAttribute('data-name');
-                const icon = card.getAttribute('data-icon');
-                const desc = card.getAttribute('data-desc');
-                const details = card.getAttribute('data-details');
-                openModal(name, icon, desc, details);
+                modalImg.src = card.getAttribute('data-img');
+                modalName.textContent = card.getAttribute('data-name');
+                modalDesc.textContent = card.getAttribute('data-desc');
+                modalDetails.textContent = 'Нажмите кнопку ниже, чтобы записаться через ВКонтакте.';
+                modalLink.href = card.getAttribute('data-link');
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
             });
         });
 
-        closeModal.addEventListener('click', () => {
+        document.getElementById('closeModal').onclick = () => {
             modal.style.display = 'none';
             overlay.style.display = 'none';
-        });
-        overlay.addEventListener('click', () => {
+        };
+        overlay.onclick = () => {
             modal.style.display = 'none';
             overlay.style.display = 'none';
-        });
+        };
     </script>
 </body>
 </html>
