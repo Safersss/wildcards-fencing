@@ -4,43 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wild Cards Fencing — О школе</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #000000; font-family: 'Inter', 'Segoe UI', sans-serif; color: #fff; line-height: 1.5; }
+        body { background: #fff; font-family: 'Inter', sans-serif; color: #111; line-height: 1.6; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        header { padding: 20px 0; border-bottom: 1px solid #222; }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .logo img { height: 50px; width: auto; display: block; }
-        .logo-text { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 2px; color: #fff; text-transform: uppercase; line-height: 1.2; }
-        .logo-text span { color: #d32f2f; }
-        nav a { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: #fff; text-decoration: none; margin-left: 30px; transition: 0.2s; text-transform: uppercase; }
+        header { background: #fff; padding: 12px 0; box-shadow: 0 2px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 20px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+        .logo img { height: 65px; width: auto; object-fit: contain; }
+        .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 2px; color: #111; text-transform: uppercase; line-height: 1; }
+        .logo-text span { color: #7a0c0c; }
+        nav { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+        nav a { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; color: #111; text-decoration: none; margin-left: 22px; text-transform: uppercase; transition: 0.3s; white-space: nowrap; }
         nav a:first-child { margin-left: 0; }
-        nav a:hover { color: #d32f2f; }
-        h1 { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; text-align: center; margin: 60px 0 40px; text-transform: uppercase; }
-        h1 span { color: #d32f2f; }
-        .content { background: #111; padding: 40px; border: 1px solid #222; margin-bottom: 60px; }
-        .content p { margin-bottom: 20px; font-size: 18px; color: #ccc; line-height: 1.6; }
-        footer { border-top: 1px solid #222; padding: 40px 0; text-align: center; color: #555; }
+        nav a:hover { color: #7a0c0c; }
+
+        h1 { font-family: 'Bebas Neue', sans-serif; font-size: 56px; text-align: center; margin: 50px 0 30px; letter-spacing: 3px; }
+        .content { max-width: 900px; margin: 0 auto 60px; }
+        .content p { font-size: 17px; color: #333; margin-bottom: 20px; }
+        .content h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #7a0c0c; margin: 40px 0 15px; letter-spacing: 1px; }
+        .content ul { margin: 20px 0 20px 25px; }
+        .content li { font-size: 16px; color: #555; margin-bottom: 10px; }
+
+        footer { background: #111; color: #888; text-align: center; padding: 40px 0; font-size: 14px; }
+        footer a { color: #7a0c0c; text-decoration: none; }
+
+        @media (max-width: 1000px) { nav a { font-size: 16px; margin-left: 15px; } }
         @media (max-width: 700px) {
-            .header-inner { flex-direction: column; gap: 15px; }
-            nav a { margin: 0 12px; font-size: 14px; }
-            nav a:first-child { margin-left: 12px; }
-            h1 { font-size: 32px; }
-            .logo img { height: 40px; }
-            .logo-text { font-size: 18px; }
-            .content { padding: 25px; }
+            .header-inner { flex-direction: column; gap: 10px; }
+            nav { justify-content: center; }
+            nav a { margin: 0 8px; font-size: 14px; }
+            h1 { font-size: 36px; }
+            .logo img { height: 50px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
+    <header>
+        <div class="container">
             <div class="header-inner">
                 <a href="index.html" class="logo">
-                    <img src="logo.jpg" alt="Wild Cards Fencing">
-                    <div class="logo-text">WILD <span data-cms-editable="true" data-cms-field="logo_accent">CARDS</span><br><span data-cms-editable="true" data-cms-field="logo_text">FENCING</span></div>
+                    <img src="img/logo/Montazhnaya_oblast_2_kopia_2.png" alt="Wild Cards Fencing">
+                    <div class="logo-text">WILD <span>CARDS</span><br>FENCING</div>
                 </a>
                 <nav>
                     <a href="index.html">Главная</a>
@@ -53,14 +59,41 @@
                     <a href="faq.html">FAQ</a>
                 </nav>
             </div>
-        </header>
-        <h1>О <span data-cms-editable="true" data-cms-field="about_span">школе</span></h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>О школе</h1>
         <div class="content">
-            <p data-cms-editable="true" data-cms-field="about_text1">Wild Cards Fencing — первая многопрофильная школа фехтования в Москве. Мы объединяем традиции и современность, Европу и Восток. Наши тренеры — чемпионы России и мира, специалисты с огромным опытом, которые за несколько лет вырастили учеников до призёров российских и международных соревнований.</p>
-            <p data-cms-editable="true" data-cms-field="about_text2">Мы не привязываем учеников к одному клубу. Главное для нас — научить побеждать. В наших залах более 30 направлений: от спортивной шпаги до исторического фехтования и стрельбы из лука. Вся экипировка предоставляется бесплатно.</p>
-            <p data-cms-editable="true" data-cms-field="about_text3">Наши залы находятся в 10 минутах от метро Соколиная Гора и Римская. Мы — спортивная организация, входящая в Федерацию Фехтования Москвы.</p>
+            <p>Wild Cards Fencing — первая многопрофильная школа фехтования в Москве. Мы объединяем традиции и современность, Европу и Восток. Наши тренеры — чемпионы России и мира, специалисты с огромным опытом, которые за несколько лет вырастили учеников до призёров российских и международных соревнований.</p>
+            <p>Мы не привязываем учеников к одному направлению. Главное для нас — научить побеждать. В наших залах более 30 направлений: от спортивной шпаги до исторического фехтования и стрельбы из лука. Вся экипировка предоставляется бесплатно.</p>
+
+            <h2>Наши преимущества</h2>
+            <ul>
+                <li>Более 30 направлений — от спортивного фехтования до исторических практик</li>
+                <li>Тренеры — мастера спорта России и СССР, чемпионы мира</li>
+                <li>Вся экипировка предоставляется бесплатно</li>
+                <li>Три зала в Москве и один в Видном</li>
+                <li>Группы для детей от 7 лет и взрослых без ограничений</li>
+                <li>Мы входим в Федерацию Фехтования Москвы</li>
+            </ul>
+
+            <h2>Наши залы</h2>
+            <ul>
+                <li>Основной зал — 9-я ул. Соколиной горы, д. 6, 4 этаж</li>
+                <li>Дворец Детского Спорта — Рабочая ул., 53, стр. 1, 2 этаж</li>
+                <li>Филиал в Видном — г. Видное, ул. Советская, д. 19</li>
+            </ul>
+
+            <p>Мы всегда рады новым ученикам. Приходите на пробное занятие — покажем зал, познакомим с тренером и поможем выбрать направление.</p>
         </div>
     </div>
-    <footer><div class="container"><p>© 2025 Wild Cards Fencing | Все права защищены</p></div></footer>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Wild Cards Fencing | Все права защищены</p>
+            <p style="margin-top:10px;"><a href="https://vk.com/wildcardsfencing" target="_blank">Мы во ВКонтакте</a></p>
+        </div>
+    </footer>
 </body>
 </html>
