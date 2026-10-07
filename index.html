@@ -10,15 +10,16 @@
         body { background: #ffffff; font-family: 'Inter', sans-serif; color: #111; line-height: 1.5; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        header { position: fixed; top: 0; left: 0; right: 0; padding: 15px 0; z-index: 100; transition: 0.3s; }
+        header { position: fixed; top: 0; left: 0; right: 0; padding: 12px 0; z-index: 100; transition: 0.3s; }
         header.scrolled { background: #fff; box-shadow: 0 2px 15px rgba(0,0,0,0.08); }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .logo img { height: 70px; width: auto; display: block; }
-        .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px; color: #fff; text-transform: uppercase; line-height: 1; transition: 0.3s; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 20px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+        .logo img { height: 65px; width: auto; display: block; object-fit: contain; }
+        .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 2px; color: #fff; text-transform: uppercase; line-height: 1; transition: 0.3s; }
         .logo-text span { color: #7a0c0c; }
         header.scrolled .logo-text { color: #111; }
-        nav a { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; color: #fff; text-decoration: none; margin-left: 25px; text-transform: uppercase; transition: 0.3s; }
+        nav { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+        nav a { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; color: #fff; text-decoration: none; margin-left: 22px; text-transform: uppercase; transition: 0.3s; white-space: nowrap; }
         nav a:first-child { margin-left: 0; }
         nav a:hover { color: #7a0c0c; }
         header.scrolled nav a { color: #111; }
@@ -32,7 +33,7 @@
         .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: 110px; letter-spacing: 6px; line-height: 0.95; margin-bottom: 20px; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
         .hero h1 span { color: #7a0c0c; }
         .hero p { font-size: 20px; color: #eee; max-width: 600px; margin-bottom: 30px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .btn { background: #7a0c0c; color: #fff; border: none; padding: 16px 40px; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: 0.2s; text-decoration: none; display: inline-block; }
+        .btn { background: #7a0c0c; color: #fff; border: none; padding: 16px 40px; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: 0.2s; text-decoration: none; display: inline-block; border-radius: 8px; }
         .btn:hover { background: #5a0808; }
 
         .section { padding: 80px 0; }
@@ -48,10 +49,25 @@
         footer { background: #111; color: #888; text-align: center; padding: 40px 0; font-size: 14px; }
         footer a { color: #7a0c0c; text-decoration: none; }
 
+        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 30px; width: 90%; max-width: 500px; z-index: 1000; border-radius: 15px; max-height: 85vh; overflow-y: auto; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 999; }
+        .modal img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }
+        .modal h3 { font-family: 'Bebas Neue', sans-serif; font-size: 30px; margin-bottom: 15px; letter-spacing: 1px; }
+        .modal .desc { color: #555; font-size: 15px; margin-bottom: 15px; }
+        .modal .details { color: #777; font-size: 14px; margin-bottom: 20px; padding-top: 15px; border-top: 1px solid #eee; }
+        .modal .btn { display: block; text-align: center; }
+        .close-modal { background: #eee; color: #111; border: none; padding: 12px; border-radius: 8px; cursor: pointer; width: 100%; margin-top: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; }
+        .close-modal:hover { background: #ddd; }
+
+        @media (max-width: 1000px) {
+            nav a { font-size: 16px; margin-left: 15px; }
+            .logo img { height: 55px; }
+        }
         @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 700px) {
-            .header-inner { flex-direction: column; }
-            nav a { margin: 0 10px; font-size: 16px; }
+            .header-inner { flex-direction: column; gap: 10px; }
+            nav { justify-content: center; }
+            nav a { margin: 0 8px; font-size: 14px; }
             .hero h1 { font-size: 60px; }
             .section h2 { font-size: 38px; }
             .logo img { height: 50px; }
@@ -82,7 +98,7 @@
         </div>
     </header>
 
-    <section class="hero" id="hero">
+    <section class="hero">
         <div class="hero-slide active" style="background-image: url('img/main/1.jpg');"></div>
         <div class="hero-slide" style="background-image: url('img/main/ДК1_164.jpg');"></div>
         <div class="hero-slide" style="background-image: url('img/main/ДК1_241.jpg');"></div>
@@ -113,36 +129,36 @@
         <div class="container">
             <h2>Направления</h2>
             <div class="grid">
-                <a href="directions.html" class="card" style="text-decoration:none; color:inherit;">
+                <div class="card" data-name="Ведьмак" data-img="img/directions/ведьмак.jpg" data-desc="Фехтование в стиле «Ведьмак» по мотивам игр и книг. Техники одноручного и двуручного меча." data-details="Группы для начинающих и продолжающих. Изучение стиля Белого Волка." data-link="https://vk.com/market/product/quotvedmakquot-130125846-7697034">
                     <img src="img/directions/ведьмак.jpg" alt="Ведьмак">
                     <h3>Ведьмак</h3>
                     <p>Школа Белого Волка</p>
-                </a>
-                <a href="directions.html" class="card" style="text-decoration:none; color:inherit;">
+                </div>
+                <div class="card" data-name="Girl Power" data-img="img/directions/GP.jpg" data-desc="Фитнес с оружием для девушек. Поддержание тонуса тела через фехтовальные техники и работу с длинным мечом." data-details="Только женские группы. Развивает гибкость, координацию, снимает стресс." data-link="https://vk.com/market/product/girl-power-130125846-6979382">
                     <img src="img/directions/GP.jpg" alt="Girl Power">
                     <h3>Girl Power</h3>
                     <p>Фитнес с мечом для девушек</p>
-                </a>
-                <a href="directions.html" class="card" style="text-decoration:none; color:inherit;">
+                </div>
+                <div class="card" data-name="Саберфайтинг" data-img="img/directions/саберфайтинг.jpg" data-desc="Бои на световых мечах в стилистике «Звёздных войн». Сочетает хореографию, акробатику и фехтовальные техники." data-details="Классический саберфайтинг, парный световой меч." data-link="https://vk.com/market/product/saberfayting-130125846-3426116">
                     <img src="img/directions/саберфайтинг.jpg" alt="Саберфайтинг">
                     <h3>Саберфайтинг</h3>
                     <p>Световые мечи</p>
-                </a>
-                <a href="directions.html" class="card" style="text-decoration:none; color:inherit;">
+                </div>
+                <div class="card" data-name="Стрельба из лука" data-img="img/directions/лук.jpg" data-desc="Традиционная стрельба из классического и исторического лука. Развитие концентрации и спокойствия." data-details="Группы для начинающих и продолжающих. Участие в турнирах." data-link="https://vk.com/market/product/strelba-iz-luka-130125846-5868840">
                     <img src="img/directions/лук.jpg" alt="Стрельба из лука">
                     <h3>Стрельба из лука</h3>
                     <p>Традиционный лук</p>
-                </a>
-                <a href="directions.html" class="card" style="text-decoration:none; color:inherit;">
+                </div>
+                <div class="card" data-name="Два меча" data-img="img/directions/два меча.jpg" data-desc="Курс основан на манускрипте Доминго Луиса Годиньо 1599 года. Владение двумя мечами в любой ситуации." data-details="Изучение правил ведения боя, отработка на скорость." data-link="https://vk.com/market/product/dva-mecha-dos-espadas-v-traditsii-domingo-luisa-godinio-130125846-12527484">
                     <img src="img/directions/два меча.jpg" alt="Два меча">
                     <h3>Два меча</h3>
                     <p>Испанская традиция</p>
-                </a>
-                <a href="directions.html" class="card" style="text-decoration:none; color:inherit;">
+                </div>
+                <div class="card" data-name="Сабля / Палаш" data-img="img/directions/сабля.jpg" data-desc="Рубяще-колющее оружие. Удары и уколы в верхнюю часть тела. Очень динамичный вид фехтования." data-details="Классическая сабля, казачья шашка, русская сабля." data-link="https://vk.com/market/product/sablyapalash-130125846-7180652">
                     <img src="img/directions/сабля.jpg" alt="Сабля / Палаш">
                     <h3>Сабля / Палаш</h3>
                     <p>Рубящее оружие</p>
-                </a>
+                </div>
             </div>
             <div class="center-btn">
                 <a href="directions.html" class="btn">📋 Все направления →</a>
@@ -154,32 +170,32 @@
         <div class="container">
             <h2>Тренеры</h2>
             <div class="grid">
-                <div class="card">
+                <div class="card" data-name="Бесфамильный Алексей" data-img="img/trainers/alexey-besfamilny.jpg" data-desc="Мастер спорта России по фехтованию, магистр педагогики. Многократный чемпион России и четырёхкратный чемпион мира по артистическому фехтованию. Каскадёр, постановщик боевых сцен в кино." data-details="Стаж в фехтовании — с 2008 года. Ведёт: артистическое фехтование, HEMA длинный меч, HEMA-smallsword, меч-кинжал." data-link="">
                     <img src="img/trainers/alexey-besfamilny.jpg" alt="Алексей Бесфамильный">
                     <h3>Алексей Бесфамильный</h3>
                     <p>Арт-фехтование, HEMA длинный меч</p>
                 </div>
-                <div class="card">
+                <div class="card" data-name="Бобровский Иван" data-img="img/trainers/ivan-bobrovsky.jpg" data-desc="Инженер-конструктор. Специализируется на испанской и португальской боевых традициях XVI–XVII веков." data-details="Ведёт: иберийский двуручный меч монтанте, испанская рапира, два меча, испанский нож наваха." data-link="">
                     <img src="img/trainers/ivan-bobrovsky.jpg" alt="Иван Бобровский">
                     <h3>Иван Бобровский</h3>
                     <p>Монтанте, испанская рапира, наваха</p>
                 </div>
-                <div class="card">
+                <div class="card" data-name="Оганесян Гагик" data-img="img/trainers/gagik-oganesyan.jpg" data-desc="Мастер спорта СССР по фехтованию на шпагах. Стаж преподавания — с 1984 года." data-details="Ведёт: спортивная шпага (взрослые), спортивная шпага (дети), индивидуальная подготовка спортсмена." data-link="">
                     <img src="img/trainers/gagik-oganesyan.jpg" alt="Гагик Оганесян">
                     <h3>Гагик Оганесян</h3>
                     <p>Спортивная шпага (взрослые и дети)</p>
                 </div>
-                <div class="card">
+                <div class="card" data-name="Грибанова Татьяна" data-img="img/trainers/tatyana-gribanova.jpg" data-desc="КМС, двукратная чемпионка Москвы, чемпионка России по артистическому фехтованию. Среди учеников — призёры межрегиональных турниров." data-details="Ведёт: детское арт-фехтование." data-link="">
                     <img src="img/trainers/tatyana-gribanova.jpg" alt="Татьяна Грибанова">
                     <h3>Татьяна Грибанова</h3>
                     <p>Детское арт-фехтование</p>
                 </div>
-                <div class="card">
+                <div class="card" data-name="Евсеева Анастасия" data-img="img/trainers/stasya-evseeva.jpg" data-desc="Мастер спорта России по фехтованию. Чемпион Москвы, победитель Кубка России по арт-фехтованию." data-details="Ведёт: Girl Power, HEMA длинный меч." data-link="">
                     <img src="img/trainers/stasya-evseeva.jpg" alt="Анастасия Евсеева">
                     <h3>Анастасия Евсеева</h3>
                     <p>Girl Power, HEMA длинный меч</p>
                 </div>
-                <div class="card">
+                <div class="card" data-name="Киселев Максим" data-img="img/trainers/max-kiselev.jpg" data-desc="Лингвист, специалист по итальянской боевой традиции XV–XVI веков. В военно-историческом движении с 1999 года." data-details="Ведёт: Ведьмак, боевые искусства Ренессанса, древковое оружие, Viking HEMA." data-link="">
                     <img src="img/trainers/max-kiselev.jpg" alt="Максим Киселев">
                     <h3>Максим Киселев</h3>
                     <p>Ведьмак, методолог</p>
@@ -198,7 +214,18 @@
         </div>
     </footer>
 
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="modal">
+        <img id="modal-img" src="" alt="">
+        <h3 id="modal-name"></h3>
+        <div class="desc" id="modal-desc"></div>
+        <div class="details" id="modal-details"></div>
+        <a href="#" target="_blank" class="btn" id="modal-link" style="display:none;">Узнать подробнее</a>
+        <button class="close-modal" id="closeModal">Закрыть</button>
+    </div>
+
     <script>
+        // Карусель
         const slides = document.querySelectorAll('.hero-slide');
         let current = 0;
         setInterval(() => {
@@ -207,14 +234,50 @@
             slides[current].classList.add('active');
         }, 5000);
 
+        // Шапка при прокрутке
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
         });
+
+        // Модалка
+        const cards = document.querySelectorAll('.card');
+        const modal = document.getElementById('modal');
+        const overlay = document.getElementById('overlay');
+        const modalImg = document.getElementById('modal-img');
+        const modalName = document.getElementById('modal-name');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalDetails = document.getElementById('modal-details');
+        const modalLink = document.getElementById('modal-link');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                modalImg.src = card.getAttribute('data-img');
+                modalName.textContent = card.getAttribute('data-name');
+                modalDesc.textContent = card.getAttribute('data-desc');
+                modalDetails.textContent = card.getAttribute('data-details');
+                const link = card.getAttribute('data-link');
+                if (link && link !== '') {
+                    modalLink.href = link;
+                    modalLink.style.display = 'block';
+                    modalLink.textContent = 'Узнать подробнее';
+                } else {
+                    modalLink.style.display = 'none';
+                }
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
+            });
+        });
+
+        document.getElementById('closeModal').onclick = () => {
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        };
+        overlay.onclick = () => {
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        };
     </script>
 </body>
 </html>
