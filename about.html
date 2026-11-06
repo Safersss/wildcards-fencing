@@ -27,6 +27,17 @@
         .content ul { margin: 20px 0 20px 25px; }
         .content li { font-size: 16px; color: #555; margin-bottom: 10px; }
 
+        .address-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .address-table th, .address-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #eee; }
+        .address-table th { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; color: #7a0c0c; font-weight: normal; }
+        .address-table td { font-size: 16px; color: #333; }
+        .address-link { display: inline-block; margin-top: 5px; font-size: 14px; color: #7a0c0c; text-decoration: none; border-bottom: 1px dashed #7a0c0c; }
+        .address-link:hover { border-bottom-style: solid; }
+
+        .btn { background: #7a0c0c; color: #fff; border: none; padding: 16px 40px; font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: 0.2s; text-decoration: none; display: inline-block; border-radius: 8px; }
+        .btn:hover { background: #5a0808; }
+        .center-btn { text-align: center; margin: 40px 0 60px; }
+
         footer { background: #111; color: #888; text-align: center; padding: 40px 0; font-size: 14px; }
         footer a { color: #7a0c0c; text-decoration: none; }
 
@@ -37,6 +48,7 @@
             nav a { margin: 0 8px; font-size: 14px; }
             h1 { font-size: 36px; }
             .logo img { height: 50px; }
+            .address-table th, .address-table td { padding: 10px; font-size: 14px; }
         }
     </style>
 </head>
@@ -65,7 +77,7 @@
     <div class="container">
         <h1>О школе</h1>
         <div class="content">
-            <p>Wild Cards Fencing — первая многопрофильная школа фехтования в Москве. Мы объединяем традиции и современность, Европу и Восток. Наши тренеры — чемпионы России и мира, специалисты с огромным опытом, которые за несколько лет вырастили учеников до призёров российских и международных соревнований.</p>
+            <p>Wild Cards Fencing — первая многопрофильная школа фехтования в Москве. Мы объединяем традиции и современность, Европу и Восток. Наши тренеры — специалисты с огромным опытом, которые за несколько лет вырастили учеников до призёров российских и международных соревнований. Среди наших тренеров есть чемпионы России и мира.</p>
             <p>Мы не привязываем учеников к одному направлению. Главное для нас — научить побеждать. В наших залах более 30 направлений: от спортивной шпаги до исторического фехтования и стрельбы из лука. Вся экипировка предоставляется бесплатно.</p>
 
             <h2>Наши преимущества</h2>
@@ -79,13 +91,39 @@
             </ul>
 
             <h2>Наши залы</h2>
-            <ul>
-                <li>Основной зал — 9-я ул. Соколиной горы, д. 6, 4 этаж</li>
-                <li>Дворец Детского Спорта — Рабочая ул., 53, стр. 1, 2 этаж</li>
-                <li>Филиал в Видном — г. Видное, ул. Советская, д. 19</li>
-            </ul>
+            <table class="address-table">
+                <tr>
+                    <th>Зал</th>
+                    <th>Адрес</th>
+                </tr>
+                <tr>
+                    <td><strong>Основной зал</strong></td>
+                    <td>
+                        9-я ул. Соколиной горы, д. 6, 4 этаж<br>
+                        <a href="schedule.html" class="address-link">Смотреть расписание филиала →</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Дворец Детского Спорта</strong></td>
+                    <td>
+                        Рабочая ул., 53, стр. 1, 2 этаж<br>
+                        <a href="schedule.html" class="address-link">Смотреть расписание филиала →</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Филиал в Видном</strong></td>
+                    <td>
+                        г. Видное, ул. Советская, д. 19<br>
+                        <a href="schedule.html" class="address-link">Смотреть расписание филиала →</a>
+                    </td>
+                </tr>
+            </table>
 
             <p>Мы всегда рады новым ученикам. Приходите на пробное занятие — покажем зал, познакомим с тренером и поможем выбрать направление.</p>
+        </div>
+        
+        <div class="center-btn">
+            <a href="https://vk.ru/gim130125846?entrypoint=community_page" target="_blank" class="btn">Записаться на пробное занятие</a>
         </div>
     </div>
 
